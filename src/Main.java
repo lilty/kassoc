@@ -3,19 +3,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import kassoc.Core;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 public class Main extends Application {
     public static void main(final String[] args) throws Exception {
-        final Session session = Core.getCurrentSession();
-        Transaction tx = session.beginTransaction();
-        try {
-            Application.launch(args);
-        } finally {
-            tx.commit();
-        }
+        Application.launch(args);
     }
 
     @Override

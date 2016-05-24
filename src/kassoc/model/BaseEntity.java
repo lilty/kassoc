@@ -1,6 +1,5 @@
 package kassoc.model;
 
-import javafx.beans.property.SimpleIntegerProperty;
 import kassoc.Core;
 
 import java.util.List;
@@ -9,21 +8,19 @@ import java.util.List;
  * The type Base entity.
  */
 public class BaseEntity {
-    private SimpleIntegerProperty id;
+    private int id;
 
     /**
      * Instantiates a new Base entity.
      */
-    BaseEntity() {
-        this.id = new SimpleIntegerProperty();
-    }
+    BaseEntity() { }
 
     /**
      * Instantiates a new Base entity.
      * @param id the id
      */
     BaseEntity(final int id) {
-        if (id>=0) { this.id = new SimpleIntegerProperty(id); } else { this.id = new SimpleIntegerProperty(); }
+        this.id = id;
     }
 
     /**
@@ -33,8 +30,7 @@ public class BaseEntity {
      * @return the t
      */
     public static <T> T find(int id) {
-        @SuppressWarnings("JpaQlInspection") List ret = Core.getCurrentSession().createQuery("from "+BaseEntity.class
-            .getName()+" where id=?").setParameter(
+        @SuppressWarnings("JpaQlInspection") List ret = Core.getCurrentSession().createQuery("from "+BaseEntity.class.getName()+" where id=?").setParameter(
             0,
             id
         ).list();
@@ -52,8 +48,7 @@ public class BaseEntity {
      * @return the list
      */
     public static List findBy(String attribute, Object value) {
-        return Core.getCurrentSession().createQuery("from "+BaseEntity.class.getName()+" where "+attribute+"=?")
-            .setParameter(
+        return Core.getCurrentSession().createQuery("from "+BaseEntity.class.getName()+" where "+attribute+"=?").setParameter(
             0,
             value
         ).list();
@@ -67,8 +62,7 @@ public class BaseEntity {
      * @return the t
      */
     public static <T> T findOneBy(String attribute, java.io.Serializable value) {
-        List ret = Core.getCurrentSession().createQuery("from "+BaseEntity.class.getName()+" where "+attribute+"=?")
-            .setParameter(
+        List ret = Core.getCurrentSession().createQuery("from "+BaseEntity.class.getName()+" where "+attribute+"=?").setParameter(
             0,
             value
         ).list();
@@ -84,7 +78,7 @@ public class BaseEntity {
      * @return the id
      */
     public int getId() {
-        return id.get();
+        return id;
     }
 
     /**
@@ -92,6 +86,6 @@ public class BaseEntity {
      * @param id the id
      */
     public void setId(final int id) {
-        this.id.set(id);
+        this.id = id;
     }
 }

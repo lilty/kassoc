@@ -11,13 +11,7 @@ public final class Core {
     private static final SessionFactory sessionFactory;
 
     static {
-        try {
-            sessionFactory = new AnnotationConfiguration().
-                configure("hibernate.cfg.xml").
-                buildSessionFactory();
-        } catch (Throwable ex) {
-            throw new ExceptionInInitializerError(ex);
-        }
+        sessionFactory = new AnnotationConfiguration().configure("hibernate.cfg.xml").buildSessionFactory();
     }
 
     /**
