@@ -2,11 +2,10 @@ package kassoc.controller;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import kassoc.Core;
+import kassoc.model.AccountEntity;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,13 +28,13 @@ public class SignUpController extends BaseController implements javafx.fxml.Init
      */
     public TextField mailInput;
     /**
+     * The Name input.
+     */
+    public TextField nameInput;
+    /**
      * The Pwd input.
      */
     public PasswordField pwdInput;
-    /**
-     * The Sdt n input.
-     */
-    public TextField sdtNInput;
     /**
      * The Sign up btn.
      */
@@ -44,6 +43,10 @@ public class SignUpController extends BaseController implements javafx.fxml.Init
      * The Sign up pane.
      */
     public TitledPane signUpPane;
+    /**
+     * The Sdt n input.
+     */
+    public TextField stdIdInput;
 
     /**
      * Back to login action.
@@ -51,8 +54,8 @@ public class SignUpController extends BaseController implements javafx.fxml.Init
      * @throws IOException the io exception
      */
     public void backToLoginAction(ActionEvent e) throws IOException {
-        Stage stage = (Stage) ((Node)e.getSource()).getScene().getWindow();
-        stage.setTitle("Pimp My Assoc - Login");
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setTitle("Kassoc - Login");
         gotoScene(stage, "/kassoc/view/login.fxml");
     }
 
@@ -67,8 +70,40 @@ public class SignUpController extends BaseController implements javafx.fxml.Init
      * @throws IOException the io exception
      */
     public void signUpAction(ActionEvent e) throws IOException {
-        Stage stage = (Stage) ((Node)e.getSource()).getScene().getWindow();
-        stage.setTitle("Pimp My Assoc - Dashboard");
-        gotoScene(stage, "/kassoc/view/dashboard.fxml");
+        org.hibernate.Transaction tx = Core.getCurrentSession().beginTransaction();
+        try {
+            String mail = mailInput.getText();
+            if (mail == null || mail.isEmpty()) {
+                new Alert(Alert.AlertType.ERROR, "The email input is a required field.").show();
+                return;
+            }
+            String name = pwdInput.getText();
+            if (name == null || name.isEmpty()) {
+                new Alert(Alert.AlertType.ERROR, "The name input is a required field.").show();
+                return;
+            }
+            String stdId = stdIdInput.getText();
+            if (stdId == null || stdId.isEmpty()) {
+                new Alert(Alert.AlertType.ERROR, "The student id input is a required field.").show();
+                return;
+            }
+            String pwd = pwdInput.getText();
+            if (pwd == null || pwd.isEmpty()) {
+                new Alert(Alert.AlertType.ERROR, "The password input is a required field.").show();
+                return;
+            }
+            String confirmPwd = confirmPwdInput.getText();
+            if (confirmPwd == null || confirmPwd.isEmpty()) {
+                new Alert(Alert.AlertType.ERROR, "Please confirm your password.").show();
+                return;
+            }
+            AccountEntity a = new AccountEntity(10, Integer.parseInt(stdId), name, mail, pwd);
+            Core.getCurrentSession().save(a);
+            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            stage.setTitle("Kassoc - Dashboard");
+            gotoScene(stage, "/kassoc/view/dashboard.fxml");
+        } finally {
+            tx.commit();
+        }
     }
 }

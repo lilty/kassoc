@@ -35,13 +35,12 @@ public class AccountEntity extends BaseEntity {
      * @param mail     the mail
      * @param password the password
      */
-    public AccountEntity(final int id, final SimpleIntegerProperty uniceId, final SimpleStringProperty name, final
-    SimpleStringProperty mail, final SimpleStringProperty password) {
+    public AccountEntity(final int id, final int uniceId, final String name, final String mail, final String password) {
         super(id);
-        this.uniceId = uniceId;
-        this.name = name;
-        this.mail = mail;
-        this.password = password;
+        this.uniceId = new SimpleIntegerProperty(uniceId);
+        this.name = new SimpleStringProperty(name);
+        this.mail = new SimpleStringProperty(mail);
+        this.password = new SimpleStringProperty(password);
     }
 
     @Override

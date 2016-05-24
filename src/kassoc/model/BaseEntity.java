@@ -14,7 +14,7 @@ public class BaseEntity {
     /**
      * Instantiates a new Base entity.
      */
-    public BaseEntity() {
+    BaseEntity() {
         this.id = new SimpleIntegerProperty();
     }
 
@@ -22,8 +22,8 @@ public class BaseEntity {
      * Instantiates a new Base entity.
      * @param id the id
      */
-    public BaseEntity(final int id) {
-        this.id = new SimpleIntegerProperty(id);
+    BaseEntity(final int id) {
+        if (id>=0) { this.id = new SimpleIntegerProperty(id); } else { this.id = new SimpleIntegerProperty(); }
     }
 
     /**
@@ -33,12 +33,13 @@ public class BaseEntity {
      * @return the t
      */
     public static <T> T find(int id) {
-        List users;
-        users = Core.getCurrentSession().createQuery("from "+BaseEntity.class.getName()+" where id=?").setParameter(0,
+        @SuppressWarnings("JpaQlInspection") List ret = Core.getCurrentSession().createQuery("from "+BaseEntity.class
+            .getName()+" where id=?").setParameter(
+            0,
             id
         ).list();
-        if (users.size()>0) {
-            return (T) users.get(0);
+        if (ret.size()>0) {
+            return (T) ret.get(0);
         } else {
             return null;
         }
@@ -46,14 +47,14 @@ public class BaseEntity {
 
     /**
      * Find by list.
-     * @param <T>       the type parameter
      * @param attribute the attribute
      * @param value     the value
      * @return the list
      */
-    public static <T> List<T> findBy(String attribute, Object value) {
+    public static List findBy(String attribute, Object value) {
         return Core.getCurrentSession().createQuery("from "+BaseEntity.class.getName()+" where "+attribute+"=?")
-            .setParameter(0,
+            .setParameter(
+            0,
             value
         ).list();
     }
@@ -65,14 +66,14 @@ public class BaseEntity {
      * @param value     the value
      * @return the t
      */
-    public static <T> T findOneBy(String attribute, Object value) {
-        List users;
-        users = Core.getCurrentSession().createQuery("from "+BaseEntity.class.getName()+" where "+attribute+"=?")
-            .setParameter(0,
+    public static <T> T findOneBy(String attribute, java.io.Serializable value) {
+        List ret = Core.getCurrentSession().createQuery("from "+BaseEntity.class.getName()+" where "+attribute+"=?")
+            .setParameter(
+            0,
             value
         ).list();
-        if (users.size()>0) {
-            return (T) users.get(0);
+        if (ret.size()>0) {
+            return (T) ret.get(0);
         } else {
             return null;
         }

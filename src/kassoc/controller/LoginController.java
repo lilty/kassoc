@@ -51,31 +51,33 @@ public class LoginController extends BaseController implements javafx.fxml.Initi
     public void loginAction(ActionEvent e) throws IOException {
         Transaction tx = Core.getCurrentSession().beginTransaction();
         try {
-            AccountEntity account;
-            try {
-                account = AccountEntity.findOneBy("uniceId", Integer.parseInt(mailInput.getText()));
-            } catch (Throwable t) {
-                account = null;
+            String mail = mailInput.getText();
+            if (mail == null || mail.isEmpty()) {
+                new Alert(Alert.AlertType.ERROR, "Please set your mail or your Unice id.").show();
+                return;
+            }
+            String pwd = pwdInput.getText();
+            if (pwd == null || pwd.isEmpty()) {
+                new Alert(Alert.AlertType.ERROR, "Please enter a password !").show();
+                return;
+            }
+            AccountEntity account = AccountEntity.findOneBy("mail", mailInput.getText());
+            if (account == null) {
+                try {
+                    int uniceId = Integer.parseInt(mailInput.getText());
+                    account = AccountEntity.findOneBy("uniceId", uniceId);
+                } catch (Throwable t) { account = null; }
             }
             if (account == null) {
-                account = AccountEntity.findOneBy("mail", mailInput.getText());
-            }
-            if (account == null) {
-                Alert a = new Alert(Alert.AlertType.ERROR);
-                a.setContentText("User not found !");
-                a.show();
+                new Alert(Alert.AlertType.ERROR, "User not found !").show();
             } else {
                 if (!Objects.equals(pwdInput.getText(), account.getPassword())) {
-                    Alert a = new Alert(Alert.AlertType.ERROR);
-                    a.setContentText("Wrong password provided !");
-                    a.show();
+                    new Alert(Alert.AlertType.ERROR, "Wrong password provided !").show();
                 } else {
+                    new Alert(Alert.AlertType.INFORMATION, "Welcome "+account.getName()+" !").show();
                     Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                     stage.setTitle("Kassoc - Dashboard");
                     gotoScene(stage, "/kassoc/view/dashboard.fxml");
-                    Alert a = new Alert(Alert.AlertType.INFORMATION);
-                    a.setContentText("Welcome "+account.getName()+" !");
-                    a.show();
                 }
             }
         } finally {

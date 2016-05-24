@@ -2,14 +2,12 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" minWidth="500" xmlns="http://javafx.com/javafx/8"
             fx:controller="kassoc.controller.SignUpController"
             stylesheets="/kassoc/style.css">
-    <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <TitledPane fx:id="signUpPane" animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                    minWidth="-Infinity" text="Sign up">
-            <AnchorPane>
+    <TitledPane fx:id="signUpPane" animated="false" text="Sign up" AnchorPane.bottomAnchor="0.0"
+                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
                 <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                       AnchorPane.topAnchor="0.0">
                     <padding>
@@ -36,13 +34,19 @@
                                 <Insets right="10.0"/>
                             </padding>
                         </Label>
-                        <Label text="Password" GridPane.halignment="LEFT" GridPane.rowIndex="2"
+                        <Label text="Name" GridPane.halignment="LEFT" GridPane.rowIndex="2"
+                               GridPane.valignment="CENTER">
+                            <padding>
+                                <Insets right="10.0"/>
+                            </padding>
+                        </Label>
+                        <Label text="Password" GridPane.halignment="LEFT" GridPane.rowIndex="3"
                                GridPane.valignment="CENTER">
                             <GridPane.margin>
                                 <Insets/>
                             </GridPane.margin>
                         </Label>
-                        <Label text="Confirm password" GridPane.halignment="LEFT" GridPane.rowIndex="3"
+                        <Label text="Confirm password" GridPane.halignment="LEFT" GridPane.rowIndex="4"
                                GridPane.valignment="CENTER">
                             <GridPane.margin>
                                 <Insets/>
@@ -51,24 +55,30 @@
                                 <Insets right="10.0"/>
                             </padding>
                         </Label>
-                        <TextField fx:id="sdtNInput" GridPane.columnIndex="1" styleClass="input">
+                        <TextField fx:id="stdIdInput" GridPane.columnIndex="1" styleClass="input">
                             <GridPane.margin>
                                 <Insets bottom="3.0" top="3.0"/>
                             </GridPane.margin>
                         </TextField>
-                        <TextField fx:id="mailInput" minWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                        <TextField fx:id="mailInput" GridPane.columnIndex="1" GridPane.rowIndex="1"
                                    styleClass="input">
                             <GridPane.margin>
                                 <Insets bottom="3.0" top="3.0"/>
                             </GridPane.margin>
                         </TextField>
-                        <PasswordField fx:id="pwdInput" GridPane.columnIndex="1" GridPane.rowIndex="2"
+                        <TextField fx:id="nameInput" GridPane.columnIndex="1" GridPane.rowIndex="2"
+                                   styleClass="input">
+                            <GridPane.margin>
+                                <Insets bottom="3.0" top="3.0"/>
+                            </GridPane.margin>
+                        </TextField>
+                        <PasswordField fx:id="pwdInput" GridPane.columnIndex="1" GridPane.rowIndex="3"
                                        styleClass="input">
                             <GridPane.margin>
                                 <Insets bottom="3.0" top="3.0"/>
                             </GridPane.margin>
                         </PasswordField>
-                        <PasswordField fx:id="confirmPwdInput" GridPane.columnIndex="1" GridPane.rowIndex="3"
+                        <PasswordField fx:id="confirmPwdInput" GridPane.columnIndex="1" GridPane.rowIndex="4"
                                        styleClass="input">
                             <GridPane.margin>
                                 <Insets bottom="3.0" top="3.0"/>
@@ -104,5 +114,4 @@
                 </VBox>
             </AnchorPane>
         </TitledPane>
-    </StackPane>
 </AnchorPane>
