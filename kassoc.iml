@@ -18,9 +18,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" scope="RUNTIME" name="Java EE 6-Java EE 6" level="project" />
-    <orderEntry type="library" exported="" scope="RUNTIME" name="com.hynnet:oracle-driver-ojdbc6:12.1.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Java EE 6-Java EE 6" level="project" />
+    <orderEntry type="library" exported="" name="com.hynnet:oracle-driver-ojdbc6:12.1.0.1" level="project" />
     <orderEntry type="library" exported="" name="org.hibernate:hibernate:3.2.7.ga" level="project" />
-    <orderEntry type="library" name="org.hibernate:hibernate-annotations:3.2.1.ga" level="project" />
+    <orderEntry type="library" exported="" name="org.hibernate:hibernate-annotations:3.2.1.ga" level="project" />
   </component>
 </module>
