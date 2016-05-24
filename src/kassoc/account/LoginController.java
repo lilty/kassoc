@@ -2,15 +2,16 @@ package kassoc.account;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import kassoc.Core;
 import kassoc.core.BaseController;
+import kassoc.model.AccountEntity;
+import org.hibernate.Transaction;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 /**
@@ -49,9 +50,38 @@ public class LoginController extends BaseController implements javafx.fxml.Initi
      * @throws IOException the io exception
      */
     public void loginAction(ActionEvent e) throws IOException {
-        Stage stage = (Stage) ((Node)e.getSource()).getScene().getWindow();
-        stage.setTitle("Pimp My Assoc - Dashboard");
-        gotoScene(stage, "../dashboard.fxml");
+        Transaction tx = Core.getCurrentSession().beginTransaction();
+        try {
+            AccountEntity account;
+            try {
+                account = AccountEntity.findOneBy("uniceId", Integer.parseInt(mailInput.getText()));
+            } catch (Throwable t) {
+                account = null;
+            }
+            if (account == null) {
+                account = AccountEntity.findOneBy("mail", mailInput.getText());
+            }
+            if (account == null) {
+                Alert a = new Alert(Alert.AlertType.ERROR);
+                a.setContentText("User not found !");
+                a.show();
+            } else {
+                if (!Objects.equals(pwdInput.getText(), account.getPassword())) {
+                    Alert a = new Alert(Alert.AlertType.ERROR);
+                    a.setContentText("Wrong password provided !");
+                    a.show();
+                } else {
+                    Alert a = new Alert(Alert.AlertType.INFORMATION);
+                    a.setContentText("Welcome "+account.getName()+" !");
+                    a.show();
+                    Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                    stage.setTitle("Kassoc - Dashboard");
+                    gotoScene(stage, "../dashboard.fxml");
+                }
+            }
+        } finally {
+            tx.commit();
+        }
     }
 
     /**

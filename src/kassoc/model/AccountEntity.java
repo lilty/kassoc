@@ -11,11 +11,15 @@ public class AccountEntity extends BaseEntity {
     private SimpleIntegerProperty id;
     private SimpleIntegerProperty uniceId;
     private SimpleStringProperty name;
+    private SimpleStringProperty mail;
+    private SimpleStringProperty password;
 
     public AccountEntity() {
         this.id = new SimpleIntegerProperty();
         this.uniceId = new SimpleIntegerProperty();
         this.name = new SimpleStringProperty();
+        this.mail = new SimpleStringProperty();
+        this.password = new SimpleStringProperty();
     }
 
     @Override
@@ -39,6 +43,16 @@ public class AccountEntity extends BaseEntity {
     }
 
     @Basic
+    @Column(name = "MAIL")
+    public String getMail() {
+        return mail.get();
+    }
+
+    public void setMail(final String mail) {
+        this.mail.set(mail);
+    }
+
+    @Basic
     @Column(name = "NAME")
     public String getName() {
         return name.get();
@@ -46,6 +60,16 @@ public class AccountEntity extends BaseEntity {
 
     public void setName(final String name) {
         this.name.set(name);
+    }
+
+    @Basic
+    @Column(name = "PASSWORD")
+    public String getPassword() {
+        return password.get();
+    }
+
+    public void setPassword(final String password) {
+        this.password.set(password);
     }
 
     @Basic
