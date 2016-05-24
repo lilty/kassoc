@@ -12,7 +12,6 @@ public class Main extends Application {
         final Session session = Core.getCurrentSession();
         Transaction tx = session.beginTransaction();
         try {
-            System.out.println("  "+Core.findById(0));
             Application.launch(args);
         } finally {
             tx.commit();

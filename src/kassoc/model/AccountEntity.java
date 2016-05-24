@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "KASSOC_ACCOUNT", schema = "S2AET07")
-public class AccountEntity {
+public class AccountEntity extends BaseEntity {
     private SimpleIntegerProperty id;
     private SimpleIntegerProperty uniceId;
     private SimpleStringProperty name;
