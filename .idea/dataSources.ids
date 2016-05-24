@@ -1,0 +1,1069 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Oracle - @quad.iutnice.unice.fr" uuid="da58e8ba-9941-4291-a7dc-fd4d3a2ecd81">
+    <database-info product="Oracle" version="Oracle Database 10g Enterprise Edition Release 10.2.0.1.0 - Production&#xa;With the Partitioning, OLAP and Data Mining options" jdbc-version="4.0" driver-name="Oracle JDBC driver" driver-version="12.1.0.2.0">
+      <extra-name-characters>$#</extra-name-characters>
+      <identifier-quote-string>&quot;</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="ORACLE" format-version="2.5">
+      <schema id="1" name="S2AET07">
+        <object-id>3063</object-id>
+        <created-timestamp>2016-04-01.10:07:19</created-timestamp>
+        <modified-timestamp>2016-05-24.08:55:09</modified-timestamp>
+        <introspection-timestamp>2016-05-24.09:27:32</introspection-timestamp>
+      </schema>
+      <table id="2" parent="1" name="ARTISTE">
+        <object-id>330158</object-id>
+        <created-timestamp>2016-04-01.10:07:19</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <organization>HEAP</organization>
+      </table>
+      <table id="3" parent="1" name="CASSETTE">
+        <object-id>330159</object-id>
+        <created-timestamp>2016-04-01.10:07:19</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <organization>HEAP</organization>
+      </table>
+      <table id="4" parent="1" name="CLIENT">
+        <object-id>330160</object-id>
+        <created-timestamp>2016-04-01.10:07:19</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <organization>HEAP</organization>
+      </table>
+      <table id="5" parent="1" name="EMPRUNT">
+        <object-id>330161</object-id>
+        <created-timestamp>2016-04-01.10:07:19</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <organization>HEAP</organization>
+      </table>
+      <table id="6" parent="1" name="FILM">
+        <object-id>330162</object-id>
+        <created-timestamp>2016-04-01.10:07:19</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <organization>HEAP</organization>
+      </table>
+      <table id="7" parent="1" name="INTERPRETE">
+        <object-id>330163</object-id>
+        <created-timestamp>2016-04-01.10:07:19</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <organization>HEAP</organization>
+      </table>
+      <table id="8" parent="1" name="KASSOC_ACCOUNT">
+        <object-id>335750</object-id>
+        <created-timestamp>2016-05-24.08:55:09</created-timestamp>
+        <modified-timestamp>2016-05-24.08:55:09</modified-timestamp>
+        <organization>HEAP</organization>
+      </table>
+      <table id="9" parent="1" name="PAYS">
+        <object-id>330164</object-id>
+        <created-timestamp>2016-04-01.10:07:19</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <organization>HEAP</organization>
+      </table>
+      <table id="10" parent="1" name="REALISATEUR">
+        <object-id>330165</object-id>
+        <created-timestamp>2016-04-01.10:07:19</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:29</modified-timestamp>
+        <organization>HEAP</organization>
+      </table>
+      <column id="11" parent="2" name="ANOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <column id="12" parent="2" name="APRENOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <column id="13" parent="2" name="ID_PAYS">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(3)</data-type>
+      </column>
+      <column id="14" parent="2" name="DATENAIS">
+        <data-type>DATE</data-type>
+      </column>
+      <column id="15" parent="2" name="SEXE">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(1)</data-type>
+      </column>
+      <index id="16" parent="2" name="SYS_C00199385">
+        <name-surrogate>1</name-surrogate>
+        <object-id>330173</object-id>
+        <created-timestamp>2016-04-01.10:07:28</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ANOM
+APRENOM</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+        <tablespace-name>USERS</tablespace-name>
+      </index>
+      <key id="17" parent="2" name="SYS_C00199385">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ANOM
+APRENOM</columns>
+        <initially-deferred>1</initially-deferred>
+        <underlying-index>SYS_C00199385</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="18" parent="2" name="SYS_C00199386">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_PAYS</columns>
+        <initially-deferred>1</initially-deferred>
+        <ref-key>~.PAYS.SYS_C00199378</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <check id="19" parent="2" name="SYS_C00199383">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ANOM</columns>
+        <predicate>anom=UPPER(anom)</predicate>
+      </check>
+      <check id="20" parent="2" name="SYS_C00199384">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>SEXE</columns>
+        <predicate>sexe IN (&apos;M&apos;, &apos;F&apos;)</predicate>
+      </check>
+      <column id="21" parent="3" name="ID_CASSETTE">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(3)</data-type>
+      </column>
+      <column id="22" parent="3" name="ID_FILM">
+        <data-type>VARCHAR2(3)</data-type>
+      </column>
+      <index id="23" parent="3" name="SYS_C00199353">
+        <name-surrogate>1</name-surrogate>
+        <object-id>330168</object-id>
+        <created-timestamp>2016-04-01.10:07:27</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:27</modified-timestamp>
+        <columns>ID_CASSETTE</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+        <tablespace-name>USERS</tablespace-name>
+      </index>
+      <key id="24" parent="3" name="SYS_C00199353">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:27</modified-timestamp>
+        <columns>ID_CASSETTE</columns>
+        <initially-deferred>1</initially-deferred>
+        <underlying-index>SYS_C00199353</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="25" parent="3" name="SYS_C00199387">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_FILM</columns>
+        <initially-deferred>1</initially-deferred>
+        <ref-key>~.FILM.SYS_C00199347</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="26" parent="4" name="ID_CLIENT">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(50)</data-type>
+      </column>
+      <column id="27" parent="4" name="CNOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <column id="28" parent="4" name="CPRENOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <column id="29" parent="4" name="SEXE">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(1)</data-type>
+      </column>
+      <column id="30" parent="4" name="DATENAIS">
+        <mandatory>1</mandatory>
+        <data-type>DATE</data-type>
+      </column>
+      <column id="31" parent="4" name="ID_PAYS">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(3)</data-type>
+      </column>
+      <column id="32" parent="4" name="VILLE">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <column id="33" parent="4" name="DATE_FIN_AB">
+        <mandatory>1</mandatory>
+        <data-type>DATE</data-type>
+      </column>
+      <column id="34" parent="4" name="NB_MAX_EMPT">
+        <mandatory>1</mandatory>
+        <data-type>NUMBER(3)</data-type>
+      </column>
+      <index id="35" parent="4" name="SYS_C00199374">
+        <name-surrogate>1</name-surrogate>
+        <object-id>330171</object-id>
+        <created-timestamp>2016-04-01.10:07:28</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_CLIENT</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+        <tablespace-name>USERS</tablespace-name>
+      </index>
+      <key id="36" parent="4" name="SYS_C00199374">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_CLIENT</columns>
+        <initially-deferred>1</initially-deferred>
+        <underlying-index>SYS_C00199374</underlying-index>
+        <primary>1</primary>
+      </key>
+      <check id="37" parent="4" name="SYS_C00199372">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_CLIENT</columns>
+        <predicate>id_client= LOWER(id_client)</predicate>
+      </check>
+      <check id="38" parent="4" name="SYS_C00199373">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>SEXE</columns>
+        <predicate>sexe IN (&apos;M&apos;, &apos;F&apos;)</predicate>
+      </check>
+      <column id="39" parent="5" name="ID_CASSETTE">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(3)</data-type>
+      </column>
+      <column id="40" parent="5" name="ID_CLIENT">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(50)</data-type>
+      </column>
+      <column id="41" parent="5" name="DATE_EMPT">
+        <mandatory>1</mandatory>
+        <data-type>DATE</data-type>
+      </column>
+      <column id="42" parent="5" name="DATE_RETOUR">
+        <data-type>DATE</data-type>
+      </column>
+      <index id="43" parent="5" name="SYS_C00199357">
+        <name-surrogate>1</name-surrogate>
+        <object-id>330169</object-id>
+        <created-timestamp>2016-04-01.10:07:27</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:27</modified-timestamp>
+        <columns>ID_CASSETTE
+DATE_EMPT</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+        <tablespace-name>USERS</tablespace-name>
+      </index>
+      <key id="44" parent="5" name="SYS_C00199357">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:27</modified-timestamp>
+        <columns>ID_CASSETTE
+DATE_EMPT</columns>
+        <initially-deferred>1</initially-deferred>
+        <underlying-index>SYS_C00199357</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="45" parent="5" name="SYS_C00199388">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_CASSETTE</columns>
+        <initially-deferred>1</initially-deferred>
+        <ref-key>~.CASSETTE.SYS_C00199353</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="46" parent="5" name="SYS_C00199389">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_CLIENT</columns>
+        <initially-deferred>1</initially-deferred>
+        <ref-key>~.CLIENT.SYS_C00199374</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="47" parent="6" name="ID_FILM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(3)</data-type>
+      </column>
+      <column id="48" parent="6" name="TITRE">
+        <data-type>VARCHAR2(80)</data-type>
+      </column>
+      <column id="49" parent="6" name="GENRE">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(1)</data-type>
+      </column>
+      <column id="50" parent="6" name="ID_PAYS">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(3)</data-type>
+      </column>
+      <column id="51" parent="6" name="RNOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <column id="52" parent="6" name="RPRENOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <column id="53" parent="6" name="RDATE">
+        <mandatory>1</mandatory>
+        <data-type>DATE</data-type>
+      </column>
+      <column id="54" parent="6" name="RESUME">
+        <data-type>VARCHAR2(80)</data-type>
+      </column>
+      <index id="55" parent="6" name="SYS_C00199347">
+        <name-surrogate>1</name-surrogate>
+        <object-id>330166</object-id>
+        <created-timestamp>2016-04-01.10:07:26</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:26</modified-timestamp>
+        <columns>ID_FILM</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+        <tablespace-name>USERS</tablespace-name>
+      </index>
+      <key id="56" parent="6" name="SYS_C00199347">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:26</modified-timestamp>
+        <columns>ID_FILM</columns>
+        <initially-deferred>1</initially-deferred>
+        <underlying-index>SYS_C00199347</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="57" parent="6" name="SYS_C00199390">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_PAYS</columns>
+        <initially-deferred>1</initially-deferred>
+        <ref-key>~.PAYS.SYS_C00199378</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="58" parent="6" name="SYS_C00199391">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>RNOM
+RPRENOM</columns>
+        <initially-deferred>1</initially-deferred>
+        <ref-key>~.REALISATEUR.SYS_C00199352</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <check id="59" parent="6" name="SYS_C00199345">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:26</modified-timestamp>
+        <columns>ID_FILM</columns>
+        <predicate>id_film=UPPER(id_film)</predicate>
+      </check>
+      <check id="60" parent="6" name="SYS_C00199346">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:26</modified-timestamp>
+        <columns>GENRE</columns>
+        <predicate>genre IN (&apos;A&apos;, &apos;C&apos;, &apos;D&apos;, &apos;J&apos;, &apos;E&apos;, &apos;F&apos;, &apos;P&apos;, &apos;R&apos;, &apos;X&apos;)</predicate>
+      </check>
+      <column id="61" parent="7" name="ROLE">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(80)</data-type>
+      </column>
+      <column id="62" parent="7" name="ID_FILM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(3)</data-type>
+      </column>
+      <column id="63" parent="7" name="INOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <column id="64" parent="7" name="IPRENOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <index id="65" parent="7" name="SYS_C00199363">
+        <name-surrogate>1</name-surrogate>
+        <object-id>330170</object-id>
+        <created-timestamp>2016-04-01.10:07:27</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:27</modified-timestamp>
+        <columns>ROLE
+ID_FILM</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+        <tablespace-name>USERS</tablespace-name>
+      </index>
+      <key id="66" parent="7" name="SYS_C00199363">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:27</modified-timestamp>
+        <columns>ROLE
+ID_FILM</columns>
+        <initially-deferred>1</initially-deferred>
+        <underlying-index>SYS_C00199363</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="67" parent="7" name="SYS_C00199392">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_FILM</columns>
+        <initially-deferred>1</initially-deferred>
+        <ref-key>~.FILM.SYS_C00199347</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="68" parent="7" name="SYS_C00199393">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>INOM
+IPRENOM</columns>
+        <initially-deferred>1</initially-deferred>
+        <ref-key>~.ARTISTE.SYS_C00199385</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <check id="69" parent="7" name="SYS_C00199362">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:27</modified-timestamp>
+        <columns>ROLE</columns>
+        <predicate>role=UPPER(role)</predicate>
+      </check>
+      <column id="70" parent="8" name="ID">
+        <mandatory>1</mandatory>
+        <data-type>NUMBER(*)</data-type>
+      </column>
+      <column id="71" parent="8" name="UNICE_ID">
+        <data-type>NUMBER(*)</data-type>
+      </column>
+      <column id="72" parent="8" name="NAME">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(255)</data-type>
+      </column>
+      <index id="73" parent="8" name="SYS_C00202841">
+        <name-surrogate>1</name-surrogate>
+        <object-id>335751</object-id>
+        <created-timestamp>2016-05-24.08:55:09</created-timestamp>
+        <modified-timestamp>2016-05-24.08:55:09</modified-timestamp>
+        <columns>ID</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+        <tablespace-name>USERS</tablespace-name>
+      </index>
+      <key id="74" parent="8" name="SYS_C00202841">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-05-24.08:55:09</modified-timestamp>
+        <columns>ID</columns>
+        <initially-deferred>1</initially-deferred>
+        <underlying-index>SYS_C00202841</underlying-index>
+        <primary>1</primary>
+      </key>
+      <column id="75" parent="9" name="ID_PAYS">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(3)</data-type>
+      </column>
+      <column id="76" parent="9" name="PNOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(20)</data-type>
+      </column>
+      <column id="77" parent="9" name="PLANGUE">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(20)</data-type>
+      </column>
+      <index id="78" parent="9" name="SYS_C00199378">
+        <name-surrogate>1</name-surrogate>
+        <object-id>330172</object-id>
+        <created-timestamp>2016-04-01.10:07:28</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_PAYS</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+        <tablespace-name>USERS</tablespace-name>
+      </index>
+      <key id="79" parent="9" name="SYS_C00199378">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_PAYS</columns>
+        <initially-deferred>1</initially-deferred>
+        <underlying-index>SYS_C00199378</underlying-index>
+        <primary>1</primary>
+      </key>
+      <check id="80" parent="9" name="SYS_C00199377">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_PAYS</columns>
+        <predicate>id_pays=UPPER(id_pays)</predicate>
+      </check>
+      <column id="81" parent="10" name="RNOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <column id="82" parent="10" name="RPRENOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <column id="83" parent="10" name="RDATE_PF">
+        <mandatory>1</mandatory>
+        <data-type>DATE</data-type>
+      </column>
+      <column id="84" parent="10" name="RNB_F">
+        <mandatory>1</mandatory>
+        <data-type>NUMBER(3)</data-type>
+      </column>
+      <index id="85" parent="10" name="SYS_C00199352">
+        <name-surrogate>1</name-surrogate>
+        <object-id>330167</object-id>
+        <created-timestamp>2016-04-01.10:07:27</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:27</modified-timestamp>
+        <columns>RNOM
+RPRENOM</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+        <tablespace-name>USERS</tablespace-name>
+      </index>
+      <key id="86" parent="10" name="SYS_C00199352">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:27</modified-timestamp>
+        <columns>RNOM
+RPRENOM</columns>
+        <initially-deferred>1</initially-deferred>
+        <underlying-index>SYS_C00199352</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="87" parent="10" name="SYS_C00199394">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:29</modified-timestamp>
+        <columns>RNOM
+RPRENOM</columns>
+        <initially-deferred>1</initially-deferred>
+        <ref-key>~.ARTISTE.SYS_C00199385</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+    </database-model>
+  </data-source>
+  <data-source name="Oracle - @quad.iutnice.unice.fr [2]" uuid="788f38d6-ed76-482f-a077-712862e565e6">
+    <database-info product="Oracle" version="Oracle Database 10g Enterprise Edition Release 10.2.0.1.0 - Production&#xa;With the Partitioning, OLAP and Data Mining options" jdbc-version="4.0" driver-name="Oracle JDBC driver" driver-version="12.1.0.2.0">
+      <extra-name-characters>$#</extra-name-characters>
+      <identifier-quote-string>&quot;</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="ORACLE" format-version="2.5">
+      <schema id="1" name="S2AET07">
+        <object-id>3063</object-id>
+        <created-timestamp>2016-04-01.10:07:19</created-timestamp>
+        <modified-timestamp>2016-05-24.08:55:09</modified-timestamp>
+        <introspection-timestamp>2016-05-24.09:26:58</introspection-timestamp>
+      </schema>
+      <table id="2" parent="1" name="ARTISTE">
+        <object-id>330158</object-id>
+        <created-timestamp>2016-04-01.10:07:19</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <organization>HEAP</organization>
+      </table>
+      <table id="3" parent="1" name="CASSETTE">
+        <object-id>330159</object-id>
+        <created-timestamp>2016-04-01.10:07:19</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <organization>HEAP</organization>
+      </table>
+      <table id="4" parent="1" name="CLIENT">
+        <object-id>330160</object-id>
+        <created-timestamp>2016-04-01.10:07:19</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <organization>HEAP</organization>
+      </table>
+      <table id="5" parent="1" name="EMPRUNT">
+        <object-id>330161</object-id>
+        <created-timestamp>2016-04-01.10:07:19</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <organization>HEAP</organization>
+      </table>
+      <table id="6" parent="1" name="FILM">
+        <object-id>330162</object-id>
+        <created-timestamp>2016-04-01.10:07:19</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <organization>HEAP</organization>
+      </table>
+      <table id="7" parent="1" name="INTERPRETE">
+        <object-id>330163</object-id>
+        <created-timestamp>2016-04-01.10:07:19</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <organization>HEAP</organization>
+      </table>
+      <table id="8" parent="1" name="KASSOC_ACCOUNT">
+        <object-id>335750</object-id>
+        <created-timestamp>2016-05-24.08:55:09</created-timestamp>
+        <modified-timestamp>2016-05-24.08:55:09</modified-timestamp>
+        <organization>HEAP</organization>
+      </table>
+      <table id="9" parent="1" name="PAYS">
+        <object-id>330164</object-id>
+        <created-timestamp>2016-04-01.10:07:19</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <organization>HEAP</organization>
+      </table>
+      <table id="10" parent="1" name="REALISATEUR">
+        <object-id>330165</object-id>
+        <created-timestamp>2016-04-01.10:07:19</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:29</modified-timestamp>
+        <organization>HEAP</organization>
+      </table>
+      <column id="11" parent="2" name="ANOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <column id="12" parent="2" name="APRENOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <column id="13" parent="2" name="ID_PAYS">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(3)</data-type>
+      </column>
+      <column id="14" parent="2" name="DATENAIS">
+        <data-type>DATE</data-type>
+      </column>
+      <column id="15" parent="2" name="SEXE">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(1)</data-type>
+      </column>
+      <index id="16" parent="2" name="SYS_C00199385">
+        <name-surrogate>1</name-surrogate>
+        <object-id>330173</object-id>
+        <created-timestamp>2016-04-01.10:07:28</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ANOM
+APRENOM</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+        <tablespace-name>USERS</tablespace-name>
+      </index>
+      <key id="17" parent="2" name="SYS_C00199385">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ANOM
+APRENOM</columns>
+        <initially-deferred>1</initially-deferred>
+        <underlying-index>SYS_C00199385</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="18" parent="2" name="SYS_C00199386">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_PAYS</columns>
+        <initially-deferred>1</initially-deferred>
+        <ref-key>~.PAYS.SYS_C00199378</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <check id="19" parent="2" name="SYS_C00199383">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ANOM</columns>
+        <predicate>anom=UPPER(anom)</predicate>
+      </check>
+      <check id="20" parent="2" name="SYS_C00199384">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>SEXE</columns>
+        <predicate>sexe IN (&apos;M&apos;, &apos;F&apos;)</predicate>
+      </check>
+      <column id="21" parent="3" name="ID_CASSETTE">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(3)</data-type>
+      </column>
+      <column id="22" parent="3" name="ID_FILM">
+        <data-type>VARCHAR2(3)</data-type>
+      </column>
+      <index id="23" parent="3" name="SYS_C00199353">
+        <name-surrogate>1</name-surrogate>
+        <object-id>330168</object-id>
+        <created-timestamp>2016-04-01.10:07:27</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:27</modified-timestamp>
+        <columns>ID_CASSETTE</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+        <tablespace-name>USERS</tablespace-name>
+      </index>
+      <key id="24" parent="3" name="SYS_C00199353">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:27</modified-timestamp>
+        <columns>ID_CASSETTE</columns>
+        <initially-deferred>1</initially-deferred>
+        <underlying-index>SYS_C00199353</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="25" parent="3" name="SYS_C00199387">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_FILM</columns>
+        <initially-deferred>1</initially-deferred>
+        <ref-key>~.FILM.SYS_C00199347</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="26" parent="4" name="ID_CLIENT">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(50)</data-type>
+      </column>
+      <column id="27" parent="4" name="CNOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <column id="28" parent="4" name="CPRENOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <column id="29" parent="4" name="SEXE">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(1)</data-type>
+      </column>
+      <column id="30" parent="4" name="DATENAIS">
+        <mandatory>1</mandatory>
+        <data-type>DATE</data-type>
+      </column>
+      <column id="31" parent="4" name="ID_PAYS">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(3)</data-type>
+      </column>
+      <column id="32" parent="4" name="VILLE">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <column id="33" parent="4" name="DATE_FIN_AB">
+        <mandatory>1</mandatory>
+        <data-type>DATE</data-type>
+      </column>
+      <column id="34" parent="4" name="NB_MAX_EMPT">
+        <mandatory>1</mandatory>
+        <data-type>NUMBER(3)</data-type>
+      </column>
+      <index id="35" parent="4" name="SYS_C00199374">
+        <name-surrogate>1</name-surrogate>
+        <object-id>330171</object-id>
+        <created-timestamp>2016-04-01.10:07:28</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_CLIENT</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+        <tablespace-name>USERS</tablespace-name>
+      </index>
+      <key id="36" parent="4" name="SYS_C00199374">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_CLIENT</columns>
+        <initially-deferred>1</initially-deferred>
+        <underlying-index>SYS_C00199374</underlying-index>
+        <primary>1</primary>
+      </key>
+      <check id="37" parent="4" name="SYS_C00199372">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_CLIENT</columns>
+        <predicate>id_client= LOWER(id_client)</predicate>
+      </check>
+      <check id="38" parent="4" name="SYS_C00199373">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>SEXE</columns>
+        <predicate>sexe IN (&apos;M&apos;, &apos;F&apos;)</predicate>
+      </check>
+      <column id="39" parent="5" name="ID_CASSETTE">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(3)</data-type>
+      </column>
+      <column id="40" parent="5" name="ID_CLIENT">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(50)</data-type>
+      </column>
+      <column id="41" parent="5" name="DATE_EMPT">
+        <mandatory>1</mandatory>
+        <data-type>DATE</data-type>
+      </column>
+      <column id="42" parent="5" name="DATE_RETOUR">
+        <data-type>DATE</data-type>
+      </column>
+      <index id="43" parent="5" name="SYS_C00199357">
+        <name-surrogate>1</name-surrogate>
+        <object-id>330169</object-id>
+        <created-timestamp>2016-04-01.10:07:27</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:27</modified-timestamp>
+        <columns>ID_CASSETTE
+DATE_EMPT</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+        <tablespace-name>USERS</tablespace-name>
+      </index>
+      <key id="44" parent="5" name="SYS_C00199357">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:27</modified-timestamp>
+        <columns>ID_CASSETTE
+DATE_EMPT</columns>
+        <initially-deferred>1</initially-deferred>
+        <underlying-index>SYS_C00199357</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="45" parent="5" name="SYS_C00199388">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_CASSETTE</columns>
+        <initially-deferred>1</initially-deferred>
+        <ref-key>~.CASSETTE.SYS_C00199353</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="46" parent="5" name="SYS_C00199389">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_CLIENT</columns>
+        <initially-deferred>1</initially-deferred>
+        <ref-key>~.CLIENT.SYS_C00199374</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="47" parent="6" name="ID_FILM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(3)</data-type>
+      </column>
+      <column id="48" parent="6" name="TITRE">
+        <data-type>VARCHAR2(80)</data-type>
+      </column>
+      <column id="49" parent="6" name="GENRE">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(1)</data-type>
+      </column>
+      <column id="50" parent="6" name="ID_PAYS">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(3)</data-type>
+      </column>
+      <column id="51" parent="6" name="RNOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <column id="52" parent="6" name="RPRENOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <column id="53" parent="6" name="RDATE">
+        <mandatory>1</mandatory>
+        <data-type>DATE</data-type>
+      </column>
+      <column id="54" parent="6" name="RESUME">
+        <data-type>VARCHAR2(80)</data-type>
+      </column>
+      <index id="55" parent="6" name="SYS_C00199347">
+        <name-surrogate>1</name-surrogate>
+        <object-id>330166</object-id>
+        <created-timestamp>2016-04-01.10:07:26</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:26</modified-timestamp>
+        <columns>ID_FILM</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+        <tablespace-name>USERS</tablespace-name>
+      </index>
+      <key id="56" parent="6" name="SYS_C00199347">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:26</modified-timestamp>
+        <columns>ID_FILM</columns>
+        <initially-deferred>1</initially-deferred>
+        <underlying-index>SYS_C00199347</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="57" parent="6" name="SYS_C00199390">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_PAYS</columns>
+        <initially-deferred>1</initially-deferred>
+        <ref-key>~.PAYS.SYS_C00199378</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="58" parent="6" name="SYS_C00199391">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>RNOM
+RPRENOM</columns>
+        <initially-deferred>1</initially-deferred>
+        <ref-key>~.REALISATEUR.SYS_C00199352</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <check id="59" parent="6" name="SYS_C00199345">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:26</modified-timestamp>
+        <columns>ID_FILM</columns>
+        <predicate>id_film=UPPER(id_film)</predicate>
+      </check>
+      <check id="60" parent="6" name="SYS_C00199346">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:26</modified-timestamp>
+        <columns>GENRE</columns>
+        <predicate>genre IN (&apos;A&apos;, &apos;C&apos;, &apos;D&apos;, &apos;J&apos;, &apos;E&apos;, &apos;F&apos;, &apos;P&apos;, &apos;R&apos;, &apos;X&apos;)</predicate>
+      </check>
+      <column id="61" parent="7" name="ROLE">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(80)</data-type>
+      </column>
+      <column id="62" parent="7" name="ID_FILM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(3)</data-type>
+      </column>
+      <column id="63" parent="7" name="INOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <column id="64" parent="7" name="IPRENOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <index id="65" parent="7" name="SYS_C00199363">
+        <name-surrogate>1</name-surrogate>
+        <object-id>330170</object-id>
+        <created-timestamp>2016-04-01.10:07:27</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:27</modified-timestamp>
+        <columns>ROLE
+ID_FILM</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+        <tablespace-name>USERS</tablespace-name>
+      </index>
+      <key id="66" parent="7" name="SYS_C00199363">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:27</modified-timestamp>
+        <columns>ROLE
+ID_FILM</columns>
+        <initially-deferred>1</initially-deferred>
+        <underlying-index>SYS_C00199363</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="67" parent="7" name="SYS_C00199392">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_FILM</columns>
+        <initially-deferred>1</initially-deferred>
+        <ref-key>~.FILM.SYS_C00199347</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="68" parent="7" name="SYS_C00199393">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>INOM
+IPRENOM</columns>
+        <initially-deferred>1</initially-deferred>
+        <ref-key>~.ARTISTE.SYS_C00199385</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <check id="69" parent="7" name="SYS_C00199362">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:27</modified-timestamp>
+        <columns>ROLE</columns>
+        <predicate>role=UPPER(role)</predicate>
+      </check>
+      <column id="70" parent="8" name="ID">
+        <mandatory>1</mandatory>
+        <data-type>NUMBER(*)</data-type>
+      </column>
+      <column id="71" parent="8" name="UNICE_ID">
+        <data-type>NUMBER(*)</data-type>
+      </column>
+      <column id="72" parent="8" name="NAME">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(255)</data-type>
+      </column>
+      <index id="73" parent="8" name="SYS_C00202841">
+        <name-surrogate>1</name-surrogate>
+        <object-id>335751</object-id>
+        <created-timestamp>2016-05-24.08:55:09</created-timestamp>
+        <modified-timestamp>2016-05-24.08:55:09</modified-timestamp>
+        <columns>ID</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+        <tablespace-name>USERS</tablespace-name>
+      </index>
+      <key id="74" parent="8" name="SYS_C00202841">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-05-24.08:55:09</modified-timestamp>
+        <columns>ID</columns>
+        <initially-deferred>1</initially-deferred>
+        <underlying-index>SYS_C00202841</underlying-index>
+        <primary>1</primary>
+      </key>
+      <column id="75" parent="9" name="ID_PAYS">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(3)</data-type>
+      </column>
+      <column id="76" parent="9" name="PNOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(20)</data-type>
+      </column>
+      <column id="77" parent="9" name="PLANGUE">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(20)</data-type>
+      </column>
+      <index id="78" parent="9" name="SYS_C00199378">
+        <name-surrogate>1</name-surrogate>
+        <object-id>330172</object-id>
+        <created-timestamp>2016-04-01.10:07:28</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_PAYS</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+        <tablespace-name>USERS</tablespace-name>
+      </index>
+      <key id="79" parent="9" name="SYS_C00199378">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_PAYS</columns>
+        <initially-deferred>1</initially-deferred>
+        <underlying-index>SYS_C00199378</underlying-index>
+        <primary>1</primary>
+      </key>
+      <check id="80" parent="9" name="SYS_C00199377">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
+        <columns>ID_PAYS</columns>
+        <predicate>id_pays=UPPER(id_pays)</predicate>
+      </check>
+      <column id="81" parent="10" name="RNOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <column id="82" parent="10" name="RPRENOM">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR2(25)</data-type>
+      </column>
+      <column id="83" parent="10" name="RDATE_PF">
+        <mandatory>1</mandatory>
+        <data-type>DATE</data-type>
+      </column>
+      <column id="84" parent="10" name="RNB_F">
+        <mandatory>1</mandatory>
+        <data-type>NUMBER(3)</data-type>
+      </column>
+      <index id="85" parent="10" name="SYS_C00199352">
+        <name-surrogate>1</name-surrogate>
+        <object-id>330167</object-id>
+        <created-timestamp>2016-04-01.10:07:27</created-timestamp>
+        <modified-timestamp>2016-04-01.10:07:27</modified-timestamp>
+        <columns>RNOM
+RPRENOM</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+        <tablespace-name>USERS</tablespace-name>
+      </index>
+      <key id="86" parent="10" name="SYS_C00199352">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:27</modified-timestamp>
+        <columns>RNOM
+RPRENOM</columns>
+        <initially-deferred>1</initially-deferred>
+        <underlying-index>SYS_C00199352</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="87" parent="10" name="SYS_C00199394">
+        <name-surrogate>1</name-surrogate>
+        <modified-timestamp>2016-04-01.10:07:29</modified-timestamp>
+        <columns>RNOM
+RPRENOM</columns>
+        <initially-deferred>1</initially-deferred>
+        <ref-key>~.ARTISTE.SYS_C00199385</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+    </database-model>
+  </data-source>
+</component>

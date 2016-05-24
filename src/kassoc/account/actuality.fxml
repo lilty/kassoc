@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<Tab text="Actuality" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+<Tab xmlns:fx="http://javafx.com/fxml/1" text="Actuality" xmlns="http://javafx.com/javafx/8"
      fx:controller="kassoc.account.ActualityController">
     <AnchorPane>
         <Accordion fx:id="accordion" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
@@ -10,25 +10,33 @@
                 <TitledPane fx:id="bdeActualityPane" animated="true" text="BDE Actuality">
                     <AnchorPane>
                         <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+                        </StackPane>
                     </AnchorPane>
                 </TitledPane>
                 <TitledPane fx:id="bdsActualityPane" animated="true" text="BDS Actuality">
                     <AnchorPane>
                         <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+                        </StackPane>
                     </AnchorPane>
                 </TitledPane>
                 <TitledPane fx:id="aluActualityPane" animated="true" text="ALUMNICE">
                     <AnchorPane>
                         <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+                        </StackPane>
                     </AnchorPane>
                 </TitledPane>
                 <TitledPane fx:id="othActualityPane" animated="true" text="Other">
                     <AnchorPane>
                         <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+                        </StackPane>
                     </AnchorPane>
                 </TitledPane>
             </panes>
