@@ -5,6 +5,9 @@ import javafx.beans.property.SimpleStringProperty;
 
 import javax.persistence.*;
 
+/**
+ * The type Account entity.
+ */
 @Entity
 @Table(name = "KASSOC_ACCOUNT", schema = "S2AET07")
 public class AccountEntity extends BaseEntity {
@@ -13,6 +16,9 @@ public class AccountEntity extends BaseEntity {
     private SimpleStringProperty mail;
     private SimpleStringProperty password;
 
+    /**
+     * Instantiates a new Account entity.
+     */
     public AccountEntity() {
         super();
         this.uniceId = new SimpleIntegerProperty();
@@ -21,6 +27,14 @@ public class AccountEntity extends BaseEntity {
         this.password = new SimpleStringProperty();
     }
 
+    /**
+     * Instantiates a new Account entity.
+     * @param id       the id
+     * @param uniceId  the unice id
+     * @param name     the name
+     * @param mail     the mail
+     * @param password the password
+     */
     public AccountEntity(final int id, final SimpleIntegerProperty uniceId, final SimpleStringProperty name, final
     SimpleStringProperty mail, final SimpleStringProperty password) {
         super(id);
@@ -50,42 +64,74 @@ public class AccountEntity extends BaseEntity {
         super.setId(id);
     }
 
+    /**
+     * Gets mail.
+     * @return the mail
+     */
     @Basic
     @Column(name = "MAIL")
     public String getMail() {
         return mail.get();
     }
 
+    /**
+     * Sets mail.
+     * @param mail the mail
+     */
     public void setMail(final String mail) {
         this.mail.set(mail);
     }
 
+    /**
+     * Gets name.
+     * @return the name
+     */
     @Basic
     @Column(name = "NAME")
     public String getName() {
         return name.get();
     }
 
+    /**
+     * Sets name.
+     * @param name the name
+     */
     public void setName(final String name) {
         this.name.set(name);
     }
 
+    /**
+     * Gets password.
+     * @return the password
+     */
     @Basic
     @Column(name = "PASSWORD")
     public String getPassword() {
         return password.get();
     }
 
+    /**
+     * Sets password.
+     * @param password the password
+     */
     public void setPassword(final String password) {
         this.password.set(password);
     }
 
+    /**
+     * Gets unice id.
+     * @return the unice id
+     */
     @Basic
     @Column(name = "UNICE_ID")
     public int getUniceId() {
         return uniceId.get();
     }
 
+    /**
+     * Sets unice id.
+     * @param uniceId the unice id
+     */
     public void setUniceId(final int uniceId) {
         this.uniceId.set(uniceId);
     }

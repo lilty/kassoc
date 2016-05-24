@@ -6,6 +6,9 @@ import org.hibernate.cfg.AnnotationConfiguration;
 
 import java.util.List;
 
+/**
+ * The type Core.
+ */
 public final class Core {
     private static final SessionFactory sessionFactory;
 
@@ -19,6 +22,11 @@ public final class Core {
         }
     }
 
+    /**
+     * Find by id object.
+     * @param id the id
+     * @return the object
+     */
     public static Object findById(int id) {
         List users;
         users = sessionFactory.getCurrentSession().createQuery("from AccountEntity where id=?").setParameter(
@@ -32,6 +40,10 @@ public final class Core {
         }
     }
 
+    /**
+     * Gets current session.
+     * @return the current session
+     */
     public static Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
