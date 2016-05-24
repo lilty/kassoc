@@ -1,4 +1,4 @@
-package kassoc.account;
+package kassoc.controller;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
@@ -7,7 +7,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.stage.Stage;
-import kassoc.core.BaseController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,6 +21,10 @@ public class SignUpController extends BaseController implements javafx.fxml.Init
      */
     public Button backToLoginActionBtn;
     /**
+     * The Confirm pwd input.
+     */
+    public PasswordField confirmPwdInput;
+    /**
      * The Mail input.
      */
     public TextField mailInput;
@@ -29,10 +32,6 @@ public class SignUpController extends BaseController implements javafx.fxml.Init
      * The Pwd input.
      */
     public PasswordField pwdInput;
-    /**
-     * The Confirm pwd input.
-     */
-    public PasswordField confirmPwdInput;
     /**
      * The Sdt n input.
      */
@@ -46,11 +45,6 @@ public class SignUpController extends BaseController implements javafx.fxml.Init
      */
     public TitledPane signUpPane;
 
-    @Override
-    public void initialize(final URL location, final ResourceBundle resources) {
-        signUpPane.setCollapsible(false);
-    }
-
     /**
      * Back to login action.
      * @param e the e
@@ -59,7 +53,12 @@ public class SignUpController extends BaseController implements javafx.fxml.Init
     public void backToLoginAction(ActionEvent e) throws IOException {
         Stage stage = (Stage) ((Node)e.getSource()).getScene().getWindow();
         stage.setTitle("Pimp My Assoc - Login");
-        gotoScene(stage, "login.fxml");
+        gotoScene(stage, "/kassoc/view/login.fxml");
+    }
+
+    @Override
+    public void initialize(final URL location, final ResourceBundle resources) {
+        signUpPane.setCollapsible(false);
     }
 
     /**
@@ -70,6 +69,6 @@ public class SignUpController extends BaseController implements javafx.fxml.Init
     public void signUpAction(ActionEvent e) throws IOException {
         Stage stage = (Stage) ((Node)e.getSource()).getScene().getWindow();
         stage.setTitle("Pimp My Assoc - Dashboard");
-        gotoScene(stage, "../dashboard.fxml");
+        gotoScene(stage, "/kassoc/view/dashboard.fxml");
     }
 }

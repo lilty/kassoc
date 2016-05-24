@@ -2,7 +2,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <Tab xmlns:fx="http://javafx.com/fxml/1" text="Actuality" xmlns="http://javafx.com/javafx/8"
-     fx:controller="kassoc.account.ActualityController">
+     fx:controller="kassoc.controller.ActualityController">
     <AnchorPane>
         <Accordion fx:id="accordion" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

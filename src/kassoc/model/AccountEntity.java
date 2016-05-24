@@ -8,18 +8,26 @@ import javax.persistence.*;
 @Entity
 @Table(name = "KASSOC_ACCOUNT", schema = "S2AET07")
 public class AccountEntity extends BaseEntity {
-    private SimpleIntegerProperty id;
     private SimpleIntegerProperty uniceId;
     private SimpleStringProperty name;
     private SimpleStringProperty mail;
     private SimpleStringProperty password;
 
     public AccountEntity() {
-        this.id = new SimpleIntegerProperty();
+        super();
         this.uniceId = new SimpleIntegerProperty();
         this.name = new SimpleStringProperty();
         this.mail = new SimpleStringProperty();
         this.password = new SimpleStringProperty();
+    }
+
+    public AccountEntity(final int id, final SimpleIntegerProperty uniceId, final SimpleStringProperty name, final
+    SimpleStringProperty mail, final SimpleStringProperty password) {
+        super(id);
+        this.uniceId = uniceId;
+        this.name = name;
+        this.mail = mail;
+        this.password = password;
     }
 
     @Override
@@ -27,19 +35,19 @@ public class AccountEntity extends BaseEntity {
         if (this == o) { return true; }
         if (o == null || getClass() != o.getClass()) { return false; }
         AccountEntity that = (AccountEntity) o;
-        if (id != that.id) { return false; }
-        if (uniceId != null ? !uniceId.equals(that.uniceId) : that.uniceId != null) { return false; }
-        return name != null ? name.equals(that.name) : that.name == null;
+        return this.getId() == that.getId() && (uniceId != null ? uniceId.equals(that.uniceId) : that.uniceId == null
+            && (name != null ? name.equals(
+            that.name) : that.name == null));
     }
 
     @Id
     @Column(name = "ID")
     public int getId() {
-        return id.get();
+        return super.getId();
     }
 
     public void setId(final int id) {
-        this.id.set(id);
+        super.setId(id);
     }
 
     @Basic
@@ -84,7 +92,7 @@ public class AccountEntity extends BaseEntity {
 
     @Override
     public int hashCode() {
-        int result = id.get();
+        int result = this.getId();
         result = 31*result+(uniceId != null ? uniceId.hashCode() : 0);
         result = 31*result+(name != null ? name.hashCode() : 0);
         return result;
@@ -93,7 +101,7 @@ public class AccountEntity extends BaseEntity {
     @Override
     public String toString() {
         return "AccountEntity{"+
-            "id="+id+
+            "id="+this.getId()+
             ", uniceId="+uniceId+
             ", name='"+name+'\''+
             '}';

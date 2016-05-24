@@ -1,11 +1,10 @@
-package kassoc.account;
+package kassoc.controller;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import kassoc.Core;
-import kassoc.core.BaseController;
 import kassoc.model.AccountEntity;
 import org.hibernate.Transaction;
 
@@ -71,12 +70,12 @@ public class LoginController extends BaseController implements javafx.fxml.Initi
                     a.setContentText("Wrong password provided !");
                     a.show();
                 } else {
+                    Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                    stage.setTitle("Kassoc - Dashboard");
+                    gotoScene(stage, "/kassoc/view/dashboard.fxml");
                     Alert a = new Alert(Alert.AlertType.INFORMATION);
                     a.setContentText("Welcome "+account.getName()+" !");
                     a.show();
-                    Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-                    stage.setTitle("Kassoc - Dashboard");
-                    gotoScene(stage, "../dashboard.fxml");
                 }
             }
         } finally {
@@ -91,7 +90,7 @@ public class LoginController extends BaseController implements javafx.fxml.Initi
      */
     public void signUpAction(ActionEvent e) throws IOException {
         Stage stage = (Stage) ((Node)e.getSource()).getScene().getWindow();
-        stage.setTitle("Pimp My Assoc - Sign up");
-        gotoScene(stage, "signup.fxml");
+        stage.setTitle("Kassoc - Sign up");
+        gotoScene(stage, "/kassoc/view/signup.fxml");
     }
 }

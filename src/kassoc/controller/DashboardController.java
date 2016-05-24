@@ -1,4 +1,4 @@
-package kassoc;
+package kassoc.controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TabPane;
@@ -19,7 +19,7 @@ public class DashboardController implements javafx.fxml.Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            tabPane.getTabs().add(FXMLLoader.load(getClass().getResource("account/actuality.fxml")));
+            tabPane.getTabs().add(FXMLLoader.load(getClass().getResource("/kassoc/view/actuality.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }

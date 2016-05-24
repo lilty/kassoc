@@ -1,4 +1,4 @@
-package kassoc;
+package kassoc.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +22,7 @@ public class IndexController implements javafx.fxml.Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         content.getChildren().clear();
         try {
-            content.getChildren().add(FXMLLoader.load(getClass().getResource("account/login.fxml")));
+            content.getChildren().add(FXMLLoader.load(getClass().getResource("/kassoc/view/login.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }

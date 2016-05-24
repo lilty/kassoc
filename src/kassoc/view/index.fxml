@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.layout.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="kassoc.IndexController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="kassoc.controller.IndexController">
     <StackPane fx:id="content" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                AnchorPane.rightAnchor="0.0">
     </StackPane>

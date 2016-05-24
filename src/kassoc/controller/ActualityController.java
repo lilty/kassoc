@@ -1,4 +1,4 @@
-package kassoc.account;
+package kassoc.controller;
 
 import javafx.fxml.Initializable;
 import javafx.scene.control.Accordion;

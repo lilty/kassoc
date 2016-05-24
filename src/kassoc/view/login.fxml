@@ -3,12 +3,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
-            fx:controller="kassoc.account.SignUpController"
+            fx:controller="kassoc.controller.LoginController"
             stylesheets="/kassoc/style.css">
     <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <TitledPane fx:id="signUpPane" animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                    minWidth="-Infinity" text="Sign up">
+        <TitledPane fx:id="loginPane" animated="false" maxHeight="-Infinity" maxWidth="-Infinity"
+                    minHeight="-Infinity" minWidth="-Infinity" text="Login">
             <AnchorPane>
                 <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                       AnchorPane.topAnchor="0.0">
@@ -17,61 +17,34 @@
                     </padding>
                     <GridPane>
                         <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="33"/>
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="33.0"/>
                             <ColumnConstraints hgrow="SOMETIMES"/>
                         </columnConstraints>
                         <rowConstraints>
                             <RowConstraints vgrow="SOMETIMES"/>
                             <RowConstraints vgrow="SOMETIMES"/>
                         </rowConstraints>
-                        <Label text="Student N°" GridPane.halignment="LEFT"
-                               GridPane.valignment="CENTER">
-                            <padding>
-                                <Insets right="10.0"/>
-                            </padding>
-                        </Label>
-                        <Label text="Mail address" GridPane.halignment="LEFT" GridPane.rowIndex="1"
-                               GridPane.valignment="CENTER">
-                            <padding>
-                                <Insets right="10.0"/>
-                            </padding>
-                        </Label>
-                        <Label text="Password" GridPane.halignment="LEFT" GridPane.rowIndex="2"
+                        <Label text="Mail address" GridPane.halignment="LEFT"
                                GridPane.valignment="CENTER">
                             <GridPane.margin>
                                 <Insets/>
                             </GridPane.margin>
                         </Label>
-                        <Label text="Confirm password" GridPane.halignment="LEFT" GridPane.rowIndex="3"
+                        <Label text="Password" GridPane.halignment="LEFT" GridPane.rowIndex="1"
                                GridPane.valignment="CENTER">
                             <GridPane.margin>
                                 <Insets/>
                             </GridPane.margin>
-                            <padding>
-                                <Insets right="10.0"/>
-                            </padding>
                         </Label>
-                        <TextField fx:id="sdtNInput" GridPane.columnIndex="1" styleClass="input">
+                        <TextField fx:id="mailInput" GridPane.columnIndex="1" styleClass="input">
                             <GridPane.margin>
-                                <Insets bottom="3.0" top="3.0"/>
+                                <Insets bottom="3.0" left="5.0" top="3.0"/>
                             </GridPane.margin>
                         </TextField>
-                        <TextField fx:id="mailInput" minWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1"
-                                   styleClass="input">
+                        <PasswordField fx:id="pwdInput" GridPane.columnIndex="1"
+                                       GridPane.rowIndex="1" styleClass="input">
                             <GridPane.margin>
-                                <Insets bottom="3.0" top="3.0"/>
-                            </GridPane.margin>
-                        </TextField>
-                        <PasswordField fx:id="pwdInput" GridPane.columnIndex="1" GridPane.rowIndex="2"
-                                       styleClass="input">
-                            <GridPane.margin>
-                                <Insets bottom="3.0" top="3.0"/>
-                            </GridPane.margin>
-                        </PasswordField>
-                        <PasswordField fx:id="confirmPwdInput" GridPane.columnIndex="1" GridPane.rowIndex="3"
-                                       styleClass="input">
-                            <GridPane.margin>
-                                <Insets bottom="3.0" top="3.0"/>
+                                <Insets bottom="3.0" left="5.0" top="3.0"/>
                             </GridPane.margin>
                         </PasswordField>
                     </GridPane>
@@ -87,15 +60,14 @@
                         <padding>
                             <Insets top="10.0"/>
                         </padding>
-                        <Button fx:id="signUpBtn" maxWidth="Infinity" mnemonicParsing="false" text="Ok"
-                                onAction="#signUpAction" styleClass="input">
+                        <Button fx:id="loginBtn" maxWidth="Infinity" mnemonicParsing="false" styleClass="input"
+                                onAction="#loginAction" text="Login">
                             <GridPane.margin>
                                 <Insets bottom="5.0" right="5.0" top="5.0"/>
                             </GridPane.margin>
                         </Button>
-                        <Button fx:id="backToLoginActionBtn" maxWidth="Infinity" mnemonicParsing="false"
-                                text="Back to login"
-                                GridPane.columnIndex="1" onAction="#backToLoginAction" styleClass="input">
+                        <Button fx:id="signUpBtn" maxWidth="Infinity" mnemonicParsing="false" styleClass="input"
+                                onAction="#signUpAction" text="Sign up !" GridPane.columnIndex="1">
                             <GridPane.margin>
                                 <Insets bottom="5.0" left="5.0" top="5.0"/>
                             </GridPane.margin>

@@ -1,4 +1,4 @@
-package kassoc.core;
+package kassoc.controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
