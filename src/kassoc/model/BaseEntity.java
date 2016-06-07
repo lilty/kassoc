@@ -36,7 +36,6 @@ public class BaseEntity {
             0,
             id
         );
-        System.out.println(query.getQueryString());
         List ret = query.list();
         if (ret.size()>0) {
             return (T) ret.get(0);
@@ -57,7 +56,6 @@ public class BaseEntity {
             0,
             value
         );
-        System.out.println(query.getQueryString());
         return (List<T>) query.list();
     }
 
@@ -74,7 +72,6 @@ public class BaseEntity {
             0,
             value
         );
-        System.out.println(query.getQueryString());
         List ret = query.list();
         if (ret.size()>0) {
             return (T) ret.get(0);

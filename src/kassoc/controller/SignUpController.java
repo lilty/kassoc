@@ -99,7 +99,6 @@ public class SignUpController extends BaseController implements javafx.fxml.Init
                 return;
             }
             AccountEntity a = new AccountEntity(Integer.parseInt(stdId), name, mail, pwd);
-            a.setId(10);
             Core.getCurrentSession().save(a);
             tx.commit();
             Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();

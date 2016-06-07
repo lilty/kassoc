@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import kassoc.ScrollPane2?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+    <children>
+        <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+              AnchorPane.topAnchor="0.0" maxHeight="100">
+            <ImageView fx:id="image" fitWidth="175" pickOnBounds="true" preserveRatio="true"/>
+            <Separator orientation="VERTICAL"/>
+            <VBox>
+                <Label fx:id="title"/>
+                <Separator/>
+                <ScrollPane2 fx:id="scroll">
+                    <Text fx:id="content"/>
+                </ScrollPane2>
+            </VBox>
+        </HBox>
+    </children>
+</AnchorPane>

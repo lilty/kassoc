@@ -3,10 +3,13 @@ package kassoc.controller;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Accordion;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TitledPane;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+import kassoc.FXUtils;
+import kassoc.ScrollPane2;
 import kassoc.model.ActualityEntity;
 
 import java.io.IOException;
@@ -53,10 +56,26 @@ public class ActualityController implements Initializable {
                 if (empty) {
                     setText(null);
                 } else {
-                    // use whatever data you need from the album
-                    // object to get the correct displayed value:
                     try {
-                        setGraphic(FXMLLoader.load(getClass().getResource("/kassoc/view/login.fxml")));
+                        AnchorPane lol = FXMLLoader.load(getClass().getResource("/kassoc/view/actuality-item.fxml"));
+                        ImageView image = FXUtils.getChildByID(lol, "image");
+                        if (image != null) {
+                            image.setImage(new Image(album.getPhoto()));
+                        }
+                        Label title = FXUtils.getChildByID(lol, "title");
+                        if (title != null) {
+                            title.setText(album.getTitle()+" "+album.getAt().toString());
+                        }
+                        Text content = FXUtils.getChildByID(lol, "content");
+                        if (content != null) {
+                            content.setText(album.getDescription());
+                            content.wrappingWidthProperty().bind(lv.widthProperty().subtract(200));
+                        }
+                        ScrollPane2 scroll = FXUtils.getChildByID(lol, "scroll");
+                        if (scroll != null) {
+                            scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+                        }
+                        setGraphic(lol);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
