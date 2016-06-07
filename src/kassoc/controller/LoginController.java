@@ -61,27 +61,29 @@ public class LoginController extends BaseController implements javafx.fxml.Initi
                 new Alert(Alert.AlertType.ERROR, "Please enter a password !").show();
                 return;
             }
-            AccountEntity account = AccountEntity.findOneBy("mail", mailInput.getText());
+            AccountEntity account = AccountEntity.findOneBy("mail", mailInput.getText(), AccountEntity.class);
             if (account == null) {
                 try {
                     int uniceId = Integer.parseInt(mailInput.getText());
-                    account = AccountEntity.findOneBy("uniceId", uniceId);
+                    account = AccountEntity.findOneBy("uniceId", uniceId, AccountEntity.class);
                 } catch (Throwable t) { account = null; }
             }
             if (account == null) {
                 new Alert(Alert.AlertType.ERROR, "User not found !").show();
+            } else if (!Objects.equals(this.pwdInput.getText(), account.getPassword())) {
+                new Alert(Alert.AlertType.ERROR, "Wrong password provided !").show();
             } else {
-                if (!Objects.equals(pwdInput.getText(), account.getPassword())) {
-                    new Alert(Alert.AlertType.ERROR, "Wrong password provided !").show();
-                } else {
-                    new Alert(Alert.AlertType.INFORMATION, "Welcome "+account.getName()+" !").show();
-                    Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-                    stage.setTitle("Kassoc - Dashboard");
-                    gotoScene(stage, "/kassoc/view/dashboard.fxml");
-                }
+                new Alert(Alert.AlertType.INFORMATION, "Welcome "+account.getName()+" !").show();
+                Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage1.setTitle("Kassoc - Dashboard");
+                this.gotoScene(stage1, "/kassoc/view/dashboard.fxml");
             }
-        } finally {
             tx.commit();
+        } catch (Throwable t) {
+            tx.rollback();
+            Alert a = new Alert(Alert.AlertType.ERROR, t.getMessage());
+            a.setHeaderText(t.getClass().getSimpleName());
+            a.showAndWait();
         }
     }
 
@@ -91,8 +93,8 @@ public class LoginController extends BaseController implements javafx.fxml.Initi
      * @throws IOException the io exception
      */
     public void signUpAction(ActionEvent e) throws IOException {
-        Stage stage = (Stage) ((Node)e.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.setTitle("Kassoc - Sign up");
-        gotoScene(stage, "/kassoc/view/signup.fxml");
+        this.gotoScene(stage, "/kassoc/view/signup.fxml");
     }
 }

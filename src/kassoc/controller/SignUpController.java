@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import kassoc.Core;
 import kassoc.model.AccountEntity;
+import org.hibernate.exception.ConstraintViolationException;
 
 import java.io.IOException;
 import java.net.URL;
@@ -56,7 +57,7 @@ public class SignUpController extends BaseController implements javafx.fxml.Init
     public void backToLoginAction(ActionEvent e) throws IOException {
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.setTitle("Kassoc - Login");
-        gotoScene(stage, "/kassoc/view/login.fxml");
+        this.gotoScene(stage, "/kassoc/view/login.fxml");
     }
 
     @Override
@@ -97,13 +98,21 @@ public class SignUpController extends BaseController implements javafx.fxml.Init
                 new Alert(Alert.AlertType.ERROR, "Please confirm your password.").show();
                 return;
             }
-            AccountEntity a = new AccountEntity(10, Integer.parseInt(stdId), name, mail, pwd);
+            AccountEntity a = new AccountEntity(Integer.parseInt(stdId), name, mail, pwd);
+            a.setId(10);
             Core.getCurrentSession().save(a);
+            tx.commit();
             Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
             stage.setTitle("Kassoc - Dashboard");
-            gotoScene(stage, "/kassoc/view/dashboard.fxml");
-        } finally {
-            tx.commit();
+            this.gotoScene(stage, "/kassoc/view/dashboard.fxml");
+        } catch (ConstraintViolationException t) {
+            tx.rollback();
+            new Alert(Alert.AlertType.ERROR, "This account already exist.").show();
+        } catch (Exception ex) {
+            tx.rollback();
+            new Alert(Alert.AlertType.ERROR,
+                "An error occurred while creating your account, please try again later."
+            ).show();
         }
     }
 }

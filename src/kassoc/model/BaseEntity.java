@@ -1,6 +1,7 @@
 package kassoc.model;
 
 import kassoc.Core;
+import org.hibernate.Query;
 
 import java.util.List;
 
@@ -29,11 +30,14 @@ public class BaseEntity {
      * @param id  the id
      * @return the t
      */
-    public static <T> T find(int id) {
-        @SuppressWarnings("JpaQlInspection") List ret = Core.getCurrentSession().createQuery("from "+BaseEntity.class.getName()+" where id=?").setParameter(
+    public static <T> T find(int id, Class<T> clazz) {
+        @SuppressWarnings("JpaQlInspection") Query query = Core.getCurrentSession().createQuery("from "+clazz.getName
+            ()+" where id=?").setParameter(
             0,
             id
-        ).list();
+        );
+        System.out.println(query.getQueryString());
+        List ret = query.list();
         if (ret.size()>0) {
             return (T) ret.get(0);
         } else {
@@ -47,11 +51,14 @@ public class BaseEntity {
      * @param value     the value
      * @return the list
      */
-    public static List findBy(String attribute, Object value) {
-        return Core.getCurrentSession().createQuery("from "+BaseEntity.class.getName()+" where "+attribute+"=?").setParameter(
+    public static <T> List<T> findBy(String attribute, Object value, Class<T> clazz) {
+        Query query = Core.getCurrentSession().createQuery("from "+clazz.getName()+" cl "+
+            "where cl."+attribute+"=?").setParameter(
             0,
             value
-        ).list();
+        );
+        System.out.println(query.getQueryString());
+        return (List<T>) query.list();
     }
 
     /**
@@ -61,11 +68,14 @@ public class BaseEntity {
      * @param value     the value
      * @return the t
      */
-    public static <T> T findOneBy(String attribute, java.io.Serializable value) {
-        List ret = Core.getCurrentSession().createQuery("from "+BaseEntity.class.getName()+" where "+attribute+"=?").setParameter(
+    public static <T> T findOneBy(String attribute, Object value, Class<T> clazz) {
+        Query query = Core.getCurrentSession().createQuery("from "+clazz.getName()+" "+
+            "where "+attribute+"=?").setParameter(
             0,
             value
-        ).list();
+        );
+        System.out.println(query.getQueryString());
+        List ret = query.list();
         if (ret.size()>0) {
             return (T) ret.get(0);
         } else {
