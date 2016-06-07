@@ -4,7 +4,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * The type Main.
+ */
 public class Main extends Application {
+    /**
+     * Main.
+     * @param args the args
+     * @throws Exception the exception
+     */
     public static void main(final String[] args) throws Exception {
         Application.launch(args);
     }

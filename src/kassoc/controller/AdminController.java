@@ -18,7 +18,7 @@ public class AdminController extends BaseController {
      */
     public void addActuality(ActionEvent e) throws IOException {
         Stage stage = new Stage();
-        stage.setTitle("My New Stage Title");
+        stage.setTitle("New Actuality");
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/kassoc/view/new-actuality.fxml"))));
         stage.sizeToScene();
         stage.centerOnScreen();
