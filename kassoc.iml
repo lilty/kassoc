@@ -22,6 +22,6 @@
     <orderEntry type="library" exported="" name="com.hynnet:oracle-driver-ojdbc6:12.1.0.1" level="project" />
     <orderEntry type="library" exported="" name="org.hibernate:hibernate:3.2.7.ga" level="project" />
     <orderEntry type="library" exported="" name="org.hibernate:hibernate-annotations:3.2.1.ga" level="project" />
-    <orderEntry type="library" name="net.jodah:typetools:0.4.6" level="project" />
+    <orderEntry type="library" exported="" name="net.jodah:typetools:0.4.6" level="project" />
   </component>
 </module>
