@@ -1,5 +1,6 @@
 package kassoc;
 
+import kassoc.model.AccountEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -9,6 +10,10 @@ import org.hibernate.cfg.AnnotationConfiguration;
  */
 public final class Core {
     private static final SessionFactory sessionFactory;
+    /**
+     * The constant account.
+     */
+    public static AccountEntity account;
 
     static {
         sessionFactory = new AnnotationConfiguration().configure("hibernate.cfg.xml").buildSessionFactory();

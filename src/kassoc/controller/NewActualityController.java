@@ -1,6 +1,8 @@
 package kassoc.controller;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -8,16 +10,15 @@ import kassoc.Core;
 import kassoc.model.ActualityEntity;
 import org.hibernate.exception.ConstraintViolationException;
 
-import java.io.IOException;
+import java.net.URL;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 
 /**
- * Class kassoc.controller.NewActualityController
- * @author Bastien
- * @project kassoc
+ * The type New actuality controller.
  */
-public class NewActualityController extends BaseController {
+public class NewActualityController extends BaseController implements Initializable {
     /**
      * The Date input.
      */
@@ -33,7 +34,7 @@ public class NewActualityController extends BaseController {
     /**
      * The Organisation input.
      */
-    public TextField organisationInput;
+    public ComboBox<String> organisationInput;
     /**
      * The Photo input.
      */
@@ -43,15 +44,9 @@ public class NewActualityController extends BaseController {
      */
     public TextField titleInput;
 
-    /**
-     * Back action.
-     * @param e the e
-     * @throws IOException the io exception
-     */
-    public void backAction(ActionEvent e) throws IOException {
-        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage.setTitle("Kassoc - Dashboard");
-        this.gotoScene(stage, "/kassoc/view/dashboard.fxml");
+    @Override
+    public void initialize(final URL location, final ResourceBundle resources) {
+        organisationInput.setItems(FXCollections.observableArrayList("bde", "bds", "alu"));
     }
 
     /**
@@ -60,33 +55,28 @@ public class NewActualityController extends BaseController {
      */
     public void saveAction(ActionEvent e) {
         org.hibernate.Transaction tx = Core.getCurrentSession().beginTransaction();
-
-        try{
+        try {
             LocalDate date = dateInput.getValue();
             if (date == null) {
                 new Alert(Alert.AlertType.ERROR, "The date input is a required field.").show();
                 return;
             }
             Time time = new Time(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
-
             String description = descriptionInput.getText();
             if (description == null || description.isEmpty()) {
                 new Alert(Alert.AlertType.ERROR, "The description input is a required field.").show();
                 return;
             }
-
-            String organisation = organisationInput.getText();
+            String organisation = organisationInput.getValue();
             if (organisation == null || organisation.isEmpty()) {
                 new Alert(Alert.AlertType.ERROR, "The organisation input is a required field.").show();
                 return;
             }
-
             String photo = photoInput.getText();
             if (photo == null || photo.isEmpty()) {
                 new Alert(Alert.AlertType.ERROR, "The photo input is a required field.").show();
                 return;
             }
-
             String title = titleInput.getText();
             if (title == null || title.isEmpty()) {
                 new Alert(Alert.AlertType.ERROR, "The title input is a required field.").show();
@@ -98,8 +88,7 @@ public class NewActualityController extends BaseController {
             Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
             stage.setTitle("Kassoc - Dashboard");
             this.gotoScene(stage, "/kassoc/view/dashboard.fxml");
-        }
-        catch (ConstraintViolationException t){
+        } catch (ConstraintViolationException t) {
             tx.rollback();
             new Alert(Alert.AlertType.ERROR, "This actuality already exist.").show();
         } catch (Exception ex) {

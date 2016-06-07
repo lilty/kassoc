@@ -8,9 +8,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.util.Callback;
+import kassoc.Core;
 import kassoc.FXUtils;
 import kassoc.ScrollPane2;
 import kassoc.model.ActualityEntity;
+import org.hibernate.Transaction;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,15 +23,15 @@ import java.util.ResourceBundle;
 /**
  * The type Actuality controller.
  */
-public class ActualityController implements Initializable {
+public class ActualityController extends BaseController implements Initializable {
     /**
      * The Accordion.
      */
     public Accordion accordion;
     /**
-     * The Alu actuality pane.
+     * The Alu actuality list.
      */
-    public TitledPane aluActualityPane;
+    public ListView<ActualityEntity> aluActualityList;
     /**
      * The Bde actuality list.
      */
@@ -38,18 +41,15 @@ public class ActualityController implements Initializable {
      */
     public TitledPane bdeActualityPane;
     /**
-     * The Bds actuality pane.
+     * The Bds actuality list.
      */
-    public TitledPane bdsActualityPane;
-    /**
-     * The Oth actuality pane.
-     */
-    public TitledPane othActualityPane;
+    public ListView<ActualityEntity> bdsActualityList;
 
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
         accordion.setExpandedPane(bdeActualityPane);
-        bdeActualityList.setCellFactory((ListView<ActualityEntity> lv)->new ListCell<>() {
+        Callback<ListView<ActualityEntity>, ListCell<ActualityEntity>> cellFactory = (ListView<ActualityEntity> lv)
+            ->new ListCell<>() {
             @Override
             public void updateItem(ActualityEntity album, boolean empty) {
                 super.updateItem(album, empty);
@@ -69,7 +69,7 @@ public class ActualityController implements Initializable {
                         Text content = FXUtils.getChildByID(lol, "content");
                         if (content != null) {
                             content.setText(album.getDescription());
-                            content.wrappingWidthProperty().bind(lv.widthProperty().subtract(200));
+                            content.wrappingWidthProperty().bind(lv.widthProperty().subtract(205));
                         }
                         ScrollPane2 scroll = FXUtils.getChildByID(lol, "scroll");
                         if (scroll != null) {
@@ -81,8 +81,17 @@ public class ActualityController implements Initializable {
                     }
                 }
             }
-        });
-        List<ActualityEntity> actus = ActualityEntity.findBy("org", "ALUMNICE", ActualityEntity.class);
+        };
+        bdeActualityList.setCellFactory(cellFactory);
+        bdsActualityList.setCellFactory(cellFactory);
+        aluActualityList.setCellFactory(cellFactory);
+        Transaction tx = Core.getCurrentSession().beginTransaction();
+        List<ActualityEntity> actus = ActualityEntity.findBy("org", "bde", ActualityEntity.class);
         bdeActualityList.setItems(FXCollections.observableList(actus));
+        actus = ActualityEntity.findBy("org", "bds", ActualityEntity.class);
+        bdsActualityList.setItems(FXCollections.observableList(actus));
+        actus = ActualityEntity.findBy("org", "alu", ActualityEntity.class);
+        aluActualityList.setItems(FXCollections.observableList(actus));
+        tx.commit();
     }
 }

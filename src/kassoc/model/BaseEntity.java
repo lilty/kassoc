@@ -26,8 +26,9 @@ public class BaseEntity {
 
     /**
      * Find t.
-     * @param <T> the type parameter
-     * @param id  the id
+     * @param <T>   the type parameter
+     * @param id    the id
+     * @param clazz the clazz
      * @return the t
      */
     public static <T> T find(int id, Class<T> clazz) {
@@ -46,8 +47,10 @@ public class BaseEntity {
 
     /**
      * Find by list.
+     * @param <T>       the type parameter
      * @param attribute the attribute
      * @param value     the value
+     * @param clazz     the clazz
      * @return the list
      */
     public static <T> List<T> findBy(String attribute, Object value, Class<T> clazz) {
@@ -64,6 +67,7 @@ public class BaseEntity {
      * @param <T>       the type parameter
      * @param attribute the attribute
      * @param value     the value
+     * @param clazz     the clazz
      * @return the t
      */
     public static <T> T findOneBy(String attribute, Object value, Class<T> clazz) {

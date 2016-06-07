@@ -33,6 +33,7 @@ public class ActualityEntity extends BaseEntity {
 
     /**
      * Instantiates a new Actuality entity.
+     * @param org         the org
      * @param photo       the photo
      * @param title       the title
      * @param description the description

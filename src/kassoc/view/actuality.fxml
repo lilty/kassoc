@@ -17,27 +17,23 @@
                         </StackPane>
                     </AnchorPane>
                 </TitledPane>
-                <TitledPane fx:id="bdsActualityPane" animated="true" text="BDS Actuality">
+                <TitledPane animated="true" text="BDS Actuality">
                     <AnchorPane>
                         <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <ListView fx:id="bdsActualityList">
 
+                            </ListView>
                         </StackPane>
                     </AnchorPane>
                 </TitledPane>
-                <TitledPane fx:id="aluActualityPane" animated="true" text="ALUMNICE">
+                <TitledPane animated="true" text="ALUMNICE">
                     <AnchorPane>
                         <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <ListView fx:id="aluActualityList">
 
-                        </StackPane>
-                    </AnchorPane>
-                </TitledPane>
-                <TitledPane fx:id="othActualityPane" animated="true" text="Other">
-                    <AnchorPane>
-                        <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-
+                            </ListView>
                         </StackPane>
                     </AnchorPane>
                 </TitledPane>

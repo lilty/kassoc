@@ -54,11 +54,13 @@ public class LoginController extends BaseController implements javafx.fxml.Initi
             String mail = mailInput.getText();
             if (mail == null || mail.isEmpty()) {
                 new Alert(Alert.AlertType.ERROR, "Please set your mail or your Unice id.").show();
+                tx.rollback();
                 return;
             }
             String pwd = pwdInput.getText();
             if (pwd == null || pwd.isEmpty()) {
                 new Alert(Alert.AlertType.ERROR, "Please enter a password !").show();
+                tx.rollback();
                 return;
             }
             AccountEntity account = AccountEntity.findOneBy("mail", mailInput.getText(), AccountEntity.class);
@@ -68,17 +70,22 @@ public class LoginController extends BaseController implements javafx.fxml.Initi
                     account = AccountEntity.findOneBy("uniceId", uniceId, AccountEntity.class);
                 } catch (Throwable t) { account = null; }
             }
+            boolean gotoScene = false;
             if (account == null) {
                 new Alert(Alert.AlertType.ERROR, "User not found !").show();
             } else if (!Objects.equals(this.pwdInput.getText(), account.getPassword())) {
                 new Alert(Alert.AlertType.ERROR, "Wrong password provided !").show();
             } else {
+                Core.account = account;
                 new Alert(Alert.AlertType.INFORMATION, "Welcome "+account.getName()+" !").show();
+                gotoScene = true;
+            }
+            tx.commit();
+            if (gotoScene) {
                 Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage1.setTitle("Kassoc - Dashboard");
                 this.gotoScene(stage1, "/kassoc/view/dashboard.fxml");
             }
-            tx.commit();
         } catch (Throwable t) {
             tx.rollback();
             Alert a = new Alert(Alert.AlertType.ERROR, t.getMessage());

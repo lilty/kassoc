@@ -76,29 +76,35 @@ public class SignUpController extends BaseController implements javafx.fxml.Init
             String mail = mailInput.getText();
             if (mail == null || mail.isEmpty()) {
                 new Alert(Alert.AlertType.ERROR, "The email input is a required field.").show();
+                tx.rollback();
                 return;
             }
             String name = pwdInput.getText();
             if (name == null || name.isEmpty()) {
                 new Alert(Alert.AlertType.ERROR, "The name input is a required field.").show();
+                tx.rollback();
                 return;
             }
             String stdId = stdIdInput.getText();
             if (stdId == null || stdId.isEmpty()) {
                 new Alert(Alert.AlertType.ERROR, "The student id input is a required field.").show();
+                tx.rollback();
                 return;
             }
             String pwd = pwdInput.getText();
             if (pwd == null || pwd.isEmpty()) {
                 new Alert(Alert.AlertType.ERROR, "The password input is a required field.").show();
+                tx.rollback();
                 return;
             }
             String confirmPwd = confirmPwdInput.getText();
             if (confirmPwd == null || confirmPwd.isEmpty()) {
                 new Alert(Alert.AlertType.ERROR, "Please confirm your password.").show();
+                tx.rollback();
                 return;
             }
             AccountEntity a = new AccountEntity(Integer.parseInt(stdId), name, mail, pwd);
+            Core.account = a;
             Core.getCurrentSession().save(a);
             tx.commit();
             Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();

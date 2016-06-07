@@ -1,0 +1,33 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/ant-1.6.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/antlr-2.7.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/asm-1.5.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/asm-attrs-1.5.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cglib-2.1_3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-collections-2.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/dom4j-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ehcache-1.2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate-3.2.1.ga.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate-3.2.7.ga.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate-annotations-3.2.1.ga.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.annotation.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.ejb.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.jms.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.persistence.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.resource.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jsp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jsp.jstl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.transaction.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/oracle-driver-ojdbc6-12.1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/persistence-api-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j-api-1.7.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/typetools-0.4.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
