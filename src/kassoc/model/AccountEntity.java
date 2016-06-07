@@ -2,6 +2,7 @@ package kassoc.model;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
@@ -29,14 +30,13 @@ public class AccountEntity extends BaseEntity {
 
     /**
      * Instantiates a new Account entity.
-     * @param id       the id
      * @param uniceId  the unice id
      * @param name     the name
      * @param mail     the mail
      * @param password the password
      */
-    public AccountEntity(final int id, final int uniceId, final String name, final String mail, final String password) {
-        super(id);
+    public AccountEntity(final int uniceId, final String name, final String mail, final String password) {
+        super();
         this.uniceId = new SimpleIntegerProperty(uniceId);
         this.name = new SimpleStringProperty(name);
         this.mail = new SimpleStringProperty(mail);
@@ -55,6 +55,8 @@ public class AccountEntity extends BaseEntity {
 
     @Id
     @Column(name = "ID")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @GeneratedValue(generator = "increment")
     public int getId() {
         return super.getId();
     }
