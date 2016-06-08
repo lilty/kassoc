@@ -32,9 +32,8 @@ public class BaseEntity {
      * @return the t
      */
     public static <T> T find(int id, Class<T> clazz) {
-        @SuppressWarnings("JpaQlInspection") Query query = Core.getCurrentSession().createQuery("from "+clazz.getName
-            ()+" where id=?").setParameter(
-            0,
+        @SuppressWarnings("JpaQlInspection") Query query = Core.getCurrentSession().createQuery("from "+clazz.getName()+" where id=:parm").setParameter(
+            "param",
             id
         );
         List ret = query.list();
@@ -55,8 +54,8 @@ public class BaseEntity {
      */
     public static <T> List<T> findBy(String attribute, Object value, Class<T> clazz) {
         Query query = Core.getCurrentSession().createQuery("from "+clazz.getName()+" cl "+
-            "where cl."+attribute+"=?").setParameter(
-            0,
+            "where cl."+attribute+"=:parm").setParameter(
+            "parm",
             value
         );
         return (List<T>) query.list();
@@ -72,8 +71,8 @@ public class BaseEntity {
      */
     public static <T> T findOneBy(String attribute, Object value, Class<T> clazz) {
         Query query = Core.getCurrentSession().createQuery("from "+clazz.getName()+" "+
-            "where "+attribute+"=?").setParameter(
-            0,
+            "where "+attribute+"=:parm").setParameter(
+            "parm",
             value
         );
         List ret = query.list();

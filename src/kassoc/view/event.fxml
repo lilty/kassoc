@@ -6,9 +6,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" minWidth="500" xmlns="http://javafx.com/javafx/8"
-            fx:controller="kassoc.controller.EventEditController"
             stylesheets="/kassoc/style.css">
-    <TitledPane fx:id="newPane" animated="false" text="Actuality" AnchorPane.bottomAnchor="0.0"
+    <TitledPane animated="false" text="Actuality" AnchorPane.bottomAnchor="0.0"
                 AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <AnchorPane>
             <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
@@ -16,19 +15,20 @@
                 <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                             AnchorPane.topAnchor="0.0">
                     <VBox>
-                        <ImageView id="image" fitWidth="175" pickOnBounds="true" preserveRatio="true"/>
+                        <ImageView id="photo" fitWidth="250" pickOnBounds="true" preserveRatio="true"/>
                         <Button mnemonicParsing="false" text="Inscription event"/>
                     </VBox>
                 </AnchorPane>
                 <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                             AnchorPane.topAnchor="0.0">
                     <VBox>
-                        <Label text="Title" GridPane.halignment="CENTER"
+                        <Label fx:id="title" text="Title" GridPane.halignment="CENTER"
                                GridPane.valignment="CENTER">
                         </Label>
-                        <AnchorPane minWidth="300" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                            <Text fx:id="description" GridPane.columnIndex="1" GridPane.rowIndex="3"
+                        <AnchorPane minWidth="450" minHeight="100">
+                            <Text AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
+                                  fx:id="description" GridPane.columnIndex="1" GridPane.rowIndex="3" wrappingWidth="450"
                                   styleClass="input">
                             </Text>
                         </AnchorPane>

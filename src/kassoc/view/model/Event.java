@@ -1,5 +1,6 @@
 package kassoc.view.model;
 
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -35,29 +36,31 @@ public class Event extends ViewModel<EventEntity> {
 
     @Override
     protected void fillView() {
-        try {
-            ImageView image = this.getChildById("image");
-            if (image != null) {
-                image.setImage(new Image(this.getModel().getPhoto()));
-            }
-        } catch (Exception ignored) { }
-        ImageView image = this.getChildById("image");
+        ImageView photo = this.getChildById("photo");
         Label title = this.getChildById("title");
         Text description = this.getChildById("description");
         ScrollPane2 scroll = this.getChildById("scroll");
+        DatePicker at = this.getChildById("at");
         if (scroll != null) {
             scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         }
-        if (image != null) {
+        if (photo != null) {
             try {
-                image.setImage(new Image(this.getModel().getPhoto()));
+                photo.setImage(new Image(this.getModel().getPhoto()));
             } catch (Exception ignored) { }
         }
         if (title != null) {
-            title.setText(this.getModel().getTitle()+" "+this.getModel().getAt().toString());
+            String t = this.getModel().getTitle();
+            if (at == null) {
+                t += " "+this.getModel().getAt().toString();
+            }
+            title.setText(t);
         }
         if (description != null) {
             description.setText(this.getModel().getDescription());
+        }
+        if (at != null) {
+            at.setValue(this.getModel().getAt());
         }
     }
 }

@@ -62,36 +62,41 @@ public class EventEditController extends ViewModelController<EventEdit> implemen
     public void saveAction(ActionEvent e) {
         org.hibernate.Transaction tx = Core.getCurrentSession().beginTransaction();
         try {
-            LocalDate date = this.at.getValue();
-            if (date == null) {
+            LocalDate at = this.at.getValue();
+            if (at == null) {
                 new Alert(Alert.AlertType.ERROR, "The date input is a required field.").show();
+                tx.rollback();
                 return;
             }
             String description = this.description.getText();
             if (description == null || description.isEmpty()) {
                 new Alert(Alert.AlertType.ERROR, "The description input is a required field.").show();
+                tx.rollback();
                 return;
             }
             String org = this.org.getValue();
             if (org == null || org.isEmpty()) {
                 new Alert(Alert.AlertType.ERROR, "The organisation input is a required field.").show();
+                tx.rollback();
                 return;
             }
             String photo = this.photo.getText();
             if (photo == null || photo.isEmpty()) {
                 new Alert(Alert.AlertType.ERROR, "The photo input is a required field.").show();
+                tx.rollback();
                 return;
             }
             String title = this.title.getText();
             if (title == null || title.isEmpty()) {
                 new Alert(Alert.AlertType.ERROR, "The title input is a required field.").show();
+                tx.rollback();
                 return;
             }
             this.getViewModel().getModel().setTitle(title);
             this.getViewModel().getModel().setDescription(description);
             this.getViewModel().getModel().setPhoto(photo);
             this.getViewModel().getModel().setOrg(org);
-            this.getViewModel().getModel().setAt(date);
+            this.getViewModel().getModel().setAt(at);
             Core.getCurrentSession().saveOrUpdate(this.getViewModel().getModel());
             tx.commit();
             Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();

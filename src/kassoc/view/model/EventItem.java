@@ -1,9 +1,6 @@
 package kassoc.view.model;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.input.MouseButton;
-import javafx.stage.Stage;
 import kassoc.model.EventEntity;
 
 import java.io.IOException;
@@ -28,15 +25,7 @@ public class EventItem extends Event {
             if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
                 if (mouseEvent.getClickCount() == 2) {
                     try {
-                        Stage stage = new Stage();
-                        stage.setTitle("New EventItem");
-                        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/kassoc/view/event-edit"+"" +
-                            ".fxml"))));
-                        stage.sizeToScene();
-                        stage.centerOnScreen();
-                        stage.show();
-                        stage.setMinWidth(stage.getWidth());
-                        stage.setMinHeight(stage.getHeight());
+                        new Event(this.getModel()).show("Event");
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
