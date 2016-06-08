@@ -27,7 +27,7 @@ class ScrollPaneSkin2 extends ScrollPaneSkin {
      * Instantiates a new Scroll pane skin 2.
      * @param scrollpane the scrollpane
      */
-    public ScrollPaneSkin2(final ScrollPane scrollpane) {
+    ScrollPaneSkin2(final ScrollPane scrollpane) {
         super(scrollpane);
         try {
             this.viewRect = (StackPane) viewRectField.get(this);

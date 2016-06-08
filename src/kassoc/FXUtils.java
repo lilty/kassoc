@@ -20,7 +20,7 @@ public class FXUtils {
      * @return The {@link Node} with a matching ID or {@code null}.
      */
     @SuppressWarnings({ "unchecked", "Duplicates" })
-    public static <T> T getChildByID(Parent parent, String id) {
+    public static <T> T getChildByID(Node parent, String id) {
         String nodeId = null;
         if (parent instanceof TitledPane) {
             TitledPane titledPane = (TitledPane) parent;
@@ -30,7 +30,7 @@ public class FXUtils {
                 return (T) content;
             }
             if (content instanceof Parent) {
-                T child = getChildByID((Parent) content, id);
+                T child = getChildByID(content, id);
                 if (child != null) {
                     return child;
                 }
@@ -43,7 +43,7 @@ public class FXUtils {
                 return (T) content;
             }
             if (content instanceof Parent) {
-                T child = getChildByID((Parent) content, id);
+                T child = getChildByID(content, id);
                 if (child != null) {
                     return child;
                 }
@@ -56,48 +56,50 @@ public class FXUtils {
                     return (T) node;
                 }
                 if (node instanceof Parent) {
-                    T child = getChildByID((Parent) node, id);
+                    T child = getChildByID(node, id);
                     if (child != null) {
                         return child;
                     }
                 }
             }
         }
-        for (Node node : parent.getChildrenUnmodifiable()) {
-            nodeId = node.idProperty().get();
-            if (nodeId != null && nodeId.equals(id)) {
-                return (T) node;
-            }
-            if (node instanceof SplitPane) {
-                SplitPane splitPane = (SplitPane) node;
-                for (Node itemNode : splitPane.getItems()) {
-                    nodeId = itemNode.idProperty().get();
-                    if (nodeId != null && nodeId.equals(id)) {
-                        return (T) itemNode;
+        if (parent instanceof Parent) {
+            for (Node node : ((Parent) parent).getChildrenUnmodifiable()) {
+                nodeId = node.idProperty().get();
+                if (nodeId != null && nodeId.equals(id)) {
+                    return (T) node;
+                }
+                if (node instanceof SplitPane) {
+                    SplitPane splitPane = (SplitPane) node;
+                    for (Node itemNode : splitPane.getItems()) {
+                        nodeId = itemNode.idProperty().get();
+                        if (nodeId != null && nodeId.equals(id)) {
+                            return (T) itemNode;
+                        }
+                        if (itemNode instanceof Parent) {
+                            T child = getChildByID(itemNode, id);
+                            if (child != null) {
+                                return child;
+                            }
+                        }
                     }
-                    if (itemNode instanceof Parent) {
-                        T child = getChildByID((Parent) itemNode, id);
+                } else if (node instanceof Accordion) {
+                    Accordion accordion = (Accordion) node;
+                    for (TitledPane titledPane : accordion.getPanes()) {
+                        nodeId = titledPane.idProperty().get();
+                        if (nodeId != null && nodeId.equals(id)) {
+                            return (T) titledPane;
+                        }
+                        T child = getChildByID(titledPane, id);
                         if (child != null) {
                             return child;
                         }
                     }
-                }
-            } else if (node instanceof Accordion) {
-                Accordion accordion = (Accordion) node;
-                for (TitledPane titledPane : accordion.getPanes()) {
-                    nodeId = titledPane.idProperty().get();
-                    if (nodeId != null && nodeId.equals(id)) {
-                        return (T) titledPane;
-                    }
-                    T child = getChildByID(titledPane, id);
+                } else if (node instanceof Parent) {
+                    T child = getChildByID(node, id);
                     if (child != null) {
                         return child;
                     }
-                }
-            } else if (node instanceof Parent) {
-                T child = getChildByID((Parent) node, id);
-                if (child != null) {
-                    return child;
                 }
             }
         }
