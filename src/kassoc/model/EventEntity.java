@@ -2,10 +2,11 @@ package kassoc.model;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import kassoc.LocalDateAttributeConverter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.sql.Time;
+import java.time.LocalDate;
 
 /**
  * The type Event entity.
@@ -17,7 +18,7 @@ public class EventEntity extends BaseEntity {
     private SimpleStringProperty title;
     private SimpleStringProperty description;
     private SimpleStringProperty org;
-    private SimpleObjectProperty<Time> at;
+    private SimpleObjectProperty<LocalDate> at;
 
     /**
      * Instantiates a new Event entity.
@@ -39,8 +40,7 @@ public class EventEntity extends BaseEntity {
      * @param description the description
      * @param at          the date
      */
-    public EventEntity(final String org, final String photo, final String title, final String description, final
-    Time at) {
+    public EventEntity(final String org, final String photo, final String title, final String description, final LocalDate at) {
         this.photo = new SimpleStringProperty(photo);
         this.title = new SimpleStringProperty(title);
         this.description = new SimpleStringProperty(description);
@@ -64,9 +64,9 @@ public class EventEntity extends BaseEntity {
      * Gets at.
      * @return the at
      */
-    @Basic
     @Column(name = "AT")
-    public Time getAt() {
+    @Convert(converter = LocalDateAttributeConverter.class)
+    public LocalDate getAt() {
         return at.get();
     }
 
@@ -74,7 +74,7 @@ public class EventEntity extends BaseEntity {
      * Sets at.
      * @param at the at
      */
-    public void setAt(final Time at) {
+    public void setAt(final LocalDate at) {
         this.at.set(at);
     }
 

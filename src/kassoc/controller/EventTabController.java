@@ -66,9 +66,9 @@ public class EventTabController extends BaseController implements Initializable 
                     try {
                         if (!this.getGraphics().containsKey(item.getId())) {
                             EventItem vm = new EventItem(item);
-                            Text content = vm.getChildById("content");
-                            if (content != null) {
-                                content.wrappingWidthProperty().bind(lv.widthProperty().subtract(205));
+                            Text description = vm.getChildById("description");
+                            if (description != null) {
+                                description.wrappingWidthProperty().bind(lv.widthProperty().subtract(205));
                             }
                             this.getGraphics().put(item.getId(), vm);
                         }

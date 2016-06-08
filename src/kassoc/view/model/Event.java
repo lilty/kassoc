@@ -43,7 +43,7 @@ public class Event extends ViewModel<EventEntity> {
         } catch (Exception ignored) { }
         ImageView image = this.getChildById("image");
         Label title = this.getChildById("title");
-        Text content = this.getChildById("content");
+        Text description = this.getChildById("description");
         ScrollPane2 scroll = this.getChildById("scroll");
         if (scroll != null) {
             scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -56,8 +56,8 @@ public class Event extends ViewModel<EventEntity> {
         if (title != null) {
             title.setText(this.getModel().getTitle()+" "+this.getModel().getAt().toString());
         }
-        if (content != null) {
-            content.setText(this.getModel().getDescription());
+        if (description != null) {
+            description.setText(this.getModel().getDescription());
         }
     }
 }

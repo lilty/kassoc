@@ -15,7 +15,7 @@
             <Label fx:id="title"/>
             <Separator/>
             <ScrollPane2 fx:id="scroll">
-                <Text fx:id="content"/>
+                <Text fx:id="description"/>
             </ScrollPane2>
         </VBox>
     </HBox>

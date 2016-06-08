@@ -3,7 +3,7 @@ package kassoc;
 import kassoc.model.AccountEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
 
 /**
  * The type Core.
@@ -16,7 +16,7 @@ public final class Core {
     public static AccountEntity account;
 
     static {
-        sessionFactory = new AnnotationConfiguration().configure("hibernate.cfg.xml").buildSessionFactory();
+        sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
     }
 
     /**
