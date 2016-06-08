@@ -8,11 +8,11 @@ import javax.persistence.*;
 import java.sql.Time;
 
 /**
- * The type Actuality entity.
+ * The type Event entity.
  */
 @Entity
-@Table(name = "KASSOC_ACTUALITY", schema = "S2AET07")
-public class ActualityEntity extends BaseEntity {
+@Table(name = "KASSOC_EVENT", schema = "S2AET07")
+public class EventEntity extends BaseEntity {
     private SimpleStringProperty photo;
     private SimpleStringProperty title;
     private SimpleStringProperty description;
@@ -20,9 +20,9 @@ public class ActualityEntity extends BaseEntity {
     private SimpleObjectProperty<Time> at;
 
     /**
-     * Instantiates a new Actuality entity.
+     * Instantiates a new Event entity.
      */
-    public ActualityEntity() {
+    public EventEntity() {
         super();
         this.photo = new SimpleStringProperty();
         this.title = new SimpleStringProperty();
@@ -32,14 +32,14 @@ public class ActualityEntity extends BaseEntity {
     }
 
     /**
-     * Instantiates a new Actuality entity.
+     * Instantiates a new Event entity.
      * @param org         the org
      * @param photo       the photo
      * @param title       the title
      * @param description the description
      * @param at          the date
      */
-    public ActualityEntity(final String org, final String photo, final String title, final String description, final
+    public EventEntity(final String org, final String photo, final String title, final String description, final
     Time at) {
         this.photo = new SimpleStringProperty(photo);
         this.title = new SimpleStringProperty(title);
@@ -51,8 +51,8 @@ public class ActualityEntity extends BaseEntity {
     @Override
     public boolean equals(final Object o) {
         if (this == o) { return true; }
-        if (!(o instanceof ActualityEntity)) { return false; }
-        ActualityEntity that = (ActualityEntity) o;
+        if (!(o instanceof EventEntity)) { return false; }
+        EventEntity that = (EventEntity) o;
         if (!photo.equals(that.photo)) { return false; }
         if (!title.equals(that.title)) { return false; }
         if (!description.equals(that.description)) { return false; }

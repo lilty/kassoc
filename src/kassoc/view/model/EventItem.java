@@ -4,21 +4,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
-import kassoc.model.ActualityEntity;
+import kassoc.model.EventEntity;
 
 import java.io.IOException;
 
 /**
- * The type ActualityItem item view model.
+ * The type EventItem item view model.
  */
-public class ActualityItem extends Actuality {
+public class EventItem extends Event {
     /**
-     * Instantiates a new ActualityItem item view model.
-     * @param actualityEntity the actuality entity
+     * Instantiates a new EventItem item view model.
+     * @param eventEntity the actuality entity
      * @throws IOException the io exception
      */
-    public ActualityItem(final ActualityEntity actualityEntity) throws IOException {
-        super("/kassoc/view/actuality-item.fxml", actualityEntity);
+    public EventItem(final EventEntity eventEntity) throws IOException {
+        super("/kassoc/view/event-item.fxml", eventEntity);
     }
 
     @Override
@@ -29,9 +29,9 @@ public class ActualityItem extends Actuality {
                 if (mouseEvent.getClickCount() == 2) {
                     try {
                         Stage stage = new Stage();
-                        stage.setTitle("New ActualityItem");
-                        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource(
-                            "/kassoc/view/actuality-edit.fxml"))));
+                        stage.setTitle("New EventItem");
+                        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/kassoc/view/event-edit"+"" +
+                            ".fxml"))));
                         stage.sizeToScene();
                         stage.centerOnScreen();
                         stage.show();

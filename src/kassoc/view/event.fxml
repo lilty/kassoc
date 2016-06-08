@@ -3,9 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" minWidth="500" xmlns="http://javafx.com/javafx/8"
-            fx:controller="kassoc.controller.NewActualityController"
+            fx:controller="kassoc.controller.EventNewController"
             stylesheets="/kassoc/style.css">
-    <TitledPane fx:id="newPane" animated="false" text="New Actuality" AnchorPane.bottomAnchor="0.0"
+    <TitledPane fx:id="newPane" animated="false" text="Actuality" AnchorPane.bottomAnchor="0.0"
                 AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity"
                     maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">

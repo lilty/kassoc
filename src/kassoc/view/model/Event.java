@@ -6,31 +6,31 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import kassoc.ScrollPane2;
-import kassoc.model.ActualityEntity;
+import kassoc.model.EventEntity;
 
 import java.io.IOException;
 
 /**
- * The type ActualityItem item view model.
+ * The type EventItem item view model.
  */
-public class Actuality extends ViewModel<ActualityEntity> {
+public class Event extends ViewModel<EventEntity> {
     /**
-     * Instantiates a new ActualityItem item view model.
-     * @param actualityEntity the actuality entity
+     * Instantiates a new EventItem item view model.
+     * @param eventEntity the actuality entity
      * @throws IOException the io exception
      */
-    public Actuality(final ActualityEntity actualityEntity) throws IOException {
-        super("/kassoc/view/actuality.fxml", actualityEntity);
+    public Event(final EventEntity eventEntity) throws IOException {
+        super("/kassoc/view/event.fxml", eventEntity);
     }
 
     /**
-     * Instantiates a new Actuality.
+     * Instantiates a new Event.
      * @param location        the location
-     * @param actualityEntity the actuality entity
+     * @param eventEntity the actuality entity
      * @throws IOException the io exception
      */
-    public Actuality(final String location, final ActualityEntity actualityEntity) throws IOException {
-        super(location, actualityEntity);
+    public Event(final String location, final EventEntity eventEntity) throws IOException {
+        super(location, eventEntity);
     }
 
     @Override

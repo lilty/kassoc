@@ -14,6 +14,6 @@ public class AdminController extends BaseController {
      * @throws IOException the io exception
      */
     public void addActuality(ActionEvent e) throws IOException {
-        this.popup("New ActualityItem", "/kassoc/view/actuality-edit.fxml");
+        this.popup("New EventItem", "/kassoc/view/event-edit.fxml");
     }
 }

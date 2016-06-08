@@ -7,7 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import kassoc.Core;
-import kassoc.model.ActualityEntity;
+import kassoc.model.EventEntity;
 import org.hibernate.exception.ConstraintViolationException;
 
 import java.net.URL;
@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 /**
  * The type New actuality controller.
  */
-public class NewActualityController extends BaseController implements Initializable {
+public class EventNewController extends BaseController implements Initializable {
     /**
      * The Date input.
      */
@@ -82,7 +82,7 @@ public class NewActualityController extends BaseController implements Initializa
                 new Alert(Alert.AlertType.ERROR, "The title input is a required field.").show();
                 return;
             }
-            ActualityEntity a = new ActualityEntity(organisation, photo, title, description, time);
+            EventEntity a = new EventEntity(organisation, photo, title, description, time);
             Core.getCurrentSession().save(a);
             tx.commit();
             Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
