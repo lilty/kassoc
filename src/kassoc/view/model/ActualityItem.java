@@ -1,4 +1,4 @@
-package kassoc.view;
+package kassoc.view.model;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

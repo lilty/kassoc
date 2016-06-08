@@ -10,7 +10,7 @@ import javafx.scene.text.Text;
 import javafx.util.Callback;
 import kassoc.Core;
 import kassoc.model.ActualityEntity;
-import kassoc.view.ActualityItem;
+import kassoc.view.model.ActualityItem;
 import org.hibernate.Transaction;
 
 import java.net.URL;
