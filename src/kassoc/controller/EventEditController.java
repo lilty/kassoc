@@ -100,8 +100,7 @@ public class EventEditController extends ViewModelController<EventEdit> implemen
             Core.getCurrentSession().saveOrUpdate(this.getViewModel().getModel());
             tx.commit();
             Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-            stage.setTitle("Kassoc - Dashboard");
-            this.gotoScene(stage, "/kassoc/view/dashboard.fxml");
+            stage.close();
         } catch (ConstraintViolationException t) {
             tx.rollback();
             new Alert(Alert.AlertType.ERROR, "This actuality already exist.").show();

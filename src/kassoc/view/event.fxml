@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" minWidth="500" xmlns="http://javafx.com/javafx/8"
-            stylesheets="/kassoc/style.css">
+            stylesheets="/kassoc/style.css" fx:controller="kassoc.controller.EventController">
     <TitledPane animated="false" text="Actuality" AnchorPane.bottomAnchor="0.0"
                 AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <AnchorPane>
@@ -17,6 +17,7 @@
                     <VBox>
                         <ImageView id="photo" fitWidth="250" pickOnBounds="true" preserveRatio="true"/>
                         <Button mnemonicParsing="false" text="Inscription event"/>
+                        <Button onAction="#editAction" mnemonicParsing="false" text="Edit"/>
                     </VBox>
                 </AnchorPane>
                 <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
