@@ -1,7 +1,6 @@
 package kassoc.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.StackPane;
 import kassoc.Core;
@@ -29,8 +28,9 @@ public class IndexController implements javafx.fxml.Initializable {
             Transaction tx = session.beginTransaction();
             tx.commit();
             content.getChildren().clear();
-            content.getChildren().add(FXMLLoader.load(getClass().getResource("/kassoc/view/login.fxml")));
+            content.getChildren().add(Core.View.login.getView());
         } catch (JDBCException e) {
+            e.printStackTrace();
             Alert a = new Alert(
                 Alert.AlertType.ERROR,
                 "You have to be connected to an Unice network to use this app !"
@@ -39,6 +39,7 @@ public class IndexController implements javafx.fxml.Initializable {
             a.showAndWait();
             System.exit(0);
         } catch (Exception e) {
+            e.printStackTrace();
             Alert a = new Alert(Alert.AlertType.ERROR, e.getMessage());
             a.setHeaderText(e.getClass().getSimpleName());
             a.showAndWait();

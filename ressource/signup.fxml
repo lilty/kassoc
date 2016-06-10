@@ -3,12 +3,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" minWidth="500" xmlns="http://javafx.com/javafx/8"
-            fx:controller="kassoc.controller.EventEditController"
-            stylesheets="/kassoc/style.css" fx:id="view">
-    <TitledPane fx:id="pane" animated="false" text="New Actuality" AnchorPane.bottomAnchor="0.0"
+            fx:controller="kassoc.controller.SignUpController"
+            stylesheets="/style.css">
+    <TitledPane fx:id="signUpPane" animated="false" text="Sign up" AnchorPane.bottomAnchor="0.0"
                 AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity"
-                    maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
             <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                   AnchorPane.topAnchor="0.0">
                 <padding>
@@ -23,31 +22,31 @@
                         <RowConstraints vgrow="SOMETIMES"/>
                         <RowConstraints vgrow="SOMETIMES"/>
                     </rowConstraints>
-                    <Label text="Title" GridPane.halignment="LEFT"
+                    <Label text="Student N°" GridPane.halignment="LEFT"
                            GridPane.valignment="CENTER">
                         <padding>
                             <Insets right="10.0"/>
                         </padding>
                     </Label>
-                    <Label text="Photo" GridPane.halignment="LEFT" GridPane.rowIndex="1"
+                    <Label text="Mail address" GridPane.halignment="LEFT" GridPane.rowIndex="1"
                            GridPane.valignment="CENTER">
                         <padding>
                             <Insets right="10.0"/>
                         </padding>
                     </Label>
-                    <Label text="Date" GridPane.halignment="LEFT" GridPane.rowIndex="2"
+                    <Label text="Name" GridPane.halignment="LEFT" GridPane.rowIndex="2"
                            GridPane.valignment="CENTER">
                         <padding>
                             <Insets right="10.0"/>
                         </padding>
                     </Label>
-                    <Label text="Description" GridPane.halignment="LEFT" GridPane.rowIndex="3"
+                    <Label text="Password" GridPane.halignment="LEFT" GridPane.rowIndex="3"
                            GridPane.valignment="CENTER">
                         <GridPane.margin>
                             <Insets/>
                         </GridPane.margin>
                     </Label>
-                    <Label text="Organisation" GridPane.halignment="LEFT" GridPane.rowIndex="4"
+                    <Label text="Confirm password" GridPane.halignment="LEFT" GridPane.rowIndex="4"
                            GridPane.valignment="CENTER">
                         <GridPane.margin>
                             <Insets/>
@@ -56,35 +55,35 @@
                             <Insets right="10.0"/>
                         </padding>
                     </Label>
-                    <TextField fx:id="title" GridPane.columnIndex="1" styleClass="input">
+                    <TextField fx:id="stdIdInput" GridPane.columnIndex="1" styleClass="input">
                         <GridPane.margin>
                             <Insets bottom="3.0" top="3.0"/>
                         </GridPane.margin>
                     </TextField>
-                    <TextField fx:id="photo" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                    <TextField fx:id="mailInput" GridPane.columnIndex="1" GridPane.rowIndex="1"
                                styleClass="input">
                         <GridPane.margin>
                             <Insets bottom="3.0" top="3.0"/>
                         </GridPane.margin>
                     </TextField>
-                    <DatePicker fx:id="at" GridPane.columnIndex="1" GridPane.rowIndex="2"
-                                styleClass="input">
+                    <TextField fx:id="nameInput" GridPane.columnIndex="1" GridPane.rowIndex="2"
+                               styleClass="input">
                         <GridPane.margin>
                             <Insets bottom="3.0" top="3.0"/>
                         </GridPane.margin>
-                    </DatePicker>
-                    <TextArea fx:id="description" GridPane.columnIndex="1" GridPane.rowIndex="3"
-                              styleClass="input">
+                    </TextField>
+                    <PasswordField fx:id="pwdInput" GridPane.columnIndex="1" GridPane.rowIndex="3"
+                                   styleClass="input">
                         <GridPane.margin>
                             <Insets bottom="3.0" top="3.0"/>
                         </GridPane.margin>
-                    </TextArea>
-                    <ComboBox fx:id="org" GridPane.columnIndex="1" GridPane.rowIndex="4"
-                              styleClass="input">
+                    </PasswordField>
+                    <PasswordField fx:id="confirmPwdInput" GridPane.columnIndex="1" GridPane.rowIndex="4"
+                                   styleClass="input">
                         <GridPane.margin>
                             <Insets bottom="3.0" top="3.0"/>
                         </GridPane.margin>
-                    </ComboBox>
+                    </PasswordField>
                 </GridPane>
                 <GridPane>
                     <columnConstraints>
@@ -98,10 +97,17 @@
                     <padding>
                         <Insets top="10.0"/>
                     </padding>
-                    <Button maxWidth="Infinity" mnemonicParsing="false" text="Save"
-                            onAction="#saveAction" styleClass="input">
+                    <Button fx:id="signUpBtn" maxWidth="Infinity" mnemonicParsing="false" text="Ok"
+                            onAction="#signUpAction" styleClass="input">
                         <GridPane.margin>
                             <Insets bottom="5.0" right="5.0" top="5.0"/>
+                        </GridPane.margin>
+                    </Button>
+                    <Button fx:id="backToLoginActionBtn" maxWidth="Infinity" mnemonicParsing="false"
+                            text="Back to login"
+                            GridPane.columnIndex="1" onAction="#backToLoginAction" styleClass="input">
+                        <GridPane.margin>
+                            <Insets bottom="5.0" left="5.0" top="5.0"/>
                         </GridPane.margin>
                     </Button>
                 </GridPane>
@@ -109,4 +115,3 @@
         </AnchorPane>
     </TitledPane>
 </AnchorPane>
-

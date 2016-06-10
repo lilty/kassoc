@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 /**
  * The type Sign up controller.
  */
-public class SignUpController extends BaseController implements javafx.fxml.Initializable {
+public class SignUpController implements javafx.fxml.Initializable {
     /**
      * The Back to login action btn.
      */
@@ -55,9 +55,7 @@ public class SignUpController extends BaseController implements javafx.fxml.Init
      * @throws IOException the io exception
      */
     public void backToLoginAction(ActionEvent e) throws IOException {
-        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage.setTitle("Kassoc - Login");
-        this.gotoScene(stage, "/kassoc/view/login.fxml");
+        Core.View.dashboard.showOn((Stage) ((Node) e.getSource()).getScene().getWindow());
     }
 
     @Override
@@ -107,9 +105,7 @@ public class SignUpController extends BaseController implements javafx.fxml.Init
             Core.account = a;
             Core.getCurrentSession().save(a);
             tx.commit();
-            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-            stage.setTitle("Kassoc - Dashboard");
-            this.gotoScene(stage, "/kassoc/view/dashboard.fxml");
+            Core.View.dashboard.showOn((Stage) ((Node) e.getSource()).getScene().getWindow());
         } catch (ConstraintViolationException t) {
             tx.rollback();
             new Alert(Alert.AlertType.ERROR, "This account already exist.").show();

@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 /**
  * The type Settings controller.
  */
-public class SettingsController extends BaseController implements javafx.fxml.Initializable {
+public class SettingsController implements javafx.fxml.Initializable {
     /**
      * The Confirm pwd input.
      */
@@ -44,9 +44,7 @@ public class SettingsController extends BaseController implements javafx.fxml.In
      * @throws IOException the io exception
      */
     public void backAction(ActionEvent e) throws IOException {
-        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage.setTitle("Kassoc - Dashboard");
-        this.gotoScene(stage, "/kassoc/view/dashboard.fxml");
+        Core.View.dashboard.showOn((Stage) ((Node) e.getSource()).getScene().getWindow());
     }
 
     @Override
@@ -119,8 +117,6 @@ public class SettingsController extends BaseController implements javafx.fxml.In
                 "An error occurred while editing your account, please try again later."
             ).show();
         }
-        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage.setTitle("Kassoc - Dashboard");
-        this.gotoScene(stage, "/kassoc/view/dashboard.fxml");
+        Core.View.dashboard.showOn((Stage) ((Node) e.getSource()).getScene().getWindow());
     }
 }

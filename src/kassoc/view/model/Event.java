@@ -4,6 +4,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import kassoc.ScrollPane2;
 import kassoc.model.EventEntity;
@@ -13,14 +14,14 @@ import java.io.IOException;
 /**
  * The type EventItem item view model.
  */
-public class Event extends ViewModel<EventEntity> {
+public class Event extends ViewModel<AnchorPane, EventEntity> {
     /**
      * Instantiates a new EventItem item view model.
      * @param eventEntity the actuality entity
      * @throws IOException the io exception
      */
     public Event(final EventEntity eventEntity) throws IOException {
-        super("/kassoc/view/event.fxml", eventEntity);
+        super("/event.fxml", eventEntity);
     }
 
     /**
@@ -34,7 +35,7 @@ public class Event extends ViewModel<EventEntity> {
     }
 
     @Override
-    public void fillView() {
+    protected void bindView() {
         ImageView photo = this.getChildById("photo");
         Label title = this.getChildById("title");
         Text description = this.getChildById("description");

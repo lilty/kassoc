@@ -18,11 +18,11 @@ public class EventEdit extends Event {
      * @throws IOException the io exception
      */
     public EventEdit(final EventEntity eventEntity) throws IOException {
-        super("/kassoc/view/event-edit.fxml", eventEntity);
+        super("/event-edit.fxml", eventEntity);
     }
 
     @Override
-    public void fillView() {
+    public void bindView() {
         TextField photo = this.getChildById("photo");
         TextField title = this.getChildById("title");
         TextArea description = this.getChildById("description");

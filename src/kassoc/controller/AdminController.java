@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * The type Admin controller.
  */
-public class AdminController extends BaseController {
+public class AdminController {
     /**
      * Add actuality.
      * @param e the e

@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 /**
  * The type EventTabController controller.
  */
-public class EventTabController extends BaseController implements Initializable {
+public class EventTabController implements Initializable {
     /**
      * The Accordion.
      */

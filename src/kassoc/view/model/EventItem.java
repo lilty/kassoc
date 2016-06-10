@@ -15,12 +15,12 @@ public class EventItem extends Event {
      * @throws IOException the io exception
      */
     public EventItem(final EventEntity eventEntity) throws IOException {
-        super("/kassoc/view/event-item.fxml", eventEntity);
+        super("/event-item.fxml", eventEntity);
     }
 
     @Override
-    public void fillView() {
-        super.fillView();
+    protected void bindView() {
+        super.bindView();
         this.getView().setOnMouseClicked(mouseEvent->{
             if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
                 if (mouseEvent.getClickCount() == 2) {

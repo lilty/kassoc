@@ -1,9 +1,9 @@
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
+import kassoc.Core;
+
+import java.io.IOException;
 
 /**
  * The type Main.
@@ -19,15 +19,9 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(final Stage primaryStage) throws Exception {
+    public void start(final Stage primaryStage) throws IOException {
         Platform.setImplicitExit(true);
-        Parent root = FXMLLoader.load(getClass().getResource("/kassoc/view/index.fxml"));
-        primaryStage.setTitle("Kassoc - Login");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.sizeToScene();
-        primaryStage.show();
-        primaryStage.setMinWidth(primaryStage.getWidth());
-        primaryStage.setMinHeight(primaryStage.getHeight());
-        primaryStage.setOnCloseRequest(e->Platform.exit());
+        Core.View.init();
+        Core.View.index.showOn(primaryStage, "Kassoc");
     }
 }

@@ -3,17 +3,17 @@ package kassoc.controller;
 import kassoc.view.model.ViewModel;
 
 /**
- * The type View model controler.
+ * The type View model controller.
  * @param <T> the type parameter
  */
-public abstract class ViewModelController<T extends ViewModel> extends BaseController {
+public abstract class ViewModelController<T extends ViewModel> {
     /**
      * The View model.
      */
     protected T viewModel;
 
     /**
-     * Instantiates a new View model controler.
+     * Instantiates a new View model controller.
      */
     protected ViewModelController() { }
 

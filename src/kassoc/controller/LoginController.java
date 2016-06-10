@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 /**
  * The type Login controller.
  */
-public class LoginController extends BaseController implements javafx.fxml.Initializable {
+public class LoginController implements javafx.fxml.Initializable {
     /**
      * The Login btn.
      */
@@ -81,9 +81,7 @@ public class LoginController extends BaseController implements javafx.fxml.Initi
             }
             tx.commit();
             if (gotoScene) {
-                Stage stage1 = (Stage) ((Node) e.getSource()).getScene().getWindow();
-                stage1.setTitle("Kassoc - Dashboard");
-                this.gotoScene(stage1, "/kassoc/view/dashboard.fxml");
+                Core.View.dashboard.showOn((Stage) ((Node) e.getSource()).getScene().getWindow());
             }
         } catch (Throwable t) {
             tx.rollback();
@@ -99,8 +97,6 @@ public class LoginController extends BaseController implements javafx.fxml.Initi
      * @throws IOException the io exception
      */
     public void signUpAction(ActionEvent e) throws IOException {
-        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage.setTitle("Kassoc - Sign up");
-        this.gotoScene(stage, "/kassoc/view/signup.fxml");
+        Core.View.signup.showOn((Stage) ((Node) e.getSource()).getScene().getWindow());
     }
 }
