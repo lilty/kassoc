@@ -1,12 +1,14 @@
 package kassoc.controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import kassoc.Core;
 import org.hibernate.exception.ConstraintViolationException;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -96,13 +98,23 @@ public class RegistrationController {
                 new Alert(Alert.AlertType.ERROR, "The address input is a required field.").show();
                 return;
             }
+            academicRecordInput.setOnAction(
+                new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(final ActionEvent e) {
+                        File file = fileChooser.showOpenDialog(stage);
+                        if (file != null) {
+                            openFile(file);
+                        }
+                    }
+                });
+
             Core.View.dashboard.showOn((Stage) ((Node) e.getSource()).getScene().getWindow());
         } catch (ConstraintViolationException t) {
             tx.rollback();
             new Alert(Alert.AlertType.ERROR, "You are already registered").show();
         }
     }
-
     /**
      * Ok action.
      * @param e the e
@@ -170,5 +182,6 @@ public class RegistrationController {
      * @param event the event
      */
     public void okGeneralAction(ActionEvent event) {
+
     }
 }
