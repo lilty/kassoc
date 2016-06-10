@@ -2,7 +2,7 @@ package kassoc.model;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-import kassoc.LocalDateAttributeConverter;
+import javafx.scene.image.Image;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -14,18 +14,20 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "KASSOC_EVENT", schema = "S2AET07")
 public class EventEntity extends BaseEntity {
-    private SimpleStringProperty photo;
-    private SimpleStringProperty title;
-    private SimpleStringProperty description;
-    private SimpleStringProperty org;
     private SimpleObjectProperty<LocalDate> at;
+    private SimpleStringProperty description;
+    private SimpleObjectProperty<Image> image;
+    private SimpleStringProperty imageUrl;
+    private SimpleStringProperty org;
+    private SimpleStringProperty title;
 
     /**
      * Instantiates a new Event entity.
      */
     public EventEntity() {
         super();
-        this.photo = new SimpleStringProperty();
+        this.imageUrl = new SimpleStringProperty();
+        this.image = new SimpleObjectProperty<>();
         this.title = new SimpleStringProperty();
         this.description = new SimpleStringProperty();
         this.org = new SimpleStringProperty();
@@ -35,17 +37,35 @@ public class EventEntity extends BaseEntity {
     /**
      * Instantiates a new Event entity.
      * @param org         the org
-     * @param photo       the photo
+     * @param imageUrl    the photo
      * @param title       the title
      * @param description the description
      * @param at          the date
      */
-    public EventEntity(final String org, final String photo, final String title, final String description, final LocalDate at) {
-        this.photo = new SimpleStringProperty(photo);
+    public EventEntity(final String org, final String imageUrl, final String title, final String description, final
+    LocalDate at) {
+        this.imageUrl = new SimpleStringProperty(imageUrl);
+        this.image = new SimpleObjectProperty<>(new Image(imageUrl));
         this.title = new SimpleStringProperty(title);
         this.description = new SimpleStringProperty(description);
         this.org = new SimpleStringProperty(org);
         this.at = new SimpleObjectProperty<>(at);
+    }
+
+    /**
+     * At property simple object property.
+     * @return the simple object property
+     */
+    public SimpleObjectProperty<LocalDate> atProperty() {
+        return at;
+    }
+
+    /**
+     * Description property simple string property.
+     * @return the simple string property
+     */
+    public SimpleStringProperty descriptionProperty() {
+        return description;
     }
 
     @Override
@@ -53,11 +73,12 @@ public class EventEntity extends BaseEntity {
         if (this == o) { return true; }
         if (!(o instanceof EventEntity)) { return false; }
         EventEntity that = (EventEntity) o;
-        if (!photo.equals(that.photo)) { return false; }
-        if (!title.equals(that.title)) { return false; }
+        if (!at.equals(that.at)) { return false; }
         if (!description.equals(that.description)) { return false; }
+        if (!image.equals(that.image)) { return false; }
+        if (!imageUrl.equals(that.imageUrl)) { return false; }
         if (!org.equals(that.org)) { return false; }
-        return at.equals(that.at);
+        return title.equals(that.title);
     }
 
     /**
@@ -65,7 +86,6 @@ public class EventEntity extends BaseEntity {
      * @return the at
      */
     @Column(name = "AT")
-    @Convert(converter = LocalDateAttributeConverter.class)
     public LocalDate getAt() {
         return at.get();
     }
@@ -100,17 +120,55 @@ public class EventEntity extends BaseEntity {
     @Column(name = "ID")
     @GenericGenerator(name = "increment", strategy = "increment")
     @GeneratedValue(generator = "increment")
+    @Override
     public int getId() {
         return super.getId();
     }
 
+    @Override
     public void setId(final int id) {
         super.setId(id);
     }
 
     /**
-     * Gets key.
-     * @return the key
+     * Gets image.
+     * @return the image
+     */
+    @Transient
+    public Image getImage() {
+        return image.get();
+    }
+
+    /**
+     * Sets image.
+     * @param image the image
+     */
+    public void setImage(final Image image) {
+        this.image.set(image);
+    }
+
+    /**
+     * Gets image url.
+     * @return the image url
+     */
+    @Basic
+    @Column(name = "PHOTO")
+    public String getImageUrl() {
+        return imageUrl.get();
+    }
+
+    /**
+     * Sets image url.
+     * @param imageUrl the image url
+     */
+    public void setImageUrl(final String imageUrl) {
+        this.imageUrl.set(imageUrl);
+        this.image.set(new Image(imageUrl));
+    }
+
+    /**
+     * Gets org.
+     * @return the org
      */
     @Basic
     @Column(name = "ORG")
@@ -119,29 +177,11 @@ public class EventEntity extends BaseEntity {
     }
 
     /**
-     * Sets key.
-     * @param key the key
+     * Sets org.
+     * @param org the org
      */
-    public void setOrg(final String key) {
-        this.org.set(key);
-    }
-
-    /**
-     * Gets photo.
-     * @return the photo
-     */
-    @Basic
-    @Column(name = "PHOTO")
-    public String getPhoto() {
-        return photo.get();
-    }
-
-    /**
-     * Sets photo.
-     * @param photo the photo
-     */
-    public void setPhoto(final String photo) {
-        this.photo.set(photo);
+    public void setOrg(final String org) {
+        this.org.set(org);
     }
 
     /**
@@ -164,11 +204,44 @@ public class EventEntity extends BaseEntity {
 
     @Override
     public int hashCode() {
-        int result = photo.hashCode();
-        result = 31*result+title.hashCode();
+        int result = at.hashCode();
         result = 31*result+description.hashCode();
+        result = 31*result+image.hashCode();
+        result = 31*result+imageUrl.hashCode();
         result = 31*result+org.hashCode();
-        result = 31*result+at.hashCode();
+        result = 31*result+title.hashCode();
         return result;
+    }
+
+    /**
+     * Image property simple object property.
+     * @return the simple object property
+     */
+    public SimpleObjectProperty<Image> imageProperty() {
+        return image;
+    }
+
+    /**
+     * Image url property simple string property.
+     * @return the simple string property
+     */
+    public SimpleStringProperty imageUrlProperty() {
+        return imageUrl;
+    }
+
+    /**
+     * Org property simple string property.
+     * @return the simple string property
+     */
+    public SimpleStringProperty orgProperty() {
+        return org;
+    }
+
+    /**
+     * Title property simple string property.
+     * @return the simple string property
+     */
+    public SimpleStringProperty titleProperty() {
+        return title;
     }
 }

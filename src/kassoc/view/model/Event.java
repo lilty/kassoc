@@ -3,7 +3,6 @@ package kassoc.view.model;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import kassoc.ScrollPane2;
@@ -35,7 +34,7 @@ public class Event extends ViewModel<EventEntity> {
     }
 
     @Override
-    protected void fillView() {
+    public void fillView() {
         ImageView photo = this.getChildById("photo");
         Label title = this.getChildById("title");
         Text description = this.getChildById("description");
@@ -45,22 +44,16 @@ public class Event extends ViewModel<EventEntity> {
             scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         }
         if (photo != null) {
-            try {
-                photo.setImage(new Image(this.getModel().getPhoto()));
-            } catch (Exception ignored) { }
+            photo.imageProperty().bind(this.getModel().imageProperty());
         }
         if (title != null) {
-            String t = this.getModel().getTitle();
-            if (at == null) {
-                t += " "+this.getModel().getAt().toString();
-            }
-            title.setText(t);
+            title.textProperty().bind(this.getModel().titleProperty());
         }
         if (description != null) {
-            description.setText(this.getModel().getDescription());
+            description.textProperty().bind(this.getModel().descriptionProperty());
         }
         if (at != null) {
-            at.setValue(this.getModel().getAt());
+            at.valueProperty().bind(this.getModel().atProperty());
         }
     }
 }

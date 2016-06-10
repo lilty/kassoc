@@ -20,6 +20,7 @@ public class Main extends Application {
 
     @Override
     public void start(final Stage primaryStage) throws Exception {
+        Platform.setImplicitExit(true);
         Parent root = FXMLLoader.load(getClass().getResource("/kassoc/view/index.fxml"));
         primaryStage.setTitle("Kassoc - Login");
         primaryStage.setScene(new Scene(root));

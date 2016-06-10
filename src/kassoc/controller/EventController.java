@@ -16,6 +16,6 @@ public class EventController extends ViewModelController<Event> {
      * @throws IOException the io exception
      */
     public void editAction(ActionEvent e) throws IOException {
-        new EventEdit(this.getViewModel().getModel()).show();
+        new EventEdit(this.getViewModel().getModel()).show("Edit");
     }
 }

@@ -22,7 +22,7 @@ public class EventEdit extends Event {
     }
 
     @Override
-    protected void fillView() {
+    public void fillView() {
         TextField photo = this.getChildById("photo");
         TextField title = this.getChildById("title");
         TextArea description = this.getChildById("description");
@@ -35,7 +35,7 @@ public class EventEdit extends Event {
             description.setText(this.getModel().getDescription());
         }
         if (photo != null) {
-            photo.setText(this.getModel().getPhoto());
+            photo.setText(this.getModel().getImageUrl());
         }
         if (at != null) {
             at.setValue(this.getModel().getAt());

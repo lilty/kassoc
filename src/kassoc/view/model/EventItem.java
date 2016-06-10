@@ -19,7 +19,7 @@ public class EventItem extends Event {
     }
 
     @Override
-    protected void fillView() {
+    public void fillView() {
         super.fillView();
         this.getView().setOnMouseClicked(mouseEvent->{
             if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {

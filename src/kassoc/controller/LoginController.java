@@ -77,7 +77,6 @@ public class LoginController extends BaseController implements javafx.fxml.Initi
                 new Alert(Alert.AlertType.ERROR, "Wrong password provided !").show();
             } else {
                 Core.account = account;
-                new Alert(Alert.AlertType.INFORMATION, "Welcome "+account.getName()+" !").show();
                 gotoScene = true;
             }
             tx.commit();
