@@ -77,6 +77,7 @@ public class LoginController implements javafx.fxml.Initializable {
                 new Alert(Alert.AlertType.ERROR, "Wrong password provided !").show();
             } else {
                 Core.account = account;
+                Core.View.accountEdit.setModel(account);
                 gotoScene = true;
             }
             tx.commit();

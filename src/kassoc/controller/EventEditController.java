@@ -104,8 +104,7 @@ public class EventEditController extends ViewModelController<EventEdit> implemen
             new Alert(Alert.AlertType.ERROR, "This actuality already exist.").show();
         } catch (Exception ex) {
             tx.rollback();
-            new Alert(Alert.AlertType.ERROR, "An error occurred while creating your event, please try again."
-            ).show();
+            new Alert(Alert.AlertType.ERROR, "An error occurred while creating your event, please try again.").show();
         }
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.close();

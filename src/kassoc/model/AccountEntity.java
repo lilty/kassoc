@@ -46,11 +46,12 @@ public class AccountEntity extends BaseEntity {
     @Override
     public boolean equals(final Object o) {
         if (this == o) { return true; }
-        if (o == null || getClass() != o.getClass()) { return false; }
+        if (!(o instanceof AccountEntity)) { return false; }
         AccountEntity that = (AccountEntity) o;
-        return this.getId() == that.getId() && (uniceId != null ? uniceId.equals(that.uniceId) : that.uniceId == null
-            && (name != null ? name.equals(
-            that.name) : that.name == null));
+        if (!uniceId.equals(that.uniceId)) { return false; }
+        if (!name.equals(that.name)) { return false; }
+        if (!mail.equals(that.mail)) { return false; }
+        return password.equals(that.password);
     }
 
     @Id
@@ -139,18 +140,42 @@ public class AccountEntity extends BaseEntity {
 
     @Override
     public int hashCode() {
-        int result = this.getId();
-        result = 31*result+(uniceId != null ? uniceId.hashCode() : 0);
-        result = 31*result+(name != null ? name.hashCode() : 0);
+        int result = uniceId.hashCode();
+        result = 31*result+name.hashCode();
+        result = 31*result+mail.hashCode();
+        result = 31*result+password.hashCode();
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "AccountEntity{"+
-            "id="+this.getId()+
-            ", uniceId="+uniceId+
-            ", name='"+name+'\''+
-            '}';
+    /**
+     * Mail property simple string property.
+     * @return the simple string property
+     */
+    public SimpleStringProperty mailProperty() {
+        return mail;
+    }
+
+    /**
+     * Name property simple string property.
+     * @return the simple string property
+     */
+    public SimpleStringProperty nameProperty() {
+        return name;
+    }
+
+    /**
+     * Password property simple string property.
+     * @return the simple string property
+     */
+    public SimpleStringProperty passwordProperty() {
+        return password;
+    }
+
+    /**
+     * Unice id property simple integer property.
+     * @return the simple integer property
+     */
+    public SimpleIntegerProperty uniceIdProperty() {
+        return uniceId;
     }
 }

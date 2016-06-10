@@ -26,7 +26,7 @@ public class Event extends ViewModel<AnchorPane, EventEntity> {
 
     /**
      * Instantiates a new Event.
-     * @param location        the location
+     * @param location    the location
      * @param eventEntity the actuality entity
      * @throws IOException the io exception
      */

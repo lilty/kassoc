@@ -4,6 +4,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import kassoc.model.AccountEntity;
+import kassoc.view.model.AccountEdit;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -36,6 +37,10 @@ public final class Core {
      * The type View.
      */
     public static class View {
+        /**
+         * The constant accountEdit.
+         */
+        public static AccountEdit accountEdit;
         /**
          * The constant admin.
          */
@@ -91,6 +96,7 @@ public final class Core {
             admin = new kassoc.view.View<>("/admin.fxml");
             eventTab = new kassoc.view.View<>("/event-tab.fxml");
             registration = new kassoc.view.View<>("/registration.fxml");
+            accountEdit = new AccountEdit();
             settings = new kassoc.view.View<>("/settings.fxml");
             dashboard = new kassoc.view.View<>("/dashboard.fxml");
             index = new kassoc.view.View<>("/index.fxml");

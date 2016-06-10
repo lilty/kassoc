@@ -46,8 +46,8 @@ public class EventTabController implements Initializable {
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
         accordion.setExpandedPane(bdeActualityPane);
-        Callback<ListView<EventEntity>, ListCell<EventEntity>> cellFactory = (ListView<EventEntity> lv)
-            ->new ListCell<>() {
+        Callback<ListView<EventEntity>, ListCell<EventEntity>> cellFactory = (ListView<EventEntity> lv)->new
+            ListCell<>() {
             private HashMap<Integer, EventItem> graphics;
 
             private HashMap<Integer, EventItem> getGraphics() {

@@ -14,6 +14,7 @@ import java.util.HashMap;
 
 /**
  * The type View.
+ * @param <TView> the type parameter
  */
 public class View<TView extends Styleable> {
     private TView view;

@@ -10,6 +10,7 @@ import java.net.URL;
 
 /**
  * The type View model.
+ * @param <TView>  the type parameter
  * @param <TModel> the type parameter
  */
 public abstract class ViewModel<TView extends Parent, TModel> extends View<TView> {
@@ -24,7 +25,9 @@ public abstract class ViewModel<TView extends Parent, TModel> extends View<TView
     public ViewModel(URL location, TModel model) throws IOException {
         super(location);
         this.model = model;
-        this.bindView();
+        if (this.model != null) {
+            this.bindView();
+        }
     }
 
     /**
@@ -36,7 +39,9 @@ public abstract class ViewModel<TView extends Parent, TModel> extends View<TView
     public ViewModel(String location, TModel model) throws IOException {
         super(location);
         this.model = model;
-        this.bindView();
+        if (this.model != null) {
+            this.bindView();
+        }
     }
 
     /**
@@ -58,6 +63,9 @@ public abstract class ViewModel<TView extends Parent, TModel> extends View<TView
      */
     public void setModel(final TModel model) {
         this.model = model;
+        if (this.model != null) {
+            this.bindView();
+        }
     }
 
     /**
