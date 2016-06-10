@@ -1,25 +1,30 @@
 package kassoc.controller;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 import kassoc.Core;
 import org.hibernate.exception.ConstraintViolationException;
 
 import java.io.IOException;
 
 /**
- * Class kassoc.controller.InscriptionOtherController
+ * Class kassoc.controller.RegistrationController
  * @author Bastien
  * @project kassoc
  */
-public class InscriptionOtherController {
+public class RegistrationController extends BaseController {
+    public Accordion accordion;
+    public TitledPane alumniceRegistrationPane;
+    public TitledPane bdeRegistrationPane;
+    public TitledPane bdsRegistrationPane;
+    public TitledPane regentRegistrationPane;
     public TextField addressInput;
     public TextField numberInput;
-    public Button schoolFolderInput;
+    public Button academicRecordInput;
 
-    public void signUpAction(ActionEvent e) throws IOException {
+    public void academicRecordAction(ActionEvent e) throws IOException {
         org.hibernate.Transaction tx = Core.getCurrentSession().beginTransaction();
         try {
             try {
@@ -35,6 +40,9 @@ public class InscriptionOtherController {
                 new Alert(Alert.AlertType.ERROR, "The address input is a required field.").show();
                 return;
             }
+            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            stage.setTitle("Kassoc - Dashboard");
+            this.gotoScene(stage, "/kassoc/view/dashboard.fxml");
 
 
         } catch (ConstraintViolationException t) {

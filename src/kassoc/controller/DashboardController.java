@@ -22,6 +22,7 @@ public class DashboardController implements javafx.fxml.Initializable {
             tabPane.getTabs().add(FXMLLoader.load(getClass().getResource("/kassoc/view/event-tab.fxml")));
             tabPane.getTabs().add(FXMLLoader.load(getClass().getResource("/kassoc/view/settings.fxml")));
             tabPane.getTabs().add(FXMLLoader.load(getClass().getResource("/kassoc/view/admin.fxml")));
+            tabPane.getTabs().add(FXMLLoader.load(getClass().getResource("/kassoc/view/registration.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
