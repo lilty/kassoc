@@ -72,7 +72,7 @@ public class EventTabController implements Initializable {
                             }
                             this.getGraphics().put(item.getId(), vm);
                         }
-                        this.setGraphic(this.getGraphics().get(item.getId()).getView());
+                        this.setGraphic(this.getGraphics().get(item.getId()).buildGraphic());
                     } catch (Exception ignored) { }
                 }
             }

@@ -28,7 +28,7 @@ public class IndexController implements javafx.fxml.Initializable {
             Transaction tx = session.beginTransaction();
             tx.commit();
             content.getChildren().clear();
-            content.getChildren().add(Kassoc.View.login.getView());
+            content.getChildren().add(Kassoc.View.login.buildGraphic());
         } catch (JDBCException e) {
             e.printStackTrace();
             Alert a = new Alert(

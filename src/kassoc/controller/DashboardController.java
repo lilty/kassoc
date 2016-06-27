@@ -17,9 +17,9 @@ public class DashboardController implements javafx.fxml.Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tabPane.getTabs().add(Kassoc.View.eventTab.getView());
-        tabPane.getTabs().add(Kassoc.View.settingsTab.getView());
-        tabPane.getTabs().add(Kassoc.View.adminTab.getView());
-        tabPane.getTabs().add(Kassoc.View.registrationTab.getView());
+        tabPane.getTabs().add(Kassoc.View.eventTab.buildGraphic());
+        tabPane.getTabs().add(Kassoc.View.settingsTab.buildGraphic());
+        tabPane.getTabs().add(Kassoc.View.adminTab.buildGraphic());
+        tabPane.getTabs().add(Kassoc.View.registrationTab.buildGraphic());
     }
 }

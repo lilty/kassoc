@@ -52,9 +52,15 @@ public abstract class ViewModel<TView extends Parent, TModel> extends View<TView
      */
     public void setModel(final TModel model) {
         this.model = model;
-        if (this.view != null) {
+        if (this.getView() != null) {
             this.bindView();
         }
+    }
+
+    @Override
+    public void load() throws IOException {
+        super.load();
+        this.bindView();
     }
 
     /**

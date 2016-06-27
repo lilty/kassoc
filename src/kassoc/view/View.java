@@ -32,10 +32,7 @@ public class View<TView extends Styleable> {
     public View(URL location) throws IOException {
         this.location = location;
         this.loader = new FXMLLoader(location);
-        this.view = this.loader.load();
-        if (this.view instanceof Parent) {
-            this.scene = new Scene((Parent) this.view);
-        }
+        this.load();
     }
 
     /**
@@ -46,16 +43,18 @@ public class View<TView extends Styleable> {
     public View(String location) throws IOException {
         this.location = getClass().getResource(location);
         this.loader = new FXMLLoader(this.location);
-        this.view = this.loader.load();
-        if (this.view instanceof Parent) {
-            this.scene = new Scene((Parent) this.view);
-        }
+        this.load();
     }
 
     /**
      * Fill.
      */
     protected void bindView() { }
+
+    public TView buildGraphic() {
+        this.bindView();
+        return this.getView();
+    }
 
     /**
      * Gets child by id.
@@ -86,31 +85,23 @@ public class View<TView extends Styleable> {
     }
 
     /**
-     * Sets loader.
-     * @param loader the loader
-     */
-    public void setLoader(final FXMLLoader loader) {
-        this.loader = loader;
-    }
-
-    /**
      * Gets view.
      * @return the view
      */
     public TView getView() {
-        return view;
-    }
-
-    /**
-     * Sets view.
-     * @param view the view
-     */
-    public void setView(final TView view) {
-        this.view = view;
+        if (this.scene != null) {
+            return (TView) this.scene.getRoot();
+        }
+        return this.view;
     }
 
     public void load() throws IOException {
-        this.getLoader().load();
+        this.loader.setRoot(null);
+        this.loader.setController(null);
+        this.view = this.loader.load();
+        if (this.view instanceof Parent) {
+            this.scene = new Scene((Parent) this.view);
+        }
     }
 
     /**
@@ -148,22 +139,17 @@ public class View<TView extends Styleable> {
      */
     public Stage showOn(Stage stage, String title) {
         if (this.scene != null) {
-            try {
-                this.loader = new FXMLLoader(this.location);
-                if (title != null) {
-                    stage.setTitle(title);
-                }
-                stage.getIcons().add(new Image("http://unice.fr/++theme++ThemeUNS/assets/ico/favicon.png"));
-                stage.setScene(new Scene((Parent) (this.view = this.loader.load())));
-                this.bindView();
-                stage.setResizable(true);
-                //stage.hide();
-                stage.show();
-                stage.sizeToScene();
-                stage.setResizable(false);
-            } catch (IOException e) {
-                e.printStackTrace();
+            //this.loader = new FXMLLoader(this.location);
+            if (title != null) {
+                stage.setTitle(title);
             }
+            stage.getIcons().add(new Image("http://unice.fr/++theme++ThemeUNS/assets/ico/favicon.png"));
+            stage.requestFocus();
+            stage.setScene(this.scene);
+            stage.setResizable(true);
+            stage.show();
+            stage.sizeToScene();
+            stage.setResizable(false);
         }
         return stage;
     }

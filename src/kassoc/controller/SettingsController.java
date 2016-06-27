@@ -17,6 +17,6 @@ public class SettingsController implements javafx.fxml.Initializable {
 
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
-        tab.setContent(Kassoc.View.accountEdit.getView());
+        tab.setContent(Kassoc.View.accountEdit.buildGraphic());
     }
 }
