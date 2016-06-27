@@ -25,8 +25,8 @@ public class Event extends ViewModel<AnchorPane, kassoc.model.Event> {
 
     /**
      * Instantiates a new Event.
-     * @param location    the location
-     * @param event the actuality entity
+     * @param location the location
+     * @param event    the actuality entity
      * @throws IOException the io exception
      */
     public Event(final String location, final kassoc.model.Event event) throws IOException {

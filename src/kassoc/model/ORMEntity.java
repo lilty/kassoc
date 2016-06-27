@@ -24,8 +24,8 @@ public class ORMEntity {
      * @return the t
      */
     public static <T> T find(int id, Class<T> clazz) {
-        @SuppressWarnings("JpaQlInspection") Query query = Kassoc.getCurrentSession().createQuery("from "+clazz.getName
-            ()+" where id=:parm").setParameter(
+        @SuppressWarnings("JpaQlInspection") Query query = Kassoc.getCurrentSession().createQuery("from "+clazz
+            .getName()+" where id=:parm").setParameter(
             "param",
             id
         );

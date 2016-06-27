@@ -173,6 +173,5 @@ public class RegistrationController implements Initializable {
      * @param event the event
      */
     public void okGeneralAction(ActionEvent event) {
-
     }
 }

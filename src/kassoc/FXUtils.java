@@ -13,7 +13,7 @@ public class FXUtils {
      * <p>
      * This might not cover all possible {@link Parent} implementations but it's a decent crack. {@link Control}
      * implementations all seem to have their own method of storing children along side the usual {@link
-     * Parent#getChildrenUnmodifiable()}*** method.
+     * Parent#getChildrenUnmodifiable()}**** method.
      * @param <T>    the type parameter
      * @param parent The parent of the node you're looking for.
      * @param id     The ID of node you're looking for.

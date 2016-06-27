@@ -18,9 +18,21 @@ import java.util.HashMap;
  * @param <TView> the type parameter
  */
 public class View<TView extends Styleable> {
+    /**
+     * The Loader.
+     */
     protected FXMLLoader loader;
+    /**
+     * The Location.
+     */
     protected URL location;
+    /**
+     * The Scene.
+     */
     protected Scene scene;
+    /**
+     * The View.
+     */
     protected TView view;
     private HashMap<String, Node> childes;
 
@@ -51,6 +63,10 @@ public class View<TView extends Styleable> {
      */
     protected void bindView() { }
 
+    /**
+     * Build graphic t view.
+     * @return the t view
+     */
     public TView buildGraphic() {
         this.bindView();
         return this.getView();
@@ -77,14 +93,6 @@ public class View<TView extends Styleable> {
     }
 
     /**
-     * Gets loader.
-     * @return the loader
-     */
-    public FXMLLoader getLoader() {
-        return loader;
-    }
-
-    /**
      * Gets view.
      * @return the view
      */
@@ -95,6 +103,10 @@ public class View<TView extends Styleable> {
         return this.view;
     }
 
+    /**
+     * Load.
+     * @throws IOException the io exception
+     */
     public void load() throws IOException {
         this.loader.setRoot(null);
         this.loader.setController(null);
@@ -106,6 +118,7 @@ public class View<TView extends Styleable> {
 
     /**
      * Show.
+     * @return the stage
      */
     public Stage show() {
         return this.show(null);
@@ -114,6 +127,7 @@ public class View<TView extends Styleable> {
     /**
      * Show.
      * @param title the title
+     * @return the stage
      */
     public Stage show(String title) {
         if (this.getView() instanceof Parent) {
@@ -127,6 +141,7 @@ public class View<TView extends Styleable> {
     /**
      * Show on.
      * @param stage the stage
+     * @return the stage
      */
     public Stage showOn(Stage stage) {
         return this.showOn(stage, null);
@@ -136,10 +151,10 @@ public class View<TView extends Styleable> {
      * Show on.
      * @param stage the stage
      * @param title the title
+     * @return the stage
      */
     public Stage showOn(Stage stage, String title) {
         if (this.scene != null) {
-            //this.loader = new FXMLLoader(this.location);
             if (title != null) {
                 stage.setTitle(title);
             }
