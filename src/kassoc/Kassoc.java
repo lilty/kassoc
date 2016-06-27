@@ -1,10 +1,10 @@
 package kassoc;
 
 import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import kassoc.model.Account;
+import kassoc.view.Dashboard;
 import kassoc.view.model.AccountEdit;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -53,7 +53,7 @@ public final class Kassoc {
         /**
          * The constant dashboard.
          */
-        public static kassoc.view.View<TabPane> dashboard;
+        public static Dashboard dashboard;
         /**
          * The constant eventTab.
          */
@@ -91,7 +91,7 @@ public final class Kassoc {
             registrationTab = new kassoc.view.View<>("/registration-tab.fxml");
             accountEdit = new AccountEdit();
             settingsTab = new kassoc.view.View<>("/settings-tab.fxml");
-            dashboard = new kassoc.view.View<>("/dashboard.fxml");
+            dashboard = new Dashboard();
             index = new kassoc.view.View<>("/index.fxml");
         }
     }

@@ -1,6 +1,9 @@
 package kassoc.view.model;
 
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseButton;
+import kassoc.Kassoc;
+import kassoc.model.Account;
 import kassoc.model.Event;
 
 import java.io.IOException;
@@ -26,7 +29,14 @@ public class EventItem extends kassoc.view.model.Event {
                 if (mouseEvent.getClickCount() == 2) {
                     try {
                         if (this.getModel() != null) {
-                            new kassoc.view.model.Event(this.getModel()).show("Event");
+                            kassoc.view.model.Event e = new kassoc.view.model.Event(this.getModel());
+                            if (Kassoc.account.getType() != Account.Type.ADMIN) {
+                                Button b = e.getChildById("editBtn");
+                                if (b != null) {
+                                    b.setVisible(false);
+                                }
+                            }
+                            e.show("Event");
                         }
                     } catch (IOException e) {
                         e.printStackTrace();

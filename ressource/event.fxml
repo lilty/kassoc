@@ -36,7 +36,7 @@
                             </Text>
                         </AnchorPane>
                         <Button mnemonicParsing="false" text="Inscription event"/>
-                        <Button onAction="#editAction" mnemonicParsing="false" text="Edit"/>
+                        <Button fx:id="editBtn" onAction="#editAction" mnemonicParsing="false" text="Edit"/>
                     </VBox>
                 </AnchorPane>
             </HBox>

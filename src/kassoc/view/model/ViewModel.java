@@ -71,8 +71,7 @@ public abstract class ViewModel<TView extends Parent, TModel> extends View<TView
         Stage ret = super.show(title);
         try {
             this.loader.<ViewModelController<ViewModel<TView, TModel>>>getController().setViewModel(this);
-        } catch (Exception ignored) {
-        }
+        } catch (Exception ignored) { }
         return ret;
     }
 
@@ -85,8 +84,7 @@ public abstract class ViewModel<TView extends Parent, TModel> extends View<TView
         Stage ret = super.showOn(stage, title);
         try {
             this.loader.<ViewModelController<ViewModel<TView, TModel>>>getController().setViewModel(this);
-        } catch (Exception ignored) {
-        }
+        } catch (Exception ignored) { }
         return ret;
     }
 }

@@ -8,9 +8,14 @@ import javafx.stage.FileChooser;
 import kassoc.Kassoc;
 import org.hibernate.exception.ConstraintViolationException;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 /**
@@ -114,27 +119,41 @@ public class RegistrationController implements Initializable {
     public void okAction(ActionEvent e) throws IOException {
         org.hibernate.Transaction tx = Kassoc.getCurrentSession().beginTransaction();
         try {
-            String name = lastNameInput.getText();
-            if (name == null || name.isEmpty()) {
-                new Alert(Alert.AlertType.ERROR, "The name provaded is not valid.").show();
-                tx.rollback();
-                return;
-            }
-            String firstName = firstNameInput.getText();
-            if (firstName == null || firstName.isEmpty()) {
-                new Alert(Alert.AlertType.ERROR, "The firstname provaded is not valid.").show();
-                tx.rollback();
-                return;
-            }
-            String address = addressInput.getText();
-            if (address == null || address.isEmpty()) {
-                new Alert(Alert.AlertType.ERROR, "The address provaded is not valid.").show();
-                tx.rollback();
-                return;
-            }
+            final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
+            // Get a Properties object
+            Properties props = System.getProperties();
+            props.setProperty("mail.smtp.host", "smtp.gmail.com");
+            props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY);
+            props.setProperty("mail.smtp.socketFactory.fallback", "false");
+            props.setProperty("mail.smtp.port", "465");
+            props.setProperty("mail.smtp.socketFactory.port", "465");
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.debug", "true");
+            props.put("mail.store.protocol", "pop3");
+            props.put("mail.transport.protocol", "smtp");
+            final String username = "ab.lucas77@gmail.com";//
+            final String password = "65033095049814";
+            Session session = Session.getDefaultInstance(props, new Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(username, password);
+                }
+            });
+            // -- Create a new message --
+            Message msg = new MimeMessage(session);
+            // -- Set the FROM and TO fields --
+            msg.setFrom(new InternetAddress("ab.lucas77@gmail.com"));
+            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(Kassoc.account.getMail(), false));
+            msg.setSubject("Hello");
+            msg.setText("How are you");
+            msg.setSentDate(new Date());
+            Transport.send(msg);
+            System.out.println("Message sent.");
+
         } catch (ConstraintViolationException t) {
             tx.rollback();
-            new Alert(Alert.AlertType.ERROR, "You are already registered").show();
+        } catch (MessagingException e1) {
+            e1.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e1.getMessage()).show();
         }
     }
 

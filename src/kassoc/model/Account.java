@@ -218,17 +218,12 @@ public class Account extends ORMEntity {
      */
     public enum Type {
         /**
-         * Admin type.
-         */
-        ADMIN(-1),
-        /**
          * Student type.
          */
-        STUDENT(0);
-        private int type;
-
-        Type(int type) {
-            this.type = type;
-        }
+        STUDENT,
+        /**
+         * Admin type.
+         */
+        ADMIN
     }
 }
