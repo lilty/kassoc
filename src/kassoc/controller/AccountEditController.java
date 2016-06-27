@@ -1,12 +1,10 @@
 package kassoc.controller;
 
 import javafx.event.ActionEvent;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import kassoc.Core;
+import kassoc.Kassoc;
 import kassoc.view.model.AccountEdit;
 import org.hibernate.exception.ConstraintViolationException;
 
@@ -43,7 +41,7 @@ public class AccountEditController extends ViewModelController<AccountEdit> {
      * @throws IOException the io exception
      */
     public void backAction(ActionEvent e) throws IOException {
-        Core.View.dashboard.showOn((Stage) ((Node) e.getSource()).getScene().getWindow());
+        Kassoc.stage = Kassoc.View.dashboard.showOn(Kassoc.stage);
     }
 
     /**
@@ -52,7 +50,7 @@ public class AccountEditController extends ViewModelController<AccountEdit> {
      * @throws IOException the io exception
      */
     public void saveAction(ActionEvent e) throws IOException {
-        org.hibernate.Transaction tx = Core.getCurrentSession().beginTransaction();
+        org.hibernate.Transaction tx = Kassoc.getCurrentSession().beginTransaction();
         try {
             String mail = mailInput.getText();
             if (mail == null || mail.isEmpty()) {
@@ -89,11 +87,11 @@ public class AccountEditController extends ViewModelController<AccountEdit> {
                 tx.rollback();
                 return;
             }
-            Core.account.setMail(mail);
-            Core.account.setPassword(pwd);
-            Core.account.setUniceId(Integer.parseInt(stdId));
-            Core.account.setName(name);
-            Core.getCurrentSession().update(Core.account);
+            Kassoc.account.setMail(mail);
+            Kassoc.account.setPassword(pwd);
+            Kassoc.account.setUniceId(Integer.parseInt(stdId));
+            Kassoc.account.setName(name);
+            Kassoc.getCurrentSession().update(Kassoc.account);
             tx.commit();
         } catch (ConstraintViolationException t) {
             tx.rollback();
@@ -105,6 +103,6 @@ public class AccountEditController extends ViewModelController<AccountEdit> {
                 "An error occurred while editing your account, please try again later."
             ).show();
         }
-        Core.View.dashboard.showOn((Stage) ((Node) e.getSource()).getScene().getWindow());
+        Kassoc.stage = Kassoc.View.dashboard.showOn(Kassoc.stage);
     }
 }

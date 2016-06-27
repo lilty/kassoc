@@ -4,21 +4,21 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import kassoc.model.EventEntity;
+import kassoc.model.Event;
 
 import java.io.IOException;
 
 /**
  * The type EventItem item view model.
  */
-public class EventEdit extends Event {
+public class EventEdit extends kassoc.view.model.Event {
     /**
      * Instantiates a new EventItem item view model.
-     * @param eventEntity the actuality entity
+     * @param event the actuality entity
      * @throws IOException the io exception
      */
-    public EventEdit(final EventEntity eventEntity) throws IOException {
-        super("/event-edit.fxml", eventEntity);
+    public EventEdit(final Event event) throws IOException {
+        super("/event-edit.fxml", event);
     }
 
     @Override

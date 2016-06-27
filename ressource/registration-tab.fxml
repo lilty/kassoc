@@ -267,7 +267,7 @@
                                         <Insets bottom="3.0" top="3.0"/>
                                     </GridPane.margin>
                                 </TextField>
-                                <Button GridPane.columnIndex="1" GridPane.rowIndex="2"
+                                <Button fx:id="academicRecordInput" GridPane.columnIndex="1" GridPane.rowIndex="2"
                                         text="Open Folder" onAction="#academicRecordAction" styleClass="input">
                                 </Button>
                             </GridPane>

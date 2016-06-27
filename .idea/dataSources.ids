@@ -10,8 +10,8 @@
       <schema id="1" name="S2AET07">
         <object-id>3063</object-id>
         <created-timestamp>2016-04-01.10:07:19</created-timestamp>
-        <modified-timestamp>2016-06-08.13:07:04</modified-timestamp>
-        <introspection-timestamp>2016-06-08.13:09:12</introspection-timestamp>
+        <modified-timestamp>2016-06-10.14:50:44</modified-timestamp>
+        <introspection-timestamp>2016-06-10.14:58:38</introspection-timestamp>
       </schema>
       <table id="2" parent="1" name="ARTISTE">
         <object-id>330158</object-id>
@@ -52,7 +52,7 @@
       <table id="8" parent="1" name="KASSOC_ACCOUNT">
         <object-id>335750</object-id>
         <created-timestamp>2016-05-24.08:55:09</created-timestamp>
-        <modified-timestamp>2016-06-07.16:07:31</modified-timestamp>
+        <modified-timestamp>2016-06-10.14:50:44</modified-timestamp>
         <organization>HEAP</organization>
       </table>
       <table id="9" parent="1" name="KASSOC_EVENT">
@@ -447,7 +447,12 @@ IPRENOM</columns>
       <column id="75" parent="8" name="PASSWORD">
         <data-type>VARCHAR2(255)</data-type>
       </column>
-      <index id="76" parent="8" name="SYS_C00202841">
+      <column id="76" parent="8" name="TYPE">
+        <mandatory>1</mandatory>
+        <data-type>NUMBER(*)</data-type>
+        <default-expression>0</default-expression>
+      </column>
+      <index id="77" parent="8" name="SYS_C00202841">
         <name-surrogate>1</name-surrogate>
         <object-id>335751</object-id>
         <created-timestamp>2016-05-24.08:55:09</created-timestamp>
@@ -457,7 +462,7 @@ IPRENOM</columns>
         <unique>1</unique>
         <tablespace-name>USERS</tablespace-name>
       </index>
-      <index id="77" parent="8" name="KASSOC_ACCOUNT_UNICE_ID_UINDEX">
+      <index id="78" parent="8" name="KASSOC_ACCOUNT_UNICE_ID_UINDEX">
         <object-id>336997</object-id>
         <created-timestamp>2016-06-07.16:07:22</created-timestamp>
         <modified-timestamp>2016-06-07.16:07:22</modified-timestamp>
@@ -466,7 +471,7 @@ IPRENOM</columns>
         <unique>1</unique>
         <tablespace-name>USERS</tablespace-name>
       </index>
-      <index id="78" parent="8" name="KASSOC_ACCOUNT_MAIL_UINDEX">
+      <index id="79" parent="8" name="KASSOC_ACCOUNT_MAIL_UINDEX">
         <object-id>335757</object-id>
         <created-timestamp>2016-05-24.11:44:51</created-timestamp>
         <modified-timestamp>2016-05-24.11:44:51</modified-timestamp>
@@ -475,7 +480,7 @@ IPRENOM</columns>
         <unique>1</unique>
         <tablespace-name>USERS</tablespace-name>
       </index>
-      <key id="79" parent="8" name="SYS_C00202841">
+      <key id="80" parent="8" name="SYS_C00202841">
         <name-surrogate>1</name-surrogate>
         <modified-timestamp>2016-05-24.08:55:09</modified-timestamp>
         <columns>ID</columns>
@@ -483,30 +488,30 @@ IPRENOM</columns>
         <underlying-index>SYS_C00202841</underlying-index>
         <primary>1</primary>
       </key>
-      <column id="80" parent="9" name="ID">
+      <column id="81" parent="9" name="ID">
         <mandatory>1</mandatory>
         <data-type>NUMBER(*)</data-type>
       </column>
-      <column id="81" parent="9" name="PHOTO">
+      <column id="82" parent="9" name="PHOTO">
         <data-type>VARCHAR2(255)</data-type>
       </column>
-      <column id="82" parent="9" name="TITLE">
+      <column id="83" parent="9" name="TITLE">
         <mandatory>1</mandatory>
         <data-type>VARCHAR2(45)</data-type>
       </column>
-      <column id="83" parent="9" name="DESCRIPTION">
+      <column id="84" parent="9" name="DESCRIPTION">
         <mandatory>1</mandatory>
         <data-type>VARCHAR2(500)</data-type>
       </column>
-      <column id="84" parent="9" name="AT">
+      <column id="85" parent="9" name="AT">
         <mandatory>1</mandatory>
         <data-type>DATE</data-type>
       </column>
-      <column id="85" parent="9" name="ORG">
+      <column id="86" parent="9" name="ORG">
         <mandatory>1</mandatory>
         <data-type>VARCHAR2(10)</data-type>
       </column>
-      <index id="86" parent="9" name="SYS_C00203429">
+      <index id="87" parent="9" name="SYS_C00203429">
         <name-surrogate>1</name-surrogate>
         <object-id>336994</object-id>
         <created-timestamp>2016-06-07.08:52:21</created-timestamp>
@@ -516,7 +521,7 @@ IPRENOM</columns>
         <unique>1</unique>
         <tablespace-name>USERS</tablespace-name>
       </index>
-      <key id="87" parent="9" name="SYS_C00203429">
+      <key id="88" parent="9" name="SYS_C00203429">
         <name-surrogate>1</name-surrogate>
         <modified-timestamp>2016-06-07.08:52:21</modified-timestamp>
         <columns>ID</columns>
@@ -524,19 +529,19 @@ IPRENOM</columns>
         <underlying-index>SYS_C00203429</underlying-index>
         <primary>1</primary>
       </key>
-      <column id="88" parent="10" name="ID_PAYS">
+      <column id="89" parent="10" name="ID_PAYS">
         <mandatory>1</mandatory>
         <data-type>VARCHAR2(3)</data-type>
       </column>
-      <column id="89" parent="10" name="PNOM">
+      <column id="90" parent="10" name="PNOM">
         <mandatory>1</mandatory>
         <data-type>VARCHAR2(20)</data-type>
       </column>
-      <column id="90" parent="10" name="PLANGUE">
+      <column id="91" parent="10" name="PLANGUE">
         <mandatory>1</mandatory>
         <data-type>VARCHAR2(20)</data-type>
       </column>
-      <index id="91" parent="10" name="SYS_C00199378">
+      <index id="92" parent="10" name="SYS_C00199378">
         <name-surrogate>1</name-surrogate>
         <object-id>330172</object-id>
         <created-timestamp>2016-04-01.10:07:28</created-timestamp>
@@ -546,7 +551,7 @@ IPRENOM</columns>
         <unique>1</unique>
         <tablespace-name>USERS</tablespace-name>
       </index>
-      <key id="92" parent="10" name="SYS_C00199378">
+      <key id="93" parent="10" name="SYS_C00199378">
         <name-surrogate>1</name-surrogate>
         <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
         <columns>ID_PAYS</columns>
@@ -554,29 +559,29 @@ IPRENOM</columns>
         <underlying-index>SYS_C00199378</underlying-index>
         <primary>1</primary>
       </key>
-      <check id="93" parent="10" name="SYS_C00199377">
+      <check id="94" parent="10" name="SYS_C00199377">
         <name-surrogate>1</name-surrogate>
         <modified-timestamp>2016-04-01.10:07:28</modified-timestamp>
         <columns>ID_PAYS</columns>
         <predicate>id_pays=UPPER(id_pays)</predicate>
       </check>
-      <column id="94" parent="11" name="RNOM">
+      <column id="95" parent="11" name="RNOM">
         <mandatory>1</mandatory>
         <data-type>VARCHAR2(25)</data-type>
       </column>
-      <column id="95" parent="11" name="RPRENOM">
+      <column id="96" parent="11" name="RPRENOM">
         <mandatory>1</mandatory>
         <data-type>VARCHAR2(25)</data-type>
       </column>
-      <column id="96" parent="11" name="RDATE_PF">
+      <column id="97" parent="11" name="RDATE_PF">
         <mandatory>1</mandatory>
         <data-type>DATE</data-type>
       </column>
-      <column id="97" parent="11" name="RNB_F">
+      <column id="98" parent="11" name="RNB_F">
         <mandatory>1</mandatory>
         <data-type>NUMBER(3)</data-type>
       </column>
-      <index id="98" parent="11" name="SYS_C00199352">
+      <index id="99" parent="11" name="SYS_C00199352">
         <name-surrogate>1</name-surrogate>
         <object-id>330167</object-id>
         <created-timestamp>2016-04-01.10:07:27</created-timestamp>
@@ -587,7 +592,7 @@ RPRENOM</columns>
         <unique>1</unique>
         <tablespace-name>USERS</tablespace-name>
       </index>
-      <key id="99" parent="11" name="SYS_C00199352">
+      <key id="100" parent="11" name="SYS_C00199352">
         <name-surrogate>1</name-surrogate>
         <modified-timestamp>2016-04-01.10:07:27</modified-timestamp>
         <columns>RNOM
@@ -596,7 +601,7 @@ RPRENOM</columns>
         <underlying-index>SYS_C00199352</underlying-index>
         <primary>1</primary>
       </key>
-      <foreign-key id="100" parent="11" name="SYS_C00199394">
+      <foreign-key id="101" parent="11" name="SYS_C00199394">
         <name-surrogate>1</name-surrogate>
         <modified-timestamp>2016-04-01.10:07:29</modified-timestamp>
         <columns>RNOM

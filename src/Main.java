@@ -1,7 +1,8 @@
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import kassoc.Core;
+import kassoc.Kassoc;
 
 import java.io.IOException;
 
@@ -21,7 +22,13 @@ public class Main extends Application {
     @Override
     public void start(final Stage primaryStage) throws IOException {
         Platform.setImplicitExit(true);
-        Core.View.init();
-        Core.View.index.showOn(primaryStage, "Kassoc");
+        Kassoc.View.init();
+        primaryStage.getIcons().add(new Image("http://unice.fr/++theme++ThemeUNS/assets/ico/favicon.png"));
+        Kassoc.stage = Kassoc.View.index.showOn(primaryStage, "Kassoc");
+        Kassoc.stage.setOnCloseRequest(e->{
+            Kassoc.getCurrentSession().close();
+            Platform.exit();
+            System.exit(0);
+        });
     }
 }

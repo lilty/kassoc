@@ -3,7 +3,8 @@ package kassoc;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
-import kassoc.model.AccountEntity;
+import javafx.stage.Stage;
+import kassoc.model.Account;
 import kassoc.view.model.AccountEdit;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,14 +13,18 @@ import org.hibernate.cfg.Configuration;
 import java.io.IOException;
 
 /**
- * The type Core.
+ * The type Kassoc.
  */
-public final class Core {
+public final class Kassoc {
     private static final SessionFactory sessionFactory;
     /**
      * The constant account.
      */
-    public static AccountEntity account;
+    public static Account account;
+    /**
+     * The constant stage.
+     */
+    public static Stage stage;
 
     static {
         sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
@@ -42,25 +47,13 @@ public final class Core {
          */
         public static AccountEdit accountEdit;
         /**
-         * The constant admin.
+         * The constant adminTab.
          */
-        public static kassoc.view.View<Tab> admin;
+        public static kassoc.view.View<Tab> adminTab;
         /**
          * The constant dashboard.
          */
         public static kassoc.view.View<TabPane> dashboard;
-        /**
-         * The Event.
-         */
-        public static kassoc.view.View<AnchorPane> event;
-        /**
-         * The Event.
-         */
-        public static kassoc.view.View<AnchorPane> eventEdit;
-        /**
-         * The Event.
-         */
-        public static kassoc.view.View<AnchorPane> eventItem;
         /**
          * The constant eventTab.
          */
@@ -74,13 +67,13 @@ public final class Core {
          */
         public static kassoc.view.View<AnchorPane> login;
         /**
-         * The constant registration.
+         * The constant registrationTab.
          */
-        public static kassoc.view.View<Tab> registration;
+        public static kassoc.view.View<Tab> registrationTab;
         /**
-         * The constant settings.
+         * The constant settingsTab.
          */
-        public static kassoc.view.View<Tab> settings;
+        public static kassoc.view.View<Tab> settingsTab;
         /**
          * The constant signup.
          */
@@ -93,16 +86,13 @@ public final class Core {
         public static void init() throws IOException {
             login = new kassoc.view.View<>("/login.fxml");
             signup = new kassoc.view.View<>("/signup.fxml");
-            admin = new kassoc.view.View<>("/admin.fxml");
+            adminTab = new kassoc.view.View<>("/admin-tab.fxml");
             eventTab = new kassoc.view.View<>("/event-tab.fxml");
-            registration = new kassoc.view.View<>("/registration.fxml");
+            registrationTab = new kassoc.view.View<>("/registration-tab.fxml");
             accountEdit = new AccountEdit();
-            settings = new kassoc.view.View<>("/settings.fxml");
+            settingsTab = new kassoc.view.View<>("/settings-tab.fxml");
             dashboard = new kassoc.view.View<>("/dashboard.fxml");
             index = new kassoc.view.View<>("/index.fxml");
-            event = new kassoc.view.View<>("/event.fxml");
-            eventEdit = new kassoc.view.View<>("/event-edit.fxml");
-            eventItem = new kassoc.view.View<>("/event-item.fxml");
         }
     }
 }

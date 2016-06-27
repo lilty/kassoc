@@ -1,7 +1,7 @@
 package kassoc.controller;
 
 import javafx.scene.control.TabPane;
-import kassoc.Core;
+import kassoc.Kassoc;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,9 +17,9 @@ public class DashboardController implements javafx.fxml.Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tabPane.getTabs().add(Core.View.eventTab.getView());
-        tabPane.getTabs().add(Core.View.settings.getView());
-        tabPane.getTabs().add(Core.View.admin.getView());
-        tabPane.getTabs().add(Core.View.registration.getView());
+        tabPane.getTabs().add(Kassoc.View.eventTab.getView());
+        tabPane.getTabs().add(Kassoc.View.settingsTab.getView());
+        tabPane.getTabs().add(Kassoc.View.adminTab.getView());
+        tabPane.getTabs().add(Kassoc.View.registrationTab.getView());
     }
 }

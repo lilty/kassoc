@@ -1,22 +1,24 @@
 package kassoc.controller;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
-import kassoc.Core;
+import javafx.stage.FileChooser;
+import kassoc.Kassoc;
 import org.hibernate.exception.ConstraintViolationException;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * Class kassoc.controller.RegistrationController
  * @author Bastien
  * @project kassoc
  */
-public class RegistrationController {
+public class RegistrationController implements Initializable {
     /**
      * The Academic record input.
      */
@@ -54,18 +56,6 @@ public class RegistrationController {
      */
     public TextField numberInput;
     /**
-     * The Ok alu input.
-     */
-    public Button okAluInput;
-    /**
-     * The Ok bde input.
-     */
-    public Button okBdeInput;
-    /**
-     * The Ok bds input.
-     */
-    public Button okBdsInput;
-    /**
      * The Sport practic input.
      */
     public TextField sportPracticInput;
@@ -84,12 +74,12 @@ public class RegistrationController {
      * @throws IOException the io exception
      */
     public void academicRecordAction(ActionEvent e) throws IOException {
-        org.hibernate.Transaction tx = Core.getCurrentSession().beginTransaction();
+        org.hibernate.Transaction tx = Kassoc.getCurrentSession().beginTransaction();
         try {
             try {
                 int number = Integer.parseInt(numberInput.getText());
             } catch (Exception t) {
-                new Alert(Alert.AlertType.ERROR, "The number provaded is not valid.").show();
+                new Alert(Alert.AlertType.ERROR, "The number provided is not valid.").show();
                 tx.rollback();
                 return;
             }
@@ -98,30 +88,31 @@ public class RegistrationController {
                 new Alert(Alert.AlertType.ERROR, "The address input is a required field.").show();
                 return;
             }
-            academicRecordInput.setOnAction(
-                new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(final ActionEvent e) {
-                        File file = fileChooser.showOpenDialog(stage);
-                        if (file != null) {
-                            openFile(file);
-                        }
-                    }
-                });
-
-            Core.View.dashboard.showOn((Stage) ((Node) e.getSource()).getScene().getWindow());
+            Kassoc.stage = Kassoc.View.dashboard.showOn(Kassoc.stage);
         } catch (ConstraintViolationException t) {
             tx.rollback();
             new Alert(Alert.AlertType.ERROR, "You are already registered").show();
         }
     }
+
+    @Override
+    public void initialize(final URL location, final ResourceBundle resources) {
+        academicRecordInput.setOnAction(e->{
+            FileChooser fileChooser = new FileChooser();
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+            fileChooser.getExtensionFilters().add(extFilter);
+            File file = fileChooser.showOpenDialog(((Node) e.getSource()).getScene().getWindow());
+            System.out.println(file);
+        });
+    }
+
     /**
      * Ok action.
      * @param e the e
      * @throws IOException the io exception
      */
     public void okAction(ActionEvent e) throws IOException {
-        org.hibernate.Transaction tx = Core.getCurrentSession().beginTransaction();
+        org.hibernate.Transaction tx = Kassoc.getCurrentSession().beginTransaction();
         try {
             String name = lastNameInput.getText();
             if (name == null || name.isEmpty()) {
@@ -153,9 +144,9 @@ public class RegistrationController {
      * @throws Throwable the throwable
      */
     public void okAluAction(ActionEvent e) throws Throwable {
-        org.hibernate.Transaction tx = Core.getCurrentSession().beginTransaction();
+        org.hibernate.Transaction tx = Kassoc.getCurrentSession().beginTransaction();
         try {
-            Core.View.dashboard.showOn((Stage) ((Node) e.getSource()).getScene().getWindow());
+            Kassoc.stage = Kassoc.View.dashboard.showOn(Kassoc.stage);
         } catch (ConstraintViolationException t) {
             tx.rollback();
             new Alert(Alert.AlertType.ERROR, "You are already registered").show();
@@ -168,9 +159,9 @@ public class RegistrationController {
      * @throws IOException the io exception
      */
     public void okBdsInput(ActionEvent e) throws IOException {
-        org.hibernate.Transaction tx = Core.getCurrentSession().beginTransaction();
+        org.hibernate.Transaction tx = Kassoc.getCurrentSession().beginTransaction();
         try {
-            Core.View.dashboard.showOn((Stage) ((Node) e.getSource()).getScene().getWindow());
+            Kassoc.stage = Kassoc.View.dashboard.showOn(Kassoc.stage);
         } catch (ConstraintViolationException t) {
             tx.rollback();
             new Alert(Alert.AlertType.ERROR, "You are already registered").show();

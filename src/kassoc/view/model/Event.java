@@ -7,31 +7,30 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import kassoc.ScrollPane2;
-import kassoc.model.EventEntity;
 
 import java.io.IOException;
 
 /**
  * The type EventItem item view model.
  */
-public class Event extends ViewModel<AnchorPane, EventEntity> {
+public class Event extends ViewModel<AnchorPane, kassoc.model.Event> {
     /**
      * Instantiates a new EventItem item view model.
-     * @param eventEntity the actuality entity
+     * @param event the actuality entity
      * @throws IOException the io exception
      */
-    public Event(final EventEntity eventEntity) throws IOException {
-        super("/event.fxml", eventEntity);
+    public Event(final kassoc.model.Event event) throws IOException {
+        super("/event.fxml", event);
     }
 
     /**
      * Instantiates a new Event.
      * @param location    the location
-     * @param eventEntity the actuality entity
+     * @param event the actuality entity
      * @throws IOException the io exception
      */
-    public Event(final String location, final EventEntity eventEntity) throws IOException {
-        super(location, eventEntity);
+    public Event(final String location, final kassoc.model.Event event) throws IOException {
+        super(location, event);
     }
 
     @Override

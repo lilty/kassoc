@@ -7,7 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import kassoc.Core;
+import kassoc.Kassoc;
 import kassoc.view.model.EventEdit;
 import org.hibernate.exception.ConstraintViolationException;
 
@@ -60,7 +60,7 @@ public class EventEditController extends ViewModelController<EventEdit> implemen
      * @param e the e
      */
     public void saveAction(ActionEvent e) {
-        org.hibernate.Transaction tx = Core.getCurrentSession().beginTransaction();
+        org.hibernate.Transaction tx = Kassoc.getCurrentSession().beginTransaction();
         try {
             LocalDate at = this.at.getValue();
             if (at == null) {
@@ -97,7 +97,7 @@ public class EventEditController extends ViewModelController<EventEdit> implemen
             this.getViewModel().getModel().setImageUrl(photo);
             this.getViewModel().getModel().setOrg(org);
             this.getViewModel().getModel().setAt(at);
-            Core.getCurrentSession().saveOrUpdate(this.getViewModel().getModel());
+            Kassoc.getCurrentSession().saveOrUpdate(this.getViewModel().getModel());
             tx.commit();
         } catch (ConstraintViolationException t) {
             tx.rollback();

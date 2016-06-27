@@ -1,6 +1,5 @@
 package kassoc.controller;
 
-import javafx.collections.FXCollections;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.ListCell;
@@ -8,14 +7,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TitledPane;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
-import kassoc.Core;
-import kassoc.model.EventEntity;
+import kassoc.model.Event;
 import kassoc.view.model.EventItem;
-import org.hibernate.Transaction;
 
 import java.net.URL;
 import java.util.HashMap;
-import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -29,11 +25,11 @@ public class EventTabController implements Initializable {
     /**
      * The Alu actuality list.
      */
-    public ListView<EventEntity> aluActualityList;
+    public ListView<Event> aluActualityList;
     /**
      * The Bde actuality list.
      */
-    public ListView<EventEntity> bdeActualityList;
+    public ListView<Event> bdeActualityList;
     /**
      * The Bde actuality pane.
      */
@@ -41,12 +37,12 @@ public class EventTabController implements Initializable {
     /**
      * The Bds actuality list.
      */
-    public ListView<EventEntity> bdsActualityList;
+    public ListView<Event> bdsActualityList;
 
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
         accordion.setExpandedPane(bdeActualityPane);
-        Callback<ListView<EventEntity>, ListCell<EventEntity>> cellFactory = (ListView<EventEntity> lv)->new
+        Callback<ListView<Event>, ListCell<Event>> cellFactory = (ListView<Event> lv)->new
             ListCell<>() {
             private HashMap<Integer, EventItem> graphics;
 
@@ -58,7 +54,7 @@ public class EventTabController implements Initializable {
             }
 
             @Override
-            public void updateItem(EventEntity item, boolean empty) {
+            public void updateItem(Event item, boolean empty) {
                 super.updateItem(item, empty);
                 if (empty) {
                     setText(null);
@@ -77,16 +73,16 @@ public class EventTabController implements Initializable {
                 }
             }
         };
-        bdeActualityList.setCellFactory(cellFactory);
-        bdsActualityList.setCellFactory(cellFactory);
-        aluActualityList.setCellFactory(cellFactory);
-        Transaction tx = Core.getCurrentSession().beginTransaction();
-        List<EventEntity> actus = EventEntity.findBy("org", "bde", EventEntity.class);
-        bdeActualityList.setItems(FXCollections.observableList(actus));
-        actus = EventEntity.findBy("org", "bds", EventEntity.class);
-        bdsActualityList.setItems(FXCollections.observableList(actus));
-        actus = EventEntity.findBy("org", "alu", EventEntity.class);
-        aluActualityList.setItems(FXCollections.observableList(actus));
-        tx.commit();
+        //        bdeActualityList.setCellFactory(cellFactory);
+        //        bdsActualityList.setCellFactory(cellFactory);
+        //        aluActualityList.setCellFactory(cellFactory);
+        //        Transaction tx = Kassoc.getCurrentSession().beginTransaction();
+        //        List<Event> actus = Event.findBy("org", "bde", Event.class);
+        //        bdeActualityList.setItems(FXCollections.observableList(actus));
+        //        actus = Event.findBy("org", "bds", Event.class);
+        //        bdsActualityList.setItems(FXCollections.observableList(actus));
+        //        actus = Event.findBy("org", "alu", Event.class);
+        //        aluActualityList.setItems(FXCollections.observableList(actus));
+        //        tx.commit();
     }
 }

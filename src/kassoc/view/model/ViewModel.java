@@ -25,9 +25,6 @@ public abstract class ViewModel<TView extends Parent, TModel> extends View<TView
     public ViewModel(URL location, TModel model) throws IOException {
         super(location);
         this.model = model;
-        if (this.model != null) {
-            this.bindView();
-        }
     }
 
     /**
@@ -39,9 +36,6 @@ public abstract class ViewModel<TView extends Parent, TModel> extends View<TView
     public ViewModel(String location, TModel model) throws IOException {
         super(location);
         this.model = model;
-        if (this.model != null) {
-            this.bindView();
-        }
     }
 
     /**
@@ -63,7 +57,7 @@ public abstract class ViewModel<TView extends Parent, TModel> extends View<TView
      */
     public void setModel(final TModel model) {
         this.model = model;
-        if (this.model != null) {
+        if (this.view != null) {
             this.bindView();
         }
     }
@@ -72,11 +66,11 @@ public abstract class ViewModel<TView extends Parent, TModel> extends View<TView
      * Show.
      * @param title the title
      */
-    public void show(String title) {
+    public Stage show(String title) {
         try {
-            this.getLoader().<ViewModelController<ViewModel<TView, TModel>>>getController().setViewModel(this);
+            this.loader.<ViewModelController<ViewModel<TView, TModel>>>getController().setViewModel(this);
         } catch (Exception ignored) { }
-        super.show(title);
+        return super.show(title);
     }
 
     /**
@@ -84,10 +78,10 @@ public abstract class ViewModel<TView extends Parent, TModel> extends View<TView
      * @param stage the stage
      * @param title the title
      */
-    public void showOn(Stage stage, String title) {
+    public Stage showOn(Stage stage, String title) {
         try {
-            this.getLoader().<ViewModelController<ViewModel<TView, TModel>>>getController().setViewModel(this);
+            this.loader.<ViewModelController<ViewModel<TView, TModel>>>getController().setViewModel(this);
         } catch (Exception ignored) { }
-        super.showOn(stage, title);
+        return super.showOn(stage, title);
     }
 }

@@ -3,21 +3,21 @@ package kassoc.view.model;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import kassoc.Core;
-import kassoc.model.AccountEntity;
+import kassoc.Kassoc;
+import kassoc.model.Account;
 
 import java.io.IOException;
 
 /**
  * The type Account edit.
  */
-public class AccountEdit extends ViewModel<AnchorPane, AccountEntity> {
+public class AccountEdit extends ViewModel<AnchorPane, Account> {
     /**
      * Instantiates a new Account edit.
      * @throws IOException the io exception
      */
     public AccountEdit() throws IOException {
-        super("/account-edit.fxml", Core.account);
+        super("/account-edit.fxml", Kassoc.account);
     }
 
     @Override

@@ -13,7 +13,7 @@ import java.time.LocalDate;
  */
 @Entity
 @Table(name = "KASSOC_EVENT", schema = "S2AET07")
-public class EventEntity extends BaseEntity {
+public class Event extends ORMEntity {
     private SimpleObjectProperty<LocalDate> at;
     private SimpleStringProperty description;
     private SimpleObjectProperty<Image> image;
@@ -24,7 +24,7 @@ public class EventEntity extends BaseEntity {
     /**
      * Instantiates a new Event entity.
      */
-    public EventEntity() {
+    public Event() {
         super();
         this.imageUrl = new SimpleStringProperty();
         this.image = new SimpleObjectProperty<>();
@@ -42,7 +42,7 @@ public class EventEntity extends BaseEntity {
      * @param description the description
      * @param at          the date
      */
-    public EventEntity(final String org, final String imageUrl, final String title, final String description, final
+    public Event(final String org, final String imageUrl, final String title, final String description, final
     LocalDate at) {
         this.imageUrl = new SimpleStringProperty(imageUrl);
         this.image = new SimpleObjectProperty<>(new Image(imageUrl));
@@ -71,8 +71,8 @@ public class EventEntity extends BaseEntity {
     @Override
     public boolean equals(final Object o) {
         if (this == o) { return true; }
-        if (!(o instanceof EventEntity)) { return false; }
-        EventEntity that = (EventEntity) o;
+        if (!(o instanceof Event)) { return false; }
+        Event that = (Event) o;
         if (!at.equals(that.at)) { return false; }
         if (!description.equals(that.description)) { return false; }
         if (!image.equals(that.image)) { return false; }

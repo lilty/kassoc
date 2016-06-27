@@ -1,7 +1,7 @@
 package kassoc.controller;
 
 import javafx.event.ActionEvent;
-import kassoc.model.EventEntity;
+import kassoc.model.Event;
 import kassoc.view.model.EventEdit;
 
 import java.io.IOException;
@@ -16,6 +16,6 @@ public class AdminController {
      * @throws IOException the io exception
      */
     public void addActuality(ActionEvent e) throws IOException {
-        new EventEdit(new EventEntity()).show("New Event");
+        new EventEdit(new Event()).show("New Event");
     }
 }

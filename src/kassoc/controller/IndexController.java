@@ -3,7 +3,7 @@ package kassoc.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.StackPane;
-import kassoc.Core;
+import kassoc.Kassoc;
 import org.hibernate.JDBCException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -24,11 +24,11 @@ public class IndexController implements javafx.fxml.Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            final Session session = Core.getCurrentSession();
+            final Session session = Kassoc.getCurrentSession();
             Transaction tx = session.beginTransaction();
             tx.commit();
             content.getChildren().clear();
-            content.getChildren().add(Core.View.login.getView());
+            content.getChildren().add(Kassoc.View.login.getView());
         } catch (JDBCException e) {
             e.printStackTrace();
             Alert a = new Alert(

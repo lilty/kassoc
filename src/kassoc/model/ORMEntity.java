@@ -1,6 +1,6 @@
 package kassoc.model;
 
-import kassoc.Core;
+import kassoc.Kassoc;
 import org.hibernate.Query;
 
 import java.util.List;
@@ -8,21 +8,13 @@ import java.util.List;
 /**
  * The type Base entity.
  */
-public class BaseEntity {
+public class ORMEntity {
     private int id;
 
     /**
      * Instantiates a new Base entity.
      */
-    BaseEntity() { }
-
-    /**
-     * Instantiates a new Base entity.
-     * @param id the id
-     */
-    BaseEntity(final int id) {
-        this.id = id;
-    }
+    ORMEntity() { }
 
     /**
      * Find t.
@@ -32,7 +24,7 @@ public class BaseEntity {
      * @return the t
      */
     public static <T> T find(int id, Class<T> clazz) {
-        @SuppressWarnings("JpaQlInspection") Query query = Core.getCurrentSession().createQuery("from "+clazz.getName
+        @SuppressWarnings("JpaQlInspection") Query query = Kassoc.getCurrentSession().createQuery("from "+clazz.getName
             ()+" where id=:parm").setParameter(
             "param",
             id
@@ -54,7 +46,7 @@ public class BaseEntity {
      * @return the list
      */
     public static <T> List<T> findBy(String attribute, Object value, Class<T> clazz) {
-        Query query = Core.getCurrentSession().createQuery("from "+clazz.getName()+" cl "+
+        Query query = Kassoc.getCurrentSession().createQuery("from "+clazz.getName()+" cl "+
             "where cl."+attribute+"=:parm").setParameter("parm", value);
         return (List<T>) query.list();
     }
@@ -68,7 +60,7 @@ public class BaseEntity {
      * @return the t
      */
     public static <T> T findOneBy(String attribute, Object value, Class<T> clazz) {
-        Query query = Core.getCurrentSession().createQuery("from "+clazz.getName()+" "+
+        Query query = Kassoc.getCurrentSession().createQuery("from "+clazz.getName()+" "+
             "where "+attribute+"=:parm").setParameter("parm", value);
         List ret = query.list();
         if (ret.size()>0) {

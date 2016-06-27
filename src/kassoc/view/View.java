@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import kassoc.FXUtils;
 
@@ -17,8 +18,10 @@ import java.util.HashMap;
  * @param <TView> the type parameter
  */
 public class View<TView extends Styleable> {
-    private TView view;
-    private FXMLLoader loader;
+    protected FXMLLoader loader;
+    protected URL location;
+    protected Scene scene;
+    protected TView view;
     private HashMap<String, Node> childes;
 
     /**
@@ -27,8 +30,12 @@ public class View<TView extends Styleable> {
      * @throws IOException the io exception
      */
     public View(URL location) throws IOException {
+        this.location = location;
         this.loader = new FXMLLoader(location);
         this.view = this.loader.load();
+        if (this.view instanceof Parent) {
+            this.scene = new Scene((Parent) this.view);
+        }
     }
 
     /**
@@ -37,8 +44,12 @@ public class View<TView extends Styleable> {
      * @throws IOException the io exception
      */
     public View(String location) throws IOException {
-        this.loader = new FXMLLoader(getClass().getResource(location));
+        this.location = getClass().getResource(location);
+        this.loader = new FXMLLoader(this.location);
         this.view = this.loader.load();
+        if (this.view instanceof Parent) {
+            this.scene = new Scene((Parent) this.view);
+        }
     }
 
     /**
@@ -93,38 +104,36 @@ public class View<TView extends Styleable> {
         this.view = view;
     }
 
+    public void load() throws IOException {
+        this.getLoader().load();
+    }
+
     /**
      * Show.
      */
-    public void show() {
-        this.show(null);
+    public Stage show() {
+        return this.show(null);
     }
 
     /**
      * Show.
      * @param title the title
      */
-    public void show(String title) {
+    public Stage show(String title) {
         if (this.getView() instanceof Parent) {
-            Stage stage = new Stage();
-            if (title != null) {
-                stage.setTitle(title);
-            }
-            stage.setScene(new Scene((Parent) this.getView()));
-            stage.sizeToScene();
-            stage.centerOnScreen();
-            stage.show();
-            stage.setMinWidth(stage.getWidth());
-            stage.setMinHeight(stage.getHeight());
+            Stage s = new Stage();
+            s.getIcons().add(new Image("http://unice.fr/++theme++ThemeUNS/assets/ico/favicon.png"));
+            return this.showOn(s, title);
         }
+        return null;
     }
 
     /**
      * Show on.
      * @param stage the stage
      */
-    public void showOn(Stage stage) {
-        this.showOn(stage, null);
+    public Stage showOn(Stage stage) {
+        return this.showOn(stage, null);
     }
 
     /**
@@ -132,19 +141,26 @@ public class View<TView extends Styleable> {
      * @param stage the stage
      * @param title the title
      */
-    public void showOn(Stage stage, String title) {
-        if (this.getView() instanceof Parent) {
-            if (title != null) {
-                stage.setTitle(title);
+    public Stage showOn(Stage stage, String title) {
+        if (this.scene != null) {
+            try {
+                //this.loader = new FXMLLoader(this.location);
+                if (title != null) {
+                    stage.setTitle(title);
+                }
+                stage.getIcons().add(new Image("http://unice.fr/++theme++ThemeUNS/assets/ico/favicon.png"));
+                this.loader.setRoot(null);
+                this.loader.setController(null);
+                stage.setScene(new Scene((Parent) (this.view = this.loader.load())));
+                stage.setResizable(true);
+                //stage.hide();
+                stage.show();
+                stage.sizeToScene();
+                stage.setResizable(false);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            stage.setScene(new Scene((Parent) this.getView()));
-            stage.setMinWidth(0);
-            stage.setMinHeight(0);
-            stage.sizeToScene();
-            stage.centerOnScreen();
-            stage.show();
-            stage.setMinWidth(stage.getWidth());
-            stage.setMinHeight(stage.getHeight());
         }
+        return stage;
     }
 }

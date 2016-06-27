@@ -1,11 +1,11 @@
 package kassoc.controller;
 
 import javafx.event.ActionEvent;
-import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
-import kassoc.Core;
-import kassoc.model.AccountEntity;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import kassoc.Kassoc;
+import kassoc.model.Account;
 import org.hibernate.exception.ConstraintViolationException;
 
 import java.io.IOException;
@@ -20,6 +20,10 @@ public class SignUpController implements javafx.fxml.Initializable {
      * The Back to login action btn.
      */
     public Button backToLoginActionBtn;
+    /**
+     * The Banner.
+     */
+    public ImageView banner;
     /**
      * The Confirm pwd input.
      */
@@ -55,12 +59,17 @@ public class SignUpController implements javafx.fxml.Initializable {
      * @throws IOException the io exception
      */
     public void backToLoginAction(ActionEvent e) throws IOException {
-        Core.View.dashboard.showOn((Stage) ((Node) e.getSource()).getScene().getWindow());
+        Kassoc.stage = Kassoc.View.login.showOn(Kassoc.stage);
     }
 
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
-        signUpPane.setCollapsible(false);
+        try {
+            banner.setImage(new Image(getClass().getResource("/banner.png").openStream()));
+            banner.setFocusTraversable(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -69,7 +78,7 @@ public class SignUpController implements javafx.fxml.Initializable {
      * @throws IOException the io exception
      */
     public void signUpAction(ActionEvent e) throws IOException {
-        org.hibernate.Transaction tx = Core.getCurrentSession().beginTransaction();
+        org.hibernate.Transaction tx = Kassoc.getCurrentSession().beginTransaction();
         try {
             String mail = mailInput.getText();
             if (mail == null || mail.isEmpty()) {
@@ -101,11 +110,11 @@ public class SignUpController implements javafx.fxml.Initializable {
                 tx.rollback();
                 return;
             }
-            AccountEntity a = new AccountEntity(Integer.parseInt(stdId), name, mail, pwd);
-            Core.account = a;
-            Core.getCurrentSession().save(a);
+            Account a = new Account(Integer.parseInt(stdId), name, mail, pwd, Account.Type.ADMIN);
+            Kassoc.account = a;
+            Kassoc.getCurrentSession().save(a);
             tx.commit();
-            Core.View.dashboard.showOn((Stage) ((Node) e.getSource()).getScene().getWindow());
+            Kassoc.stage = Kassoc.View.dashboard.showOn(Kassoc.stage);
         } catch (ConstraintViolationException t) {
             tx.rollback();
             new Alert(Alert.AlertType.ERROR, "This account already exist.").show();

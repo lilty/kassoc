@@ -1,11 +1,14 @@
 package kassoc.controller;
 
 import javafx.event.ActionEvent;
-import javafx.scene.Node;
-import javafx.scene.control.*;
-import javafx.stage.Stage;
-import kassoc.Core;
-import kassoc.model.AccountEntity;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import kassoc.Kassoc;
+import kassoc.model.Account;
 import org.hibernate.Transaction;
 
 import java.io.IOException;
@@ -18,13 +21,13 @@ import java.util.ResourceBundle;
  */
 public class LoginController implements javafx.fxml.Initializable {
     /**
+     * The Banner.
+     */
+    public ImageView banner;
+    /**
      * The Login btn.
      */
     public Button loginBtn;
-    /**
-     * The Login pane.
-     */
-    public TitledPane loginPane;
     /**
      * The Mail input.
      */
@@ -40,7 +43,11 @@ public class LoginController implements javafx.fxml.Initializable {
 
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
-        loginPane.setCollapsible(false);
+        try {
+            banner.setImage(new Image(getClass().getResource("/banner.png").openStream()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -49,7 +56,7 @@ public class LoginController implements javafx.fxml.Initializable {
      * @throws IOException the io exception
      */
     public void loginAction(ActionEvent e) throws IOException {
-        Transaction tx = Core.getCurrentSession().beginTransaction();
+        Transaction tx = Kassoc.getCurrentSession().beginTransaction();
         try {
             String mail = mailInput.getText();
             if (mail == null || mail.isEmpty()) {
@@ -63,11 +70,11 @@ public class LoginController implements javafx.fxml.Initializable {
                 tx.rollback();
                 return;
             }
-            AccountEntity account = AccountEntity.findOneBy("mail", mailInput.getText(), AccountEntity.class);
+            Account account = Account.findOneBy("mail", mailInput.getText(), Account.class);
             if (account == null) {
                 try {
                     int uniceId = Integer.parseInt(mailInput.getText());
-                    account = AccountEntity.findOneBy("uniceId", uniceId, AccountEntity.class);
+                    account = Account.findOneBy("uniceId", uniceId, Account.class);
                 } catch (Throwable t) { account = null; }
             }
             boolean gotoScene = false;
@@ -76,13 +83,13 @@ public class LoginController implements javafx.fxml.Initializable {
             } else if (!Objects.equals(this.pwdInput.getText(), account.getPassword())) {
                 new Alert(Alert.AlertType.ERROR, "Wrong password provided !").show();
             } else {
-                Core.account = account;
-                Core.View.accountEdit.setModel(account);
+                Kassoc.account = account;
+                Kassoc.View.accountEdit.setModel(account);
                 gotoScene = true;
             }
             tx.commit();
             if (gotoScene) {
-                Core.View.dashboard.showOn((Stage) ((Node) e.getSource()).getScene().getWindow());
+                Kassoc.stage = Kassoc.View.dashboard.showOn(Kassoc.stage);
             }
         } catch (Throwable t) {
             tx.rollback();
@@ -98,6 +105,6 @@ public class LoginController implements javafx.fxml.Initializable {
      * @throws IOException the io exception
      */
     public void signUpAction(ActionEvent e) throws IOException {
-        Core.View.signup.showOn((Stage) ((Node) e.getSource()).getScene().getWindow());
+        Kassoc.stage = Kassoc.View.signup.showOn(Kassoc.stage);
     }
 }

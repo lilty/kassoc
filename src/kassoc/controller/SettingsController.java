@@ -1,7 +1,7 @@
 package kassoc.controller;
 
 import javafx.scene.control.Tab;
-import kassoc.Core;
+import kassoc.Kassoc;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,6 +17,6 @@ public class SettingsController implements javafx.fxml.Initializable {
 
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
-        tab.setContent(Core.View.accountEdit.getView());
+        tab.setContent(Kassoc.View.accountEdit.getView());
     }
 }
