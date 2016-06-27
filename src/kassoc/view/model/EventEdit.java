@@ -23,25 +23,27 @@ public class EventEdit extends kassoc.view.model.Event {
 
     @Override
     public void bindView() {
-        TextField photo = this.getChildById("photo");
-        TextField title = this.getChildById("title");
-        TextArea description = this.getChildById("description");
-        DatePicker at = this.getChildById("at");
-        ComboBox<String> org = this.getChildById("org");
-        if (title != null) {
-            title.setText(this.getModel().getTitle());
-        }
-        if (description != null) {
-            description.setText(this.getModel().getDescription());
-        }
-        if (photo != null) {
-            photo.setText(this.getModel().getImageUrl());
-        }
-        if (at != null) {
-            at.setValue(this.getModel().getAt());
-        }
-        if (org != null) {
-            org.setValue(this.getModel().getOrg());
+        if (this.getModel() != null) {
+            TextField photo = this.getChildById("photo");
+            TextField title = this.getChildById("title");
+            TextArea description = this.getChildById("description");
+            DatePicker at = this.getChildById("at");
+            ComboBox<String> org = this.getChildById("org");
+            if (title != null) {
+                title.setText(this.getModel().getTitle());
+            }
+            if (description != null) {
+                description.setText(this.getModel().getDescription());
+            }
+            if (photo != null) {
+                photo.setText(this.getModel().getImageUrl());
+            }
+            if (at != null) {
+                at.setValue(this.getModel().getAt());
+            }
+            if (org != null) {
+                org.setValue(this.getModel().getOrg());
+            }
         }
     }
 }

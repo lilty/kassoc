@@ -53,6 +53,11 @@ public class View<TView extends Styleable> {
     }
 
     /**
+     * Fill.
+     */
+    protected void bindView() { }
+
+    /**
      * Gets child by id.
      * @param <T> the type parameter
      * @param id  the id
@@ -144,14 +149,13 @@ public class View<TView extends Styleable> {
     public Stage showOn(Stage stage, String title) {
         if (this.scene != null) {
             try {
-                //this.loader = new FXMLLoader(this.location);
+                this.loader = new FXMLLoader(this.location);
                 if (title != null) {
                     stage.setTitle(title);
                 }
                 stage.getIcons().add(new Image("http://unice.fr/++theme++ThemeUNS/assets/ico/favicon.png"));
-                this.loader.setRoot(null);
-                this.loader.setController(null);
                 stage.setScene(new Scene((Parent) (this.view = this.loader.load())));
+                this.bindView();
                 stage.setResizable(true);
                 //stage.hide();
                 stage.show();

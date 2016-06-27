@@ -24,7 +24,7 @@ public abstract class ViewModel<TView extends Parent, TModel> extends View<TView
      */
     public ViewModel(URL location, TModel model) throws IOException {
         super(location);
-        this.model = model;
+        this.setModel(model);
     }
 
     /**
@@ -35,13 +35,8 @@ public abstract class ViewModel<TView extends Parent, TModel> extends View<TView
      */
     public ViewModel(String location, TModel model) throws IOException {
         super(location);
-        this.model = model;
+        this.setModel(model);
     }
-
-    /**
-     * Fill.
-     */
-    protected abstract void bindView();
 
     /**
      * Gets model.
@@ -67,10 +62,12 @@ public abstract class ViewModel<TView extends Parent, TModel> extends View<TView
      * @param title the title
      */
     public Stage show(String title) {
+        Stage ret = super.show(title);
         try {
             this.loader.<ViewModelController<ViewModel<TView, TModel>>>getController().setViewModel(this);
-        } catch (Exception ignored) { }
-        return super.show(title);
+        } catch (Exception ignored) {
+        }
+        return ret;
     }
 
     /**
@@ -79,9 +76,11 @@ public abstract class ViewModel<TView extends Parent, TModel> extends View<TView
      * @param title the title
      */
     public Stage showOn(Stage stage, String title) {
+        Stage ret = super.showOn(stage, title);
         try {
             this.loader.<ViewModelController<ViewModel<TView, TModel>>>getController().setViewModel(this);
-        } catch (Exception ignored) { }
-        return super.showOn(stage, title);
+        } catch (Exception ignored) {
+        }
+        return ret;
     }
 }

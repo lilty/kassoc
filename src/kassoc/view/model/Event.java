@@ -35,25 +35,27 @@ public class Event extends ViewModel<AnchorPane, kassoc.model.Event> {
 
     @Override
     protected void bindView() {
-        ImageView photo = this.getChildById("photo");
-        Label title = this.getChildById("title");
-        Text description = this.getChildById("description");
-        ScrollPane2 scroll = this.getChildById("scroll");
-        DatePicker at = this.getChildById("at");
-        if (scroll != null) {
-            scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        }
-        if (photo != null) {
-            photo.imageProperty().bind(this.getModel().imageProperty());
-        }
-        if (title != null) {
-            title.textProperty().bind(this.getModel().titleProperty());
-        }
-        if (description != null) {
-            description.textProperty().bind(this.getModel().descriptionProperty());
-        }
-        if (at != null) {
-            at.valueProperty().bind(this.getModel().atProperty());
+        if (this.getModel() != null) {
+            ImageView photo = this.getChildById("photo");
+            Label title = this.getChildById("title");
+            Text description = this.getChildById("description");
+            ScrollPane2 scroll = this.getChildById("scroll");
+            DatePicker at = this.getChildById("at");
+            if (scroll != null) {
+                scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+            }
+            if (photo != null) {
+                photo.imageProperty().bind(this.getModel().imageProperty());
+            }
+            if (title != null) {
+                title.textProperty().bind(this.getModel().titleProperty());
+            }
+            if (description != null) {
+                description.textProperty().bind(this.getModel().descriptionProperty());
+            }
+            if (at != null) {
+                at.valueProperty().bind(this.getModel().atProperty());
+            }
         }
     }
 }

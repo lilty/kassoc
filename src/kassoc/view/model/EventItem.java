@@ -25,7 +25,9 @@ public class EventItem extends kassoc.view.model.Event {
             if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
                 if (mouseEvent.getClickCount() == 2) {
                     try {
-                        new kassoc.view.model.Event(this.getModel()).show("Event");
+                        if (this.getModel() != null) {
+                            new kassoc.view.model.Event(this.getModel()).show("Event");
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

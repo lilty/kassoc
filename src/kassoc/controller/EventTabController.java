@@ -1,5 +1,6 @@
 package kassoc.controller;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.ListCell;
@@ -7,11 +8,14 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TitledPane;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
+import kassoc.Kassoc;
 import kassoc.model.Event;
 import kassoc.view.model.EventItem;
+import org.hibernate.Transaction;
 
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -73,16 +77,16 @@ public class EventTabController implements Initializable {
                 }
             }
         };
-        //        bdeActualityList.setCellFactory(cellFactory);
-        //        bdsActualityList.setCellFactory(cellFactory);
-        //        aluActualityList.setCellFactory(cellFactory);
-        //        Transaction tx = Kassoc.getCurrentSession().beginTransaction();
-        //        List<Event> actus = Event.findBy("org", "bde", Event.class);
-        //        bdeActualityList.setItems(FXCollections.observableList(actus));
-        //        actus = Event.findBy("org", "bds", Event.class);
-        //        bdsActualityList.setItems(FXCollections.observableList(actus));
-        //        actus = Event.findBy("org", "alu", Event.class);
-        //        aluActualityList.setItems(FXCollections.observableList(actus));
-        //        tx.commit();
+        bdeActualityList.setCellFactory(cellFactory);
+        bdsActualityList.setCellFactory(cellFactory);
+        aluActualityList.setCellFactory(cellFactory);
+        Transaction tx = Kassoc.getCurrentSession().beginTransaction();
+        List<Event> actus = Event.findBy("org", "bde", Event.class);
+        bdeActualityList.setItems(FXCollections.observableList(actus));
+        actus = Event.findBy("org", "bds", Event.class);
+        bdsActualityList.setItems(FXCollections.observableList(actus));
+        actus = Event.findBy("org", "alu", Event.class);
+        aluActualityList.setItems(FXCollections.observableList(actus));
+        tx.commit();
     }
 }
