@@ -99,6 +99,9 @@ public class EventEditController extends ViewModelController<EventEdit> implemen
             this.getViewModel().getModel().setAt(at);
             Kassoc.getCurrentSession().saveOrUpdate(this.getViewModel().getModel());
             tx.commit();
+            Kassoc.stage = Kassoc.View.dashboard.showOn(Kassoc.stage);
+            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            stage.close();
         } catch (ConstraintViolationException t) {
             tx.rollback();
             new Alert(Alert.AlertType.ERROR, "This actuality already exist.").show();
@@ -106,7 +109,5 @@ public class EventEditController extends ViewModelController<EventEdit> implemen
             tx.rollback();
             new Alert(Alert.AlertType.ERROR, "An error occurred while creating your event, please try again.").show();
         }
-        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage.close();
     }
 }

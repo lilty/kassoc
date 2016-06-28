@@ -19,8 +19,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="org.hibernate:hibernate-core:5.2.0.Final" level="project" />
-    <orderEntry type="library" name="com.hynnet:oracle-driver-ojdbc6:12.1.0.1" level="project" />
-    <orderEntry type="library" name="javax.mail:mail:1.4" level="project" />
+    <orderEntry type="library" exported="" name="org.hibernate:hibernate-core:5.2.0.Final" level="project" />
+    <orderEntry type="library" exported="" name="com.hynnet:oracle-driver-ojdbc6:12.1.0.1" level="project" />
+    <orderEntry type="library" exported="" name="javax.mail:mail:1.4" level="project" />
   </component>
 </module>

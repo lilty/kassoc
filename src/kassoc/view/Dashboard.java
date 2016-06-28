@@ -23,14 +23,12 @@ public class Dashboard extends View<TabPane> {
 
     @Override
     public Stage showOn(final Stage stage, final String title) {
-        if (!isLoaded) {
-            isLoaded = true;
-            this.getView().getTabs().add(Kassoc.View.eventTab.buildGraphic());
-            this.getView().getTabs().add(Kassoc.View.settingsTab.buildGraphic());
-            this.getView().getTabs().add(Kassoc.View.registrationTab.buildGraphic());
-            if (Kassoc.account.getType() == Account.Type.ADMIN) {
-                this.getView().getTabs().add(Kassoc.View.adminTab.buildGraphic());
-            }
+        this.getView().getTabs().clear();
+        this.getView().getTabs().add(Kassoc.View.eventTab.buildGraphic());
+        this.getView().getTabs().add(Kassoc.View.settingsTab.buildGraphic());
+        this.getView().getTabs().add(Kassoc.View.registrationTab.buildGraphic());
+        if (Kassoc.account.getType() == Account.Type.ADMIN) {
+            this.getView().getTabs().add(Kassoc.View.adminTab.buildGraphic());
         }
         return super.showOn(stage, title);
     }
